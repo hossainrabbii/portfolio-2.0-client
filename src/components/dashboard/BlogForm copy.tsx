@@ -1,3 +1,4 @@
+"use client"
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
@@ -9,7 +10,14 @@ import { ArrowLeft, Upload, X, Plus } from "lucide-react";
 import { getBlogBySlug } from "@/data/blogData";
 import { useToast } from "@/hooks/use-toast";
 import { createBlog } from "@/services/Blog";
-
+import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
+import {
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "../ui/form";
 interface BlogFormProps {
   editSlug: string | null;
   onClose: () => void;
@@ -17,41 +25,25 @@ interface BlogFormProps {
 
 const BlogForm = ({ editSlug, onClose }: BlogFormProps) => {
   const { toast } = useToast();
-  const [formData, setFormData] = useState({
-    title: "",
+  const [fData, setFData] = useState({
     slug: "",
-    excerpt: "",
-    content: "",
-    category: "",
-    readTime: "",
-    authorName: "",
-    authorRole: "",
-    authorAvatar: "",
+
+    coverImage: "",
+
     tags: [] as string[],
   });
-
-  // ✅ This stores the actual File for uploading
-  const [coverFile, setCoverFile] = useState<File | null>(null);
-
-  // ✅ This is just for preview
+  const [newTag, setNewTag] = useState("");
   const [coverPreview, setCoverPreview] = useState<string | null>(null);
 
-  const [newTag, setNewTag] = useState("");
+  // // form
 
   useEffect(() => {
     if (editSlug) {
       const blog = getBlogBySlug(editSlug);
       if (blog) {
-        setFormData({
-          title: blog.title,
+        setFData({
           slug: blog.slug,
-          excerpt: blog.excerpt,
-          content: blog.content,
-          category: blog.category,
-          readTime: blog.readTime,
-          authorName: blog.author.name,
-          authorRole: blog.author.role,
-          authorAvatar: blog.author.avatar,
+          coverImage: blog.coverImage,
           tags: blog.tags,
         });
         setCoverPreview(blog.coverImage);
@@ -63,31 +55,36 @@ const BlogForm = ({ editSlug, onClose }: BlogFormProps) => {
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    setFData((prev) => ({ ...prev, [name]: value }));
 
+    // Auto-generate slug from title
     if (name === "title") {
       const slug = value
         .toLowerCase()
         .replace(/[^a-z0-9]+/g, "-")
         .replace(/(^-|-$)+/g, "");
-      setFormData((prev) => ({ ...prev, slug }));
+      setFData((prev) => ({ ...prev, slug }));
     }
   };
 
-  // ✅ FIX: Separate preview and File object
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
-      setCoverFile(file);
       const reader = new FileReader();
-      reader.onloadend = () => setCoverPreview(reader.result as string);
+      reader.onloadend = () => {
+        setCoverPreview(reader.result as string);
+        setFData((prev) => ({
+          ...prev,
+          coverImage: reader.result as string,
+        }));
+      };
       reader.readAsDataURL(file);
     }
   };
 
   const addTag = () => {
-    if (newTag.trim() && !formData.tags.includes(newTag.trim())) {
-      setFormData((prev) => ({
+    if (newTag.trim() && !fData.tags.includes(newTag.trim())) {
+      setFData((prev) => ({
         ...prev,
         tags: [...prev.tags, newTag.trim()],
       }));
@@ -96,61 +93,57 @@ const BlogForm = ({ editSlug, onClose }: BlogFormProps) => {
   };
 
   const removeTag = (tagToRemove: string) => {
-    setFormData((prev) => ({
+    setFData((prev) => ({
       ...prev,
       tags: prev.tags.filter((tag) => tag !== tagToRemove),
     }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!coverFile) {
-      toast({ title: "Cover image required", variant: "destructive" });
-      return;
-    }
+  const form = useForm();
+  const {
+    formState: { isSubmitting },
+  } = form;
 
-    const blogData = {
-      slug: formData.slug,
-      title: formData.title,
-      excerpt: formData.excerpt,
-      content: formData.content,
-      category: formData.category,
-      author: {
-        name: formData.authorName,
-        avatar: formData.authorAvatar,
-        role: formData.authorRole,
-      },
-      publishedAt: new Date().toISOString().split("T")[0],
-      readTime: formData.readTime,
-      likes: 0,
-      comments: [],
-      tags: formData.tags,
-    };
+  const onSubmit: SubmitHandler<FieldValues> = async (data) => {
+    // e.preventDefault();
 
-    // ✅ Correct FormData with actual file
-    const finalFormData = new FormData();
-    finalFormData.append("data", JSON.stringify(blogData));
+    // // Create blog data object ready for API
+    // const blogData = {
+    //   // id: editSlug ? undefined : Date.now().toString(),
+    //   slug: formData.slug,
+    //   title: formData.title,
+    //   excerpt: formData.excerpt,
+    //   content: formData.content,
+    //   category: formData.category,
+    //   author: {
+    //     name: formData.authorName,
+    //     avatar: formData.authorAvatar,
+    //     role: formData.authorRole,
+    //   },
+    //   coverImage: formData.coverImage,
+    //   publishedAt: new Date().toISOString().split("T")[0],
+    //   readTime: formData.readTime,
+    //   likes: 0,
+    //   comments: [],
+    //   tags: formData.tags,
+    // };
 
-    if (coverFile) {
-      finalFormData.append("coverImage", coverFile);
-    }
+    const formData = new FormData();
+    formData.append("data", JSON.stringify(data));
+    // finalFormData.append("icon", formData.coverImage);
 
-    try {
-      const response = await createBlog(finalFormData);
-      console.log("API response:", response);
+    const response = await createBlog(formData);
+    console.log("Blog data to send to API:", formData);
+    console.log("Blog data to send to API:", data);
 
-      toast({
-        title: editSlug ? "Blog Updated" : "Blog Created",
-        description: `"${formData.title}" has been ${
-          editSlug ? "updated" : "created"
-        } successfully.`,
-      });
+    // toast({
+    //   title: editSlug ? "Blog Updated" : "Blog Created",
+    //   description: `"${fData.title}" has been ${
+    //     editSlug ? "updated" : "created"
+    //   } successfully. Check console for API payload.`,
+    // });
 
-      // onClose();
-    } catch (err) {
-      console.error(err);
-      toast({ title: "Error creating blog", variant: "destructive" });
-    }
+    onClose();
   };
 
   return (
@@ -170,8 +163,8 @@ const BlogForm = ({ editSlug, onClose }: BlogFormProps) => {
             </CardTitle>
           </div>
         </CardHeader>
-        <CardContent>
-          <form onSubmit={handleSubmit} className="space-y-6">
+        <CardContent {...form}>
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
             {/* Cover Image */}
             <div className="space-y-2">
               <Label>Cover Image</Label>
@@ -190,7 +183,7 @@ const BlogForm = ({ editSlug, onClose }: BlogFormProps) => {
                       className="absolute top-2 right-2"
                       onClick={() => {
                         setCoverPreview(null);
-                        setCoverFile(null);
+                        setFData((prev) => ({ ...prev, coverImage: "" }));
                       }}
                     >
                       <X className="h-4 w-4" />
@@ -219,24 +212,64 @@ const BlogForm = ({ editSlug, onClose }: BlogFormProps) => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-2">
                 <Label htmlFor="title">Title *</Label>
-                <Input
+                {/* <div contro={form.control}></div> */}
+                {/* <Input
                   id="title"
                   name="title"
                   value={formData.title}
                   onChange={handleInputChange}
                   placeholder="Enter blog title"
                   required
+                /> */}
+                <FormField
+                  control={form.control}
+                  name="title"
+                  render={({ field }) => (
+                    <FormItem className="">
+                      <FormLabel>Title *</FormLabel>
+                      <FormControl>
+                        <Input
+                          type="text"
+                          {...field}
+                          value={field.value || ""}
+                          required
+                          placeholder="Enter blog title"
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="slug">Slug *</Label>
-                <Input
+                {/* <Label htmlFor="slug">Slug *</Label> */}
+                {/* <Input
                   id="slug"
                   name="slug"
                   value={formData.slug}
                   onChange={handleInputChange}
                   placeholder="blog-url-slug"
                   required
+                /> */}
+
+                <FormField
+                  control={form.control}
+                  name="name"
+                  render={({ field }) => (
+                    <FormItem className="">
+                      <FormLabel>Slug *</FormLabel>
+                      <FormControl>
+                        <Input
+                          type="text"
+                          value={fData.slug}
+                          onChange={handleInputChange}
+                          required
+                          placeholder="blog-url-slug"
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
                 />
               </div>
             </div>
@@ -244,7 +277,7 @@ const BlogForm = ({ editSlug, onClose }: BlogFormProps) => {
             {/* Category & Read Time */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label htmlFor="category">Category *</Label>
+                {/* <Label htmlFor="category">Category *</Label>
                 <Input
                   id="category"
                   name="category"
@@ -252,10 +285,30 @@ const BlogForm = ({ editSlug, onClose }: BlogFormProps) => {
                   onChange={handleInputChange}
                   placeholder="e.g., Design Trends"
                   required
+                /> */}
+
+                <FormField
+                  control={form.control}
+                  name="category"
+                  render={({ field }) => (
+                    <FormItem className="">
+                      <FormLabel>Category *</FormLabel>
+                      <FormControl>
+                        <Input
+                          type="text"
+                          {...field}
+                          value={field.value || ""}
+                          required
+                          placeholder="e.g., Design Trends"
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="readTime">Read Time *</Label>
+                {/* <Label htmlFor="readTime">Read Time *</Label>
                 <Input
                   id="readTime"
                   name="readTime"
@@ -264,12 +317,32 @@ const BlogForm = ({ editSlug, onClose }: BlogFormProps) => {
                   placeholder="e.g., 8 min read"
                   required
                 />
+                 */}
+                <FormField
+                  control={form.control}
+                  name="readTime"
+                  render={({ field }) => (
+                    <FormItem className="">
+                      <FormLabel>Read Time *</FormLabel>
+                      <FormControl>
+                        <Input
+                          type="text"
+                          {...field}
+                          value={field.value || ""}
+                          required
+                          placeholder="e.g., 8 min read"
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
               </div>
             </div>
 
             {/* Excerpt */}
             <div className="space-y-2">
-              <Label htmlFor="excerpt">Excerpt *</Label>
+              {/* <Label htmlFor="excerpt">Excerpt *</Label>
               <Textarea
                 id="excerpt"
                 name="excerpt"
@@ -278,30 +351,71 @@ const BlogForm = ({ editSlug, onClose }: BlogFormProps) => {
                 placeholder="Brief description of the blog post"
                 rows={2}
                 required
+              /> */}
+
+              <FormField
+                control={form.control}
+                name="excerpt"
+                render={({ field }) => (
+                  <FormItem className="">
+                    <FormLabel>Excerpt *</FormLabel>
+                    <FormControl>
+                      <Input
+                        type="text"
+                        {...field}
+                        value={field.value || ""}
+                        required
+                        placeholder="Brief description of the blog post"
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
               />
             </div>
 
             {/* Content */}
             <div className="space-y-2">
-              <Label htmlFor="content">Content (Markdown supported) *</Label>
+              {/* <Label htmlFor="content">Content (Markdown supported) *</Label>
               <Textarea
                 id="content"
                 name="content"
                 value={formData.content}
                 onChange={handleInputChange}
-                placeholder="Write your blog content here..."
+                placeholder="Write your blog content here... Markdown is supported."
                 rows={12}
                 className="font-mono text-sm"
                 required
+              /> */}
+
+              <FormField
+                control={form.control}
+                name="excerpt"
+                render={({ field }) => (
+                  <FormItem className="">
+                    <FormLabel>Content (Markdown supported) *</FormLabel>
+                    <FormControl>
+                      <Textarea
+                        {...field}
+                        value={field.value || ""}
+                        required
+                        placeholder="Write your blog content here... Markdown is supported."
+                        rows={12}
+                        className="font-mono text-sm"
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
               />
             </div>
 
-            {/* Author */}
+            {/* Author Section */}
             <div className="space-y-4">
               <h3 className="font-semibold">Author Information</h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div className="space-y-2">
-                  <Label htmlFor="authorName">Author Name *</Label>
+                  {/* <Label htmlFor="authorName">Author Name *</Label>
                   <Input
                     id="authorName"
                     name="authorName"
@@ -309,10 +423,30 @@ const BlogForm = ({ editSlug, onClose }: BlogFormProps) => {
                     onChange={handleInputChange}
                     placeholder="John Doe"
                     required
+                  /> */}
+
+                  <FormField
+                    control={form.control}
+                    name="authorName"
+                    render={({ field }) => (
+                      <FormItem className="">
+                        <FormLabel>Author Name *</FormLabel>
+                        <FormControl>
+                          <Input
+                            type="text"
+                            {...field}
+                            value={field.value || ""}
+                            required
+                            placeholder="John Doe"
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="authorRole">Author Role *</Label>
+                  {/* <Label htmlFor="authorRole">Author Role *</Label>
                   <Input
                     id="authorRole"
                     name="authorRole"
@@ -320,9 +454,29 @@ const BlogForm = ({ editSlug, onClose }: BlogFormProps) => {
                     onChange={handleInputChange}
                     placeholder="Product Designer"
                     required
+                  /> */}
+
+                  <FormField
+                    control={form.control}
+                    name="authorRole"
+                    render={({ field }) => (
+                      <FormItem className="">
+                        <FormLabel>Author Role *</FormLabel>
+                        <FormControl>
+                          <Input
+                            type="text"
+                            {...field}
+                            value={field.value || ""}
+                            required
+                            placeholder="Product Designer"
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
                   />
                 </div>
-                <div className="space-y-2">
+                {/* <div className="space-y-2">
                   <Label htmlFor="authorAvatar">Author Avatar URL</Label>
                   <Input
                     id="authorAvatar"
@@ -331,7 +485,7 @@ const BlogForm = ({ editSlug, onClose }: BlogFormProps) => {
                     onChange={handleInputChange}
                     placeholder="/placeholder.svg"
                   />
-                </div>
+                </div> */}
               </div>
             </div>
 
@@ -339,7 +493,7 @@ const BlogForm = ({ editSlug, onClose }: BlogFormProps) => {
             <div className="space-y-2">
               <Label>Tags</Label>
               <div className="flex flex-wrap gap-2 mb-2">
-                {formData.tags.map((tag) => (
+                {fData.tags.map((tag) => (
                   <span
                     key={tag}
                     className="inline-flex items-center gap-1 px-3 py-1 bg-primary/10 text-primary rounded-full text-sm"
