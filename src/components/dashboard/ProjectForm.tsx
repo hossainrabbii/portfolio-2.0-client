@@ -9,6 +9,7 @@ import { Switch } from "@/components/ui/switch";
 import { ArrowLeft, Upload, X, Plus } from "lucide-react";
 import { getProjectBySlug } from "@/data/projectData";
 import { useToast } from "@/hooks/use-toast";
+import { createProject } from "@/services/Project";
 
 interface ProjectFormProps {
   editSlug: string | null;
@@ -46,6 +47,7 @@ const ProjectForm = ({ editSlug, onClose }: ProjectFormProps) => {
   const [newResult, setNewResult] = useState("");
   const [imagePreview, setImagePreview] = useState<string | null>(null);
   const [galleryPreviews, setGalleryPreviews] = useState<string[]>([]);
+  const [galleryImages, setGalleryImages] = useState<File[]>([]);
   useEffect(() => {
     if (editSlug) {
       const project = getProjectBySlug(editSlug);
@@ -120,28 +122,26 @@ const ProjectForm = ({ editSlug, onClose }: ProjectFormProps) => {
 
   const handleGalleryUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
-    if (files) {
-      Array.from(files).forEach((file) => {
-        const reader = new FileReader();
-        reader.onloadend = () => {
-          const result = reader.result as string;
-          setGalleryPreviews((prev) => [...prev, result]);
-          setFormData((prev) => ({
-            ...prev,
-            gallery: [...prev.gallery, result],
-          }));
-        };
-        reader.readAsDataURL(file);
-      });
-    }
+    if (!files) return;
+
+    const selectedFiles = Array.from(files);
+
+    // ✅ store FILES (for backend)
+    setGalleryImages((prev) => [...prev, ...selectedFiles]);
+
+    // ✅ store PREVIEWS (for UI)
+    selectedFiles.forEach((file) => {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setGalleryPreviews((prev) => [...prev, reader.result as string]);
+      };
+      reader.readAsDataURL(file);
+    });
   };
 
   const removeGalleryImage = (index: number) => {
     setGalleryPreviews((prev) => prev.filter((_, i) => i !== index));
-    setFormData((prev) => ({
-      ...prev,
-      gallery: prev.gallery.filter((_, i) => i !== index),
-    }));
+    setGalleryImages((prev) => prev.filter((_, i) => i !== index));
   };
 
   const addToList = (
@@ -168,18 +168,18 @@ const ProjectForm = ({ editSlug, onClose }: ProjectFormProps) => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     const projectData = {
-      id: editSlug ? undefined : Date.now().toString(),
+      // id: editSlug ? undefined : Date.now().toString(),
       slug: formData.slug,
       title: formData.title,
       category: formData.category,
       description: formData.description,
       fullDescription: formData.fullDescription,
-      image: formData.image,
-      gallery: formData.gallery,
+      // image: formData.image,
+      // gallery: formData.gallery,
       client: formData.client,
       duration: formData.duration,
       year: formData.year,
@@ -203,6 +203,16 @@ const ProjectForm = ({ editSlug, onClose }: ProjectFormProps) => {
 
     console.log("Project data to send to API:", projectData);
 
+    const finalFormData = new FormData();
+
+    finalFormData.append("data", JSON.stringify(projectData));
+
+    galleryImages.forEach((file) => {
+      finalFormData.append("gallery", file);
+    });
+
+    const response = await createProject(finalFormData);
+    console.log(response);
     toast({
       title: editSlug ? "Project Updated" : "Project Created",
       description: `"${formData.title}" has been ${
@@ -210,7 +220,7 @@ const ProjectForm = ({ editSlug, onClose }: ProjectFormProps) => {
       } successfully. Check console for API payload.`,
     });
 
-    onClose();
+    // onClose();
   };
 
   return (
@@ -233,7 +243,7 @@ const ProjectForm = ({ editSlug, onClose }: ProjectFormProps) => {
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Project Image */}
-            <div className="space-y-2">
+            {/* <div className="space-y-2">
               <Label>Project Image</Label>
               <div className="border-2 border-dashed border-border rounded-xl p-6 text-center hover:border-primary/50 transition-colors">
                 {imagePreview ? (
@@ -273,7 +283,7 @@ const ProjectForm = ({ editSlug, onClose }: ProjectFormProps) => {
                   </label>
                 )}
               </div>
-            </div>
+            </div> */}
 
             {/* Gallery Images */}
             <div className="space-y-2">

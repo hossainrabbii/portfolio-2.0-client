@@ -3,11 +3,11 @@ import { revalidateTag } from "next/cache";
 import { cookies } from "next/headers";
 
 // create blog
-export const createBlog = async (formData: any) => {
+export const createProject = async (formData: any) => {
   console.log(formData);
   try {
     const response = await fetch(
-      "http://localhost:5000/api/v1/blog/create-blog",
+      "http://localhost:5000/api/v1/project/create-project",
       {
         method: "POST",
         body: formData,

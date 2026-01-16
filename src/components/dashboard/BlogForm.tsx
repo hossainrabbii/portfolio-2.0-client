@@ -146,6 +146,13 @@ const BlogForm = ({ editSlug, onClose }: BlogFormProps) => {
         } successfully.`,
       });
 
+      // if (response.success) {
+      //   toast({
+      //     "Blog Created",
+      //     description: "",
+      //   });
+      // }
+
       // onClose();
     } catch (err) {
       console.error(err);
