@@ -182,7 +182,7 @@ const Dashboard = () => {
                       New Project
                     </Button>
                   </div>
-                  <ProjectList onEdit={handleEditProject} />
+                  <ProjectList />
                 </>
               )}
             </TabsContent>

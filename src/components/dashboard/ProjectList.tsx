@@ -1,3 +1,4 @@
+"use client";
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -25,18 +26,20 @@ import {
   Heart,
   Star,
 } from "lucide-react";
-import { projects } from "@/data/projectData";
-import { Link } from "react-router-dom";
+// import { projects } from "@/data/projectData";
 import { useToast } from "@/hooks/use-toast";
 import Image from "next/image";
+import { getAllProjects } from "@/services/Project";
+import Link from "next/link";
 
 interface ProjectListProps {
-  onEdit: (slug: string) => void;
+  // onEdit: (slug: string) => void;
+  projects?: any;
 }
 
-const ProjectList = ({ onEdit }: ProjectListProps) => {
+const ProjectList = ({ projects }: ProjectListProps) => {
+  console.log(projects);
   const { toast } = useToast();
-
   const handleDelete = (slug: string, title: string) => {
     console.log("Delete project API call:", slug);
     toast({
@@ -66,9 +69,9 @@ const ProjectList = ({ onEdit }: ProjectListProps) => {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {projects.map((project, index) => (
+              {projects.map((project: any, index: number) => (
                 <motion.tr
-                  key={project.id}
+                  key={index}
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.05 }}
@@ -77,14 +80,18 @@ const ProjectList = ({ onEdit }: ProjectListProps) => {
                   <TableCell>
                     <div className="flex items-center gap-3">
                       <Image
-                        src={project.image}
+                        src={project.gallery[0]}
+                        width={50}
+                        height={50}
                         alt={project.title}
                         className="h-10 w-14 object-cover rounded-md bg-muted"
                       />
                       <div>
                         <div className="flex items-center gap-2">
                           <p className="font-medium line-clamp-1">
-                            {project.title}
+                            <Link href={`/projects/${project.slug}`}>
+                              {project.title}
+                            </Link>
                           </p>
                           {project.featured && (
                             <Star className="h-3 w-3 fill-primary text-primary" />
@@ -122,7 +129,7 @@ const ProjectList = ({ onEdit }: ProjectListProps) => {
                           <MoreHorizontal className="h-4 w-4" />
                         </Button>
                       </DropdownMenuTrigger>
-                      <DropdownMenuContent align="end" className="bg-popover">
+                      {/* <DropdownMenuContent align="end" className="bg-popover">
                         <DropdownMenuItem asChild>
                           <Link
                             to={`/project/${project.slug}`}
@@ -148,7 +155,7 @@ const ProjectList = ({ onEdit }: ProjectListProps) => {
                           <Trash2 className="h-4 w-4" />
                           Delete
                         </DropdownMenuItem>
-                      </DropdownMenuContent>
+                      </DropdownMenuContent> */}
                     </DropdownMenu>
                   </TableCell>
                 </motion.tr>

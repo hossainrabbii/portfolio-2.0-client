@@ -7,16 +7,14 @@ import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ArrowLeft, Upload, X, Plus } from "lucide-react";
 import { getBlogBySlug } from "@/data/blogData";
-import { useToast } from "@/hooks/use-toast";
 import { createBlog } from "@/services/Blog";
-
+import { toast } from "sonner";
 interface BlogFormProps {
   editSlug: string | null;
   onClose: () => void;
 }
 
 const BlogForm = ({ editSlug, onClose }: BlogFormProps) => {
-  const { toast } = useToast();
   const [formData, setFormData] = useState({
     title: "",
     slug: "",
@@ -60,7 +58,7 @@ const BlogForm = ({ editSlug, onClose }: BlogFormProps) => {
   }, [editSlug]);
 
   const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -105,8 +103,7 @@ const BlogForm = ({ editSlug, onClose }: BlogFormProps) => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!coverFile) {
-      toast({ title: "Cover image required", variant: "destructive" });
-      return;
+      toast.warning("Cover image required");
     }
 
     const blogData = {
@@ -138,25 +135,19 @@ const BlogForm = ({ editSlug, onClose }: BlogFormProps) => {
     try {
       const response = await createBlog(finalFormData);
       console.log("API response:", response);
-
-      toast({
-        title: editSlug ? "Blog Updated" : "Blog Created",
-        description: `"${formData.title}" has been ${
-          editSlug ? "updated" : "created"
-        } successfully.`,
-      });
-
-      // if (response.success) {
-      //   toast({
-      //     "Blog Created",
-      //     description: "",
-      //   });
+      // if (editSlug) {
+      //   toast.success("Blog created successfully.");
+      // } else {
+      //   toast.success("Blog updated successfully.");
       // }
 
-      // onClose();
+      if (response.success) {
+        toast.success("Blog created successfully.");
+        onClose();
+      }
     } catch (err) {
       console.error(err);
-      toast({ title: "Error creating blog", variant: "destructive" });
+      toast.error("Error creating blog");
     }
   };
 

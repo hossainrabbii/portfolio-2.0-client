@@ -6,7 +6,8 @@ import { projects } from "@/data/projectData";
 import Image from "next/image";
 import Link from "next/link";
 
-const Portfolio = () => {
+const Portfolio = ({ projects }: any) => {
+  console.log(projects);
   return (
     <section id="portfolio" className="py-24">
       <div className="section-container">
@@ -47,7 +48,7 @@ const Portfolio = () => {
 
         {/* Projects Grid */}
         <div className="grid md:grid-cols-2 gap-6">
-          {projects.map((project, index) => (
+          {projects.map((project: any, index: number) => (
             <motion.div
               key={project.slug}
               initial={{ opacity: 0, y: 40 }}
@@ -55,7 +56,7 @@ const Portfolio = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
             >
-              <Link href={`/project/${project.slug}`}>
+              <Link href={`/projects/${project.slug}`}>
                 <motion.div
                   whileHover={{ y: -8 }}
                   transition={{ duration: 0.3 }}
@@ -64,8 +65,10 @@ const Portfolio = () => {
                   {/* Image */}
                   <div className="aspect-[16/10] overflow-hidden">
                     <Image
-                      src={project.image}
+                      src={project?.gallery[0]}
                       alt={project.title}
+                      width={500}
+                      height={500}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                   </div>

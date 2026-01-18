@@ -210,17 +210,19 @@ const ProjectForm = ({ editSlug, onClose }: ProjectFormProps) => {
     galleryImages.forEach((file) => {
       finalFormData.append("gallery", file);
     });
-
     const response = await createProject(finalFormData);
-    console.log(response);
-    toast({
-      title: editSlug ? "Project Updated" : "Project Created",
-      description: `"${formData.title}" has been ${
-        editSlug ? "updated" : "created"
-      } successfully. Check console for API payload.`,
-    });
-
-    // onClose();
+    if (response.success) {
+      // console.log(response);
+      toast({
+        title: editSlug ? "Project Updated" : "Project Created",
+        description: `"${formData.title}" has been ${
+          editSlug ? "updated" : "created"
+        } successfully. Check console for API payload.`,
+      });
+      onClose();
+    } else {
+      toast({ title: "Something went wrong" });
+    }
   };
 
   return (
