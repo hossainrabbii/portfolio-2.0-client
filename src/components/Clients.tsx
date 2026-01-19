@@ -13,7 +13,7 @@ const clients = [
 const Clients = () => {
   return (
     <section className="py-16 border-y border-border bg-card/50">
-      <div className="section-container">
+      <div className="section-container container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

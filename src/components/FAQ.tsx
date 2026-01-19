@@ -38,7 +38,7 @@ const faqs = [
 const FAQ = () => {
   return (
     <section className="py-24 bg-secondary/30">
-      <div className="section-container">
+      <div className="section-container container mx-auto px-4">
         <div className="max-w-3xl mx-auto">
           {/* Section Header */}
           <motion.div

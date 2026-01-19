@@ -1,3 +1,4 @@
+"use client";
 import { motion } from "framer-motion";
 import {
   ArrowLeft,
@@ -7,7 +8,7 @@ import {
   ExternalLink,
   Quote,
 } from "lucide-react";
-import { Link, useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import LikeButton from "@/components/LikeButton";
@@ -17,17 +18,47 @@ import { Button } from "@/components/ui/button";
 import { getProjectBySlug, getRelatedProjects } from "@/data/projectData";
 import { useEffect } from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
+type slugProps = {};
 
-const ProjectDetail = () => {
-  const { slug } = useParams<{ slug: string }>();
-  const navigate = useNavigate();
-  const project = slug ? getProjectBySlug(slug) : undefined;
-  const relatedProjects = slug ? getRelatedProjects(slug) : [];
+type Project = {
+  title: string;
+  description: string;
+  category: string;
+  image: string;
+  gallery: string[];
+  client: string;
+  year: string;
+  duration: string;
+  role: string;
+  tools: string[];
+  challenges: string[];
+  solutions: string[];
+  results: string[];
+  testimonial?: {
+    quote: string;
+    author: string;
+    role: string;
+  };
+  comments: any[];
+  likes: number;
+  liveUrl?: string;
+};
 
+type ProjectDetailProps = {
+  project: Project;
+  slug: string;
+};
+const ProjectDetail = ({ project, slug }: ProjectDetailProps) => {
+  const navigate = useRouter();
+  // const projectContent = slug ? getProjectBySlug(slug) : undefined;
+  // const relatedProjects = slug ? getRelatedProjects(slug) : [];
+
+  console.log(typeof project?.likes);
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [slug]);
-
   if (!project) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
@@ -35,7 +66,7 @@ const ProjectDetail = () => {
           <h1 className="font-display text-4xl font-bold text-foreground mb-4">
             Project Not Found
           </h1>
-          <Link to="/#portfolio" className="text-primary hover:underline">
+          <Link href="/#portfolio" className="text-primary hover:underline">
             Back to Portfolio
           </Link>
         </div>
@@ -47,13 +78,11 @@ const ProjectDetail = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Navbar />
-
       {/* Hero */}
       <section className="pt-32 pb-16">
-        <div className="section-container">
+        <div className="section-container container mx-auto">
           {/* Back Button */}
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.4 }}
@@ -65,7 +94,7 @@ const ProjectDetail = () => {
               <ArrowLeft className="w-4 h-4" />
               Back
             </button>
-          </motion.div>
+          </motion.div> */}
 
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             {/* Left - Info */}
@@ -78,7 +107,7 @@ const ProjectDetail = () => {
                 className="mb-6"
               >
                 <span className="inline-block bg-primary text-primary-foreground text-sm font-medium px-4 py-1.5 rounded-full">
-                  {project.category}
+                  {project?.category}
                 </span>
               </motion.div>
 
@@ -140,7 +169,7 @@ const ProjectDetail = () => {
               >
                 <p className="text-sm text-muted-foreground mb-3">Tools Used</p>
                 <div className="flex flex-wrap gap-2">
-                  {project.tools.map((tool) => (
+                  {project?.tools.map((tool) => (
                     <span
                       key={tool}
                       className="px-3 py-1.5 bg-secondary text-muted-foreground text-sm rounded-full"
@@ -183,7 +212,9 @@ const ProjectDetail = () => {
             >
               <div className="aspect-[4/3] rounded-2xl overflow-hidden bg-card border border-border">
                 <Image
-                  src={project.image}
+                  src={project.gallery[0]}
+                  width={500}
+                  height={500}
                   alt={project.title}
                   className="w-full h-full object-cover"
                 />
@@ -197,7 +228,7 @@ const ProjectDetail = () => {
 
       {/* Share Bar */}
       <section className="py-8">
-        <div className="section-container">
+        <div className="section-container container mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -219,7 +250,7 @@ const ProjectDetail = () => {
       {/* Gallery */}
       {project.gallery.length > 1 && (
         <section className="py-16">
-          <div className="section-container">
+          <div className="section-container container mx-auto">
             <motion.h2
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -240,6 +271,8 @@ const ProjectDetail = () => {
                 >
                   <Image
                     src={image}
+                    width={500}
+                    height={500}
                     alt={`${project.title} gallery ${index + 1}`}
                     className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                   />
@@ -252,7 +285,7 @@ const ProjectDetail = () => {
 
       {/* Project Details */}
       <section className="py-16 bg-secondary/20">
-        <div className="section-container">
+        <div className="section-container container mx-auto">
           <div className="grid md:grid-cols-3 gap-12">
             {/* Challenges */}
             <motion.div
@@ -323,7 +356,7 @@ const ProjectDetail = () => {
       {/* Testimonial */}
       {project.testimonial && (
         <section className="py-24">
-          <div className="section-container max-w-4xl">
+          <div className="section-container max-w-4xl container mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -359,13 +392,13 @@ const ProjectDetail = () => {
 
       {/* Comments */}
       <section className="py-16 bg-secondary/20">
-        <div className="section-container max-w-4xl">
+        <div className="section-container max-w-4xl container mx-auto">
           <CommentSection comments={project.comments} />
         </div>
       </section>
 
       {/* Related Projects */}
-      {relatedProjects.length > 0 && (
+      {/* {relatedProjects.length > 0 && (
         <section className="py-24">
           <div className="section-container">
             <motion.div
@@ -388,7 +421,7 @@ const ProjectDetail = () => {
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                 >
-                  <Link to={`/project/${relatedProject.slug}`}>
+                  <Link href={`/project/${relatedProject.slug}`}>
                     <motion.div
                       whileHover={{ y: -8 }}
                       className="group h-full bg-card rounded-2xl overflow-hidden border border-border hover:border-primary/50 transition-all"
@@ -415,7 +448,7 @@ const ProjectDetail = () => {
             </div>
           </div>
         </section>
-      )}
+      )} */}
 
       <Footer />
     </div>

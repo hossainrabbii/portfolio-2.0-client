@@ -27,7 +27,7 @@ const footerLinks = {
 const Footer = () => {
   return (
     <footer id="contact" className="py-16 border-t border-border">
-      <div className="section-container">
+      <div className="section-container container mx-auto px-4">
         <div className="grid md:grid-cols-3 gap-12 mb-12">
           {/* Brand */}
           <motion.div

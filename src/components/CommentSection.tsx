@@ -1,3 +1,4 @@
+"use client";
 import { motion } from "framer-motion";
 import { Heart, MessageCircle, Send } from "lucide-react";
 import { useState } from "react";
@@ -59,12 +60,16 @@ const CommentSection = ({
     if (newLikedComments.has(commentId)) {
       newLikedComments.delete(commentId);
       setComments((prev) =>
-        prev.map((c) => (c.id === commentId ? { ...c, likes: c.likes - 1 } : c))
+        prev.map((c) =>
+          c.id === commentId ? { ...c, likes: c.likes - 1 } : c,
+        ),
       );
     } else {
       newLikedComments.add(commentId);
       setComments((prev) =>
-        prev.map((c) => (c.id === commentId ? { ...c, likes: c.likes + 1 } : c))
+        prev.map((c) =>
+          c.id === commentId ? { ...c, likes: c.likes + 1 } : c,
+        ),
       );
     }
     setLikedComments(newLikedComments);

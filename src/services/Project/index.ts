@@ -21,20 +21,24 @@ export const createProject = async (formData: any) => {
   }
 };
 
-// get brands
+// get projects
 export const getAllProjects = async () => {
   try {
-    // const response = await fetch(
-    //   `${process.env.NEXT_PUBLIC_BASE_API}/project`,
-    //   {
-    //     // next: {
-    //     //   tags: ["brand"],
-    //     // },
-    //   },
-    // );
-
     const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/project`);
     console.log(response);
+    return response.json();
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+// get single projects
+export const getSingleProject = async (slug: string) => {
+  try {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_BASE_API}/project/${slug}`,
+    );
+    // console.log(response);
     return response.json();
   } catch (error) {
     console.error(error);

@@ -11,7 +11,7 @@ export const createBlog = async (formData: any) => {
       {
         method: "POST",
         body: formData,
-      }
+      },
     );
 
     // revalidateTag("category", "");
@@ -22,13 +22,22 @@ export const createBlog = async (formData: any) => {
 };
 
 // get brands
-export const getAllBrands = async () => {
+export const getAllBlogs = async () => {
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/brand`, {
-      next: {
-        tags: ["brand"],
-      },
-    });
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/blog`);
+    return response.json();
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+// get single projects
+export const getSingleBlog = async (slug: string) => {
+  try {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_BASE_API}/blog/${slug}`,
+    );
+    // console.log(response);
     return response.json();
   } catch (error) {
     console.error(error);
@@ -46,7 +55,7 @@ export const deleteBrand = async (brandId: string) => {
         headers: {
           Authorization: (await cookies()).get("accessToken")!.value,
         },
-      }
+      },
     );
     revalidateTag("brand", "");
 

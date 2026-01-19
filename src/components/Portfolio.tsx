@@ -7,10 +7,10 @@ import Image from "next/image";
 import Link from "next/link";
 
 const Portfolio = ({ projects }: any) => {
-  console.log(projects);
+  // console.log(projects);
   return (
     <section id="portfolio" className="py-24">
-      <div className="section-container">
+      <div className="section-container container mx-auto px-4">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-12">
           <motion.div
@@ -67,8 +67,8 @@ const Portfolio = ({ projects }: any) => {
                     <Image
                       src={project?.gallery[0]}
                       alt={project.title}
-                      width={500}
-                      height={500}
+                      width={600}
+                      height={100}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                   </div>
@@ -90,12 +90,14 @@ const Portfolio = ({ projects }: any) => {
                           {project.description}
                         </p>
                       </div>
-                      <motion.div
-                        whileHover={{ scale: 1.1, rotate: 45 }}
-                        className="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-primary-foreground opacity-0 group-hover:opacity-100 transition-opacity"
-                      >
-                        <ArrowUpRight className="w-5 h-5" />
-                      </motion.div>
+                      <div className="w-[60px] px-4">
+                        <motion.div
+                          whileHover={{ scale: 1.1, rotate: 45 }}
+                          className="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-primary-foreground opacity-0 group-hover:opacity-100 transition-opacity"
+                        >
+                          <ArrowUpRight className="w-5 h-5" />
+                        </motion.div>
+                      </div>
                     </div>
                   </div>
 

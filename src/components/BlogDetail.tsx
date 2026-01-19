@@ -1,6 +1,7 @@
+"use client";
 import { motion } from "framer-motion";
 import { ArrowLeft, ArrowUpRight, Calendar, Clock, Tag } from "lucide-react";
-import { Link, useParams, useNavigate } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import LikeButton from "@/components/LikeButton";
@@ -9,12 +10,12 @@ import CommentSection from "@/components/CommentSection";
 import { getBlogBySlug, getRelatedPosts } from "@/data/blogData";
 import { useEffect } from "react";
 
-const BlogPost = () => {
-  const { slug } = useParams<{ slug: string }>();
-  const navigate = useNavigate();
+const BlogDetail = ({ blogDetail: any }, slug: string) => {
+  // const { slug } = useParams<{ slug: string }>();
+  // const navigate = useNavigate();
   const post = slug ? getBlogBySlug(slug) : undefined;
   const relatedPosts = slug ? getRelatedPosts(slug) : [];
-
+  // console.log(blogDetail.blogDetail);
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [slug]);
@@ -44,7 +45,7 @@ const BlogPost = () => {
       <section className="pt-32 pb-12">
         <div className="section-container max-w-4xl">
           {/* Back Button */}
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.4 }}
@@ -56,7 +57,7 @@ const BlogPost = () => {
               <ArrowLeft className="w-4 h-4" />
               Back to Blog
             </button>
-          </motion.div>
+          </motion.div> */}
 
           {/* Category */}
           <motion.div
@@ -93,8 +94,12 @@ const BlogPost = () => {
                 <span className="font-medium text-primary">DM</span>
               </div>
               <div>
-                <p className="font-medium text-foreground">{post.author.name}</p>
-                <p className="text-sm text-muted-foreground">{post.author.role}</p>
+                <p className="font-medium text-foreground">
+                  {post.author.name}
+                </p>
+                <p className="text-sm text-muted-foreground">
+                  {post.author.role}
+                </p>
               </div>
             </div>
 
@@ -139,7 +144,11 @@ const BlogPost = () => {
             className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-6 bg-card rounded-2xl border border-border mb-12"
           >
             <LikeButton initialLikes={post.likes} size="lg" />
-            <SocialShare url={currentUrl} title={post.title} description={post.excerpt} />
+            <SocialShare
+              url={currentUrl}
+              title={post.title}
+              description={post.excerpt}
+            />
           </motion.div>
         </div>
       </section>
@@ -161,7 +170,9 @@ const BlogPost = () => {
                 [&>ul]:list-disc [&>ul]:pl-6 [&>ul]:space-y-2
                 [&>ol]:list-decimal [&>ol]:pl-6 [&>ol]:space-y-2
               "
-              dangerouslySetInnerHTML={{ __html: post.content.replace(/\n/g, "<br />") }}
+              dangerouslySetInnerHTML={{
+                __html: post.content.replace(/\n/g, "<br />"),
+              }}
             />
           </motion.article>
 
@@ -230,7 +241,9 @@ const BlogPost = () => {
                         </div>
                       </div>
                       <div className="p-5">
-                        <p className="text-xs text-primary mb-2">{relatedPost.category}</p>
+                        <p className="text-xs text-primary mb-2">
+                          {relatedPost.category}
+                        </p>
                         <h3 className="font-display font-semibold text-foreground group-hover:text-primary transition-colors line-clamp-2">
                           {relatedPost.title}
                         </h3>
@@ -249,4 +262,4 @@ const BlogPost = () => {
   );
 };
 
-export default BlogPost;
+export default BlogDetail;

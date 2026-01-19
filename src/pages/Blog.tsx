@@ -1,3 +1,4 @@
+"use client";
 import { motion } from "framer-motion";
 import { ArrowUpRight, Calendar, Clock, Search } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -17,7 +18,8 @@ const Blog = () => {
     const matchesSearch =
       post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       post.excerpt.toLowerCase().includes(searchQuery.toLowerCase());
-    const matchesCategory = !selectedCategory || post.category === selectedCategory;
+    const matchesCategory =
+      !selectedCategory || post.category === selectedCategory;
     return matchesSearch && matchesCategory;
   });
 
@@ -46,7 +48,8 @@ const Blog = () => {
             </h1>
 
             <p className="text-lg text-muted-foreground">
-              Exploring design, technology, and creative thinking through thoughtful articles and case studies.
+              Exploring design, technology, and creative thinking through
+              thoughtful articles and case studies.
             </p>
           </motion.div>
 
@@ -148,11 +151,14 @@ const Blog = () => {
                           <div className="flex items-center gap-1.5">
                             <Calendar className="w-3.5 h-3.5" />
                             <span>
-                              {new Date(post.publishedAt).toLocaleDateString("en-US", {
-                                month: "short",
-                                day: "numeric",
-                                year: "numeric",
-                              })}
+                              {new Date(post.publishedAt).toLocaleDateString(
+                                "en-US",
+                                {
+                                  month: "short",
+                                  day: "numeric",
+                                  year: "numeric",
+                                },
+                              )}
                             </span>
                           </div>
                           <div className="flex items-center gap-1.5">

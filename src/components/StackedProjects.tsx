@@ -58,7 +58,7 @@ const StackedProjects = () => {
     >
       <div className="sticky top-0 h-screen overflow-hidden">
         {/* Section Header */}
-        <div className="section-container pt-24">
+        <div className="section-container pt-24 container mx-auto px-4">
           <div className="flex items-center justify-between mb-8">
             <motion.div
               initial={{ opacity: 0, y: 30 }}

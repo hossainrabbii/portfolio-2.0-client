@@ -16,7 +16,7 @@ const Hero = () => {
         <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
       </div>
 
-      <div className="section-container relative z-10">
+      <div className="section-container relative z-10 container mx-auto px-4">
         {/* Big Animated Name */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}

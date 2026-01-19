@@ -86,7 +86,7 @@ const services = [
 const Services = () => {
   return (
     <section id="services" className="py-24 bg-secondary/30">
-      <div className="section-container">
+      <div className="section-container container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-16">
           {/* Left - Header */}
           <motion.div

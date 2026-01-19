@@ -3,7 +3,7 @@ import Portfolio from "./Portfolio";
 
 const PortfolioSection = async () => {
   const allProjects = await getAllProjects();
-  console.log(allProjects);
+  // console.log(allProjects);
   return (
     <>
       <Portfolio projects={allProjects.data} />
