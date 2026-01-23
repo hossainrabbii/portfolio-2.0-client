@@ -84,7 +84,9 @@ const Blog = () => {
               >
                 All
               </button>
-              {categories.map((category) => (
+
+              {/* category will be used later */}
+              {/* {categories.map((category) => (
                 <button
                   key={category}
                   onClick={() => setSelectedCategory(category)}
@@ -96,7 +98,9 @@ const Blog = () => {
                 >
                   {category}
                 </button>
-              ))}
+              ))} */}
+
+              
             </div>
           </motion.div>
         </div>

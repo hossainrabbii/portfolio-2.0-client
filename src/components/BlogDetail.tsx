@@ -10,11 +10,17 @@ import CommentSection from "@/components/CommentSection";
 import { getBlogBySlug, getRelatedPosts } from "@/data/blogData";
 import { useEffect } from "react";
 
-const BlogDetail = ({ blogDetail: any }, slug: string) => {
+type TBLogProps = {
+  blogDetail: any;
+  slug: string;
+};
+
+const BlogDetail = ({ blogDetail, slug }: TBLogProps) => {
   // const { slug } = useParams<{ slug: string }>();
   // const navigate = useNavigate();
+
   const post = slug ? getBlogBySlug(slug) : undefined;
-  const relatedPosts = slug ? getRelatedPosts(slug) : [];
+  // const relatedPosts = slug ? getRelatedPosts(slug) : [];
   // console.log(blogDetail.blogDetail);
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -204,7 +210,7 @@ const BlogDetail = ({ blogDetail: any }, slug: string) => {
       </section>
 
       {/* Related Posts */}
-      {relatedPosts.length > 0 && (
+      {/* {relatedPosts.length > 0 && (
         <section className="py-24">
           <div className="section-container">
             <motion.div
@@ -255,7 +261,7 @@ const BlogDetail = ({ blogDetail: any }, slug: string) => {
             </div>
           </div>
         </section>
-      )}
+      )} */}
 
       <Footer />
     </div>

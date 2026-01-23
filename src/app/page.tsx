@@ -25,7 +25,7 @@ const HomePage = () => {
       <Clients />
       <Services />
       <PortfolioSection />
-      {/* <BlogSection /> */}
+      <BlogSection />
       <FAQ />
       <CTA />
       <Footer />
