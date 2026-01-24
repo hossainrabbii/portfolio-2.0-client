@@ -38,7 +38,6 @@ export const getSingleProject = async (slug: string) => {
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_BASE_API}/project/${slug}`,
     );
-    // console.log(response);
     return response.json();
   } catch (error) {
     console.error(error);

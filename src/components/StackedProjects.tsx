@@ -82,7 +82,7 @@ const StackedProjects = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-primary hover:text-primary/80 flex items-center gap-1 text-sm font-medium"
+              className="text-[#E1B505] hover:text-[#E1B505]/80 flex items-center gap-1 text-sm font-medium"
             >
               Explore more Work
               <ArrowUpRight className="w-4 h-4" />
@@ -133,19 +133,19 @@ const ProjectCard = ({
   const y = useTransform(
     scrollYProgress,
     [cardStart, cardEnd],
-    [index === 0 ? 0 : 100, isLast ? 50 : -100]
+    [index === 0 ? 0 : 100, isLast ? 50 : -100],
   );
 
   const scale = useTransform(
     scrollYProgress,
     [cardStart, cardEnd],
-    [1, isLast ? 0.95 : 0.9]
+    [1, isLast ? 0.95 : 0.9],
   );
 
   const opacity = useTransform(
     scrollYProgress,
     [cardStart, cardEnd - 0.1, cardEnd],
-    [1, 1, isLast ? 0.4 : 0]
+    [1, 1, isLast ? 0.4 : 0],
   );
 
   const zIndex = totalProjects - index;
@@ -194,7 +194,7 @@ const ProjectCard = ({
                   whileHover={{ scale: 1.05 }}
                   className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
                 >
-                  <div className="bg-primary text-primary-foreground px-6 py-3 rounded-full font-medium flex items-center gap-2 text-sm shadow-lg">
+                  <div className="bg-primary text-[#E1B505]-foreground px-6 py-3 rounded-full font-medium flex items-center gap-2 text-sm shadow-lg">
                     View Project
                     <ArrowUpRight className="w-4 h-4" />
                   </div>

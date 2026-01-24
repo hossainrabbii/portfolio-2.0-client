@@ -106,7 +106,7 @@ const Services = () => {
             <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground">
               Experience the Impact of
               <br />
-              <span className="text-primary">User-Centered Design</span>
+              <span className="text-[#E1B505]">User-Centered Design</span>
             </h2>
 
             <p className="text-muted-foreground leading-relaxed max-w-md">
@@ -117,7 +117,7 @@ const Services = () => {
             <motion.a
               href="#contact"
               whileHover={{ x: 5 }}
-              className="inline-flex items-center gap-2 text-primary font-medium"
+              className="inline-flex items-center gap-2 text-[#E1B505] font-medium"
             >
               Get a Free Consultation
               <ChevronRight className="w-4 h-4" />
@@ -147,7 +147,7 @@ const Services = () => {
                     <AccordionTrigger className="hover:no-underline py-6">
                       <div className="flex items-center gap-4">
                         <div className="w-12 h-12 rounded-xl bg-secondary flex items-center justify-center">
-                          <service.icon className="w-5 h-5 text-primary" />
+                          <service.icon className="w-5 h-5 text-[#E1B505]" />
                         </div>
                         <span className="font-display font-semibold text-foreground text-left">
                           {service.title}

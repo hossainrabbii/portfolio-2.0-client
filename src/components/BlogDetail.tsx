@@ -18,22 +18,23 @@ type TBLogProps = {
 const BlogDetail = ({ blogDetail, slug }: TBLogProps) => {
   // const { slug } = useParams<{ slug: string }>();
   // const navigate = useNavigate();
-
-  const post = slug ? getBlogBySlug(slug) : undefined;
+  console.log(slug);
+  console.log(blogDetail);
+  // const post = slug ? getBlogBySlug(slug) : undefined;
   // const relatedPosts = slug ? getRelatedPosts(slug) : [];
   // console.log(blogDetail.blogDetail);
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [slug]);
 
-  if (!post) {
+  if (!blogDetail) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="text-center">
           <h1 className="font-display text-4xl font-bold text-foreground mb-4">
             Article Not Found
           </h1>
-          <Link to="/blog" className="text-primary hover:underline">
+          <Link to="/blog" className="text-[#E1B505] hover:underline">
             Back to Blog
           </Link>
         </div>
@@ -49,7 +50,7 @@ const BlogDetail = ({ blogDetail, slug }: TBLogProps) => {
 
       {/* Hero */}
       <section className="pt-32 pb-12">
-        <div className="section-container max-w-4xl">
+        <div className="section-container max-w-4xl container mx-auto">
           {/* Back Button */}
           {/* <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -72,8 +73,8 @@ const BlogDetail = ({ blogDetail, slug }: TBLogProps) => {
             transition={{ duration: 0.6 }}
             className="mb-6"
           >
-            <span className="inline-block bg-primary text-primary-foreground text-sm font-medium px-4 py-1.5 rounded-full">
-              {post.category}
+            <span className="inline-block bg-[#E1B505] text-[#E1B505]-foreground text-sm font-medium px-4 py-1.5 rounded-full">
+              {blogDetail.category}
             </span>
           </motion.div>
 
@@ -84,7 +85,7 @@ const BlogDetail = ({ blogDetail, slug }: TBLogProps) => {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-8"
           >
-            {post.title}
+            {blogDetail.title}
           </motion.h1>
 
           {/* Meta */}
@@ -96,15 +97,15 @@ const BlogDetail = ({ blogDetail, slug }: TBLogProps) => {
           >
             {/* Author */}
             <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center">
-                <span className="font-medium text-primary">DM</span>
+              <div className="w-12 h-12 rounded-full bg-[#E1B505]/20 flex items-center justify-center">
+                <span className="font-medium text-[#E1B505]">DM</span>
               </div>
               <div>
                 <p className="font-medium text-foreground">
-                  {post.author.name}
+                  {blogDetail.author.name}
                 </p>
                 <p className="text-sm text-muted-foreground">
-                  {post.author.role}
+                  {blogDetail.author.role}
                 </p>
               </div>
             </div>
@@ -113,16 +114,19 @@ const BlogDetail = ({ blogDetail, slug }: TBLogProps) => {
               <div className="flex items-center gap-1.5">
                 <Calendar className="w-4 h-4" />
                 <span>
-                  {new Date(post.publishedAt).toLocaleDateString("en-US", {
-                    month: "long",
-                    day: "numeric",
-                    year: "numeric",
-                  })}
+                  {new Date(blogDetail?.publishedAt).toLocaleDateString(
+                    "en-US",
+                    {
+                      month: "long",
+                      day: "numeric",
+                      year: "numeric",
+                    },
+                  )}
                 </span>
               </div>
               <div className="flex items-center gap-1.5">
                 <Clock className="w-4 h-4" />
-                <span>{post.readTime}</span>
+                <span>{blogDetail.readTime}</span>
               </div>
             </div>
           </motion.div>
@@ -134,10 +138,10 @@ const BlogDetail = ({ blogDetail, slug }: TBLogProps) => {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="relative aspect-[21/9] rounded-2xl overflow-hidden bg-secondary mb-12"
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/30 via-primary/10 to-accent/20" />
+            <div className="absolute inset-0 bg-gradient-to-br from-[#E1B505]/30 via-[#E1B505]/10 to-accent/20" />
             <div className="absolute inset-0 flex items-center justify-center">
-              <span className="text-[12rem] font-display font-bold text-primary/10">
-                {post.title.charAt(0)}
+              <span className="text-[12rem] font-display font-bold text-[#E1B505]/10">
+                {blogDetail.title.charAt(0)}
               </span>
             </div>
           </motion.div>
@@ -149,11 +153,11 @@ const BlogDetail = ({ blogDetail, slug }: TBLogProps) => {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-6 bg-card rounded-2xl border border-border mb-12"
           >
-            <LikeButton initialLikes={post.likes} size="lg" />
+            <LikeButton initialLikes={blogDetail.likes} size="lg" />
             <SocialShare
               url={currentUrl}
-              title={post.title}
-              description={post.excerpt}
+              title={blogDetail.title}
+              description={blogDetail.excerpt}
             />
           </motion.div>
         </div>
@@ -161,7 +165,7 @@ const BlogDetail = ({ blogDetail, slug }: TBLogProps) => {
 
       {/* Content */}
       <section className="pb-16">
-        <div className="section-container max-w-4xl">
+        <div className="section-container max-w-4xl container mx-auto">
           <motion.article
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -177,7 +181,7 @@ const BlogDetail = ({ blogDetail, slug }: TBLogProps) => {
                 [&>ol]:list-decimal [&>ol]:pl-6 [&>ol]:space-y-2
               "
               dangerouslySetInnerHTML={{
-                __html: post.content.replace(/\n/g, "<br />"),
+                __html: blogDetail.content.replace(/\n/g, "<br />"),
               }}
             />
           </motion.article>
@@ -190,7 +194,7 @@ const BlogDetail = ({ blogDetail, slug }: TBLogProps) => {
             className="flex flex-wrap items-center gap-2 mt-12 pt-8 border-t border-border"
           >
             <Tag className="w-4 h-4 text-muted-foreground" />
-            {post.tags.map((tag) => (
+            {blogDetail.tags.map((tag: any) => (
               <span
                 key={tag}
                 className="px-3 py-1 bg-secondary text-muted-foreground text-sm rounded-full"
@@ -204,8 +208,8 @@ const BlogDetail = ({ blogDetail, slug }: TBLogProps) => {
 
       {/* Comments */}
       <section className="py-16 bg-secondary/20">
-        <div className="section-container max-w-4xl">
-          <CommentSection comments={post.comments} />
+        <div className="section-container max-w-4xl container mx-auto">
+          <CommentSection comments={blogDetail.comments} />
         </div>
       </section>
 
@@ -236,21 +240,21 @@ const BlogDetail = ({ blogDetail, slug }: TBLogProps) => {
                   <Link to={`/blog/${relatedPost.slug}`}>
                     <motion.div
                       whileHover={{ y: -8 }}
-                      className="group h-full bg-card rounded-2xl overflow-hidden border border-border hover:border-primary/50 transition-all"
+                      className="group h-full bg-card rounded-2xl overflow-hidden border border-border hover:border-[#E1B505]/50 transition-all"
                     >
                       <div className="relative aspect-[16/10] overflow-hidden bg-secondary">
-                        <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20" />
+                        <div className="absolute inset-0 bg-gradient-to-br from-[#E1B505]/20 to-accent/20" />
                         <div className="absolute inset-0 flex items-center justify-center">
-                          <span className="text-6xl font-display font-bold text-primary/20">
+                          <span className="text-6xl font-display font-bold text-[#E1B505]/20">
                             {relatedPost.title.charAt(0)}
                           </span>
                         </div>
                       </div>
                       <div className="p-5">
-                        <p className="text-xs text-primary mb-2">
+                        <p className="text-xs text-[#E1B505] mb-2">
                           {relatedPost.category}
                         </p>
-                        <h3 className="font-display font-semibold text-foreground group-hover:text-primary transition-colors line-clamp-2">
+                        <h3 className="font-display font-semibold text-foreground group-hover:text-[#E1B505] transition-colors line-clamp-2">
                           {relatedPost.title}
                         </h3>
                       </div>

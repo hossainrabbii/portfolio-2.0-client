@@ -37,7 +37,6 @@ export const getSingleBlog = async (slug: string) => {
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_BASE_API}/blog/${slug}`,
     );
-    // console.log(response);
     return response.json();
   } catch (error) {
     console.error(error);

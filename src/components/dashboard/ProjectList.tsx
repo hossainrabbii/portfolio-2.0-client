@@ -94,7 +94,7 @@ const ProjectList = ({ projects }: ProjectListProps) => {
                             </Link>
                           </p>
                           {project.featured && (
-                            <Star className="h-3 w-3 fill-primary text-primary" />
+                            <Star className="h-3 w-3 fill-primary text-[#E1B505]" />
                           )}
                         </div>
                         <p className="text-xs text-muted-foreground">

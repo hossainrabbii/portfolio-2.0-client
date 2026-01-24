@@ -8,10 +8,5 @@ export default async function Page({
 }) {
   const { slug } = await params;
   const projectDetail = await getSingleProject(slug);
-  // console.log(projectDetail.data);
-  return (
-    <div className="">
-      <ProjectDetail project={projectDetail?.data} slug={slug} />
-    </div>
-  );
+  return <ProjectDetail project={projectDetail?.data} slug={slug} />;
 }

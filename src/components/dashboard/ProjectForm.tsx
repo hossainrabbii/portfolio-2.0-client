@@ -63,7 +63,7 @@ const ProjectForm = ({ editSlug, onClose }: ProjectFormProps) => {
               ? project.image
               : project.image.src,
           gallery: project.gallery.map((img) =>
-            typeof img === "string" ? img : img.src
+            typeof img === "string" ? img : img.src,
           ),
           client: project.client,
           duration: project.duration,
@@ -81,20 +81,20 @@ const ProjectForm = ({ editSlug, onClose }: ProjectFormProps) => {
         });
 
         setImagePreview(
-          typeof project.image === "string" ? project.image : project.image.src
+          typeof project.image === "string" ? project.image : project.image.src,
         );
 
         setGalleryPreviews(
           project.gallery.map((img) =>
-            typeof img === "string" ? img : img.src
-          )
+            typeof img === "string" ? img : img.src,
+          ),
         );
       }
     }
   }, [editSlug]);
 
   const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -147,7 +147,7 @@ const ProjectForm = ({ editSlug, onClose }: ProjectFormProps) => {
   const addToList = (
     list: "tools" | "challenges" | "solutions" | "results",
     value: string,
-    setValue: (val: string) => void
+    setValue: (val: string) => void,
   ) => {
     if (value.trim() && !formData[list].includes(value.trim())) {
       setFormData((prev) => ({
@@ -160,7 +160,7 @@ const ProjectForm = ({ editSlug, onClose }: ProjectFormProps) => {
 
   const removeFromList = (
     list: "tools" | "challenges" | "solutions" | "results",
-    value: string
+    value: string,
   ) => {
     setFormData((prev) => ({
       ...prev,
@@ -457,7 +457,7 @@ const ProjectForm = ({ editSlug, onClose }: ProjectFormProps) => {
                 {formData.tools.map((tool) => (
                   <span
                     key={tool}
-                    className="inline-flex items-center gap-1 px-3 py-1 bg-primary/10 text-primary rounded-full text-sm"
+                    className="inline-flex items-center gap-1 px-3 py-1 bg-primary/10 text-[#E1B505] rounded-full text-sm"
                   >
                     {tool}
                     <button

@@ -66,7 +66,7 @@ const SocialShare = ({ url, title, description }: SocialShareProps) => {
         onClick={copyLink}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
-        className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-muted-foreground hover:bg-primary/10 hover:text-primary transition-colors"
+        className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-muted-foreground hover:bg-primary/10 hover:text-[#E1B505] transition-colors"
         title="Copy link"
       >
         {copied ? <Check className="w-4 h-4" /> : <Link2 className="w-4 h-4" />}

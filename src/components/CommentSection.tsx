@@ -79,7 +79,7 @@ const CommentSection = ({
     <div className="space-y-8">
       {/* Comment Count */}
       <div className="flex items-center gap-3">
-        <MessageCircle className="w-5 h-5 text-primary" />
+        <MessageCircle className="w-5 h-5 text-[#E1B505]" />
         <h3 className="font-display text-xl font-semibold text-foreground">
           Comments ({comments.length})
         </h3>
@@ -100,7 +100,7 @@ const CommentSection = ({
               className="min-h-[100px] bg-secondary/50 border-border focus:border-primary resize-none"
             />
             <div className="flex justify-end">
-              <Button type="submit" className="gap-2">
+              <Button type="submit" className="gap-2 bg-[#E1B505]">
                 <Send className="w-4 h-4" />
                 Post Comment
               </Button>
@@ -168,7 +168,7 @@ const CommentSection = ({
                       />
                       <span>{comment.likes}</span>
                     </button>
-                    <button className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                    <button className="text-sm text-muted-foreground hover:text-[#E1B505] transition-colors">
                       Reply
                     </button>
                   </div>

@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
@@ -52,7 +52,7 @@ const BlogForm = ({ editSlug, onClose }: BlogFormProps) => {
   }, [editSlug]);
 
   const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const { name, value } = e.target;
     setFData((prev) => ({ ...prev, [name]: value }));
@@ -496,7 +496,7 @@ const BlogForm = ({ editSlug, onClose }: BlogFormProps) => {
                 {fData.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="inline-flex items-center gap-1 px-3 py-1 bg-primary/10 text-primary rounded-full text-sm"
+                    className="inline-flex items-center gap-1 px-3 py-1 bg-primary/10 text-[#E1B505] rounded-full text-sm"
                   >
                     {tag}
                     <button

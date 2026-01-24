@@ -44,7 +44,7 @@ const About = () => {
                 { value: "50+", label: "Clients" },
               ].map((stat, index) => (
                 <div key={index} className="text-center">
-                  <p className="text-2xl font-display font-bold text-primary">
+                  <p className="text-2xl font-display font-bold text-[#E1B505]">
                     {stat.value}
                   </p>
                   <p className="text-xs text-muted-foreground">{stat.label}</p>
@@ -72,7 +72,7 @@ const About = () => {
               <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground">
                 Passionate & Lead
                 <br />
-                <span className="text-primary">Product Designer</span>
+                <span className="text-[#E1B505]">Product Designer</span>
               </h2>
             </motion.div>
 
@@ -107,7 +107,7 @@ const About = () => {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="flex flex-wrap gap-4 pt-4"
             >
-              <Button className="bg-primary text-primary-foreground hover:bg-primary/90 font-medium group">
+              <Button className="bg-primary text-[#E1B505]-foreground hover:bg-primary/90 font-medium group">
                 Read More
                 <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Button>

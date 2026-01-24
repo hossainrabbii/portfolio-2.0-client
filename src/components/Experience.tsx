@@ -93,7 +93,7 @@ const Experience = () => {
                     <h3 className="font-display font-semibold text-lg text-foreground">
                       {exp.title}
                     </h3>
-                    <p className="text-primary text-sm font-medium">
+                    <p className="text-[#E1B505] text-sm font-medium">
                       {exp.company}
                     </p>
                     <p className="text-muted-foreground text-sm">

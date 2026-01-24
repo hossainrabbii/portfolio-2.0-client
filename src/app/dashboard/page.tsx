@@ -47,7 +47,7 @@ const Dashboard = () => {
             <div className="flex items-center gap-4">
               <Link href="/" className="flex items-center gap-2">
                 <div className="h-8 w-8 rounded-lg bg-primary flex items-center justify-center">
-                  <LayoutDashboard className="h-4 w-4 text-primary-foreground" />
+                  <LayoutDashboard className="h-4 w-4 text-[#E1B505]-foreground" />
                 </div>
                 <span className="font-bold text-lg">Dashboard</span>
               </Link>
@@ -86,7 +86,7 @@ const Dashboard = () => {
             >
               <div className="flex items-center gap-4">
                 <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center">
-                  <FileText className="h-6 w-6 text-primary" />
+                  <FileText className="h-6 w-6 text-[#E1B505]" />
                 </div>
                 <div>
                   <p className="text-2xl font-bold">4</p>

@@ -55,7 +55,6 @@ const ProjectDetail = ({ project, slug }: ProjectDetailProps) => {
   // const projectContent = slug ? getProjectBySlug(slug) : undefined;
   // const relatedProjects = slug ? getRelatedProjects(slug) : [];
 
-  console.log(typeof project?.likes);
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [slug]);
@@ -66,7 +65,7 @@ const ProjectDetail = ({ project, slug }: ProjectDetailProps) => {
           <h1 className="font-display text-4xl font-bold text-foreground mb-4">
             Project Not Found
           </h1>
-          <Link href="/#portfolio" className="text-primary hover:underline">
+          <Link href="/#portfolio" className="text-[#E1B505] hover:underline">
             Back to Portfolio
           </Link>
         </div>
@@ -106,7 +105,7 @@ const ProjectDetail = ({ project, slug }: ProjectDetailProps) => {
                 transition={{ duration: 0.6 }}
                 className="mb-6"
               >
-                <span className="inline-block bg-primary text-primary-foreground text-sm font-medium px-4 py-1.5 rounded-full">
+                <span className="inline-block bg-[#E1B505] text-[#E1B505]-foreground text-sm font-medium px-4 py-1.5 rounded-full">
                   {project?.category}
                 </span>
               </motion.div>
@@ -167,7 +166,9 @@ const ProjectDetail = ({ project, slug }: ProjectDetailProps) => {
                 transition={{ duration: 0.6, delay: 0.4 }}
                 className="mb-8"
               >
-                <p className="text-sm text-muted-foreground mb-3">Tools Used</p>
+                <p className="text-sm text-muted-foreground mb-3">
+                  Techs & Tools Used
+                </p>
                 <div className="flex flex-wrap gap-2">
                   {project?.tools.map((tool) => (
                     <span
@@ -188,7 +189,7 @@ const ProjectDetail = ({ project, slug }: ProjectDetailProps) => {
                 className="flex flex-wrap items-center gap-4"
               >
                 {project.liveUrl && (
-                  <Button asChild className="gap-2">
+                  <Button asChild className="gap-2 bg-[#E1B505]">
                     <a
                       href={project.liveUrl}
                       target="_blank"
@@ -301,7 +302,7 @@ const ProjectDetail = ({ project, slug }: ProjectDetailProps) => {
               <ul className="space-y-4">
                 {project.challenges.map((challenge, index) => (
                   <li key={index} className="flex gap-3 text-muted-foreground">
-                    <span className="text-primary">•</span>
+                    <span className="text-[#E1B505]">•</span>
                     {challenge}
                   </li>
                 ))}
@@ -316,13 +317,13 @@ const ProjectDetail = ({ project, slug }: ProjectDetailProps) => {
               transition={{ delay: 0.1 }}
             >
               <h3 className="font-display text-xl font-bold text-foreground mb-6 flex items-center gap-3">
-                <div className="w-3 h-3 rounded-full bg-primary" />
+                <div className="w-3 h-3 rounded-full bg-[#E1B505]" />
                 Solutions
               </h3>
               <ul className="space-y-4">
                 {project.solutions.map((solution, index) => (
                   <li key={index} className="flex gap-3 text-muted-foreground">
-                    <span className="text-primary">•</span>
+                    <span className="text-[#E1B505]">•</span>
                     {solution}
                   </li>
                 ))}
@@ -343,7 +344,7 @@ const ProjectDetail = ({ project, slug }: ProjectDetailProps) => {
               <ul className="space-y-4">
                 {project.results.map((result, index) => (
                   <li key={index} className="flex gap-3 text-muted-foreground">
-                    <span className="text-primary">•</span>
+                    <span className="text-[#E1B505]">•</span>
                     {result}
                   </li>
                 ))}
@@ -363,13 +364,13 @@ const ProjectDetail = ({ project, slug }: ProjectDetailProps) => {
               viewport={{ once: true }}
               className="relative bg-card rounded-3xl p-8 md:p-12 border border-border"
             >
-              <Quote className="w-12 h-12 text-primary/30 mb-6" />
+              <Quote className="w-12 h-12 text-[#E1B505]/30 mb-6" />
               <blockquote className="font-display text-2xl md:text-3xl text-foreground leading-relaxed mb-8">
                 "{project.testimonial.quote}"
               </blockquote>
               <div className="flex items-center gap-4">
                 <div className="w-14 h-14 rounded-full bg-primary/20 flex items-center justify-center">
-                  <span className="font-medium text-primary">
+                  <span className="font-medium text-[#E1B505]">
                     {project.testimonial.author
                       .split(" ")
                       .map((n) => n[0])
@@ -434,10 +435,10 @@ const ProjectDetail = ({ project, slug }: ProjectDetailProps) => {
                         />
                       </div>
                       <div className="p-5">
-                        <p className="text-xs text-primary mb-2">
+                        <p className="text-xs text-[#E1B505] mb-2">
                           {relatedProject.category}
                         </p>
-                        <h3 className="font-display font-semibold text-foreground group-hover:text-primary transition-colors">
+                        <h3 className="font-display font-semibold text-foreground group-hover:text-[#E1B505] transition-colors">
                           {relatedProject.title}
                         </h3>
                       </div>

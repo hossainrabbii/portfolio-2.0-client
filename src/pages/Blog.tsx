@@ -44,7 +44,7 @@ const Blog = () => {
             </div>
 
             <h1 className="font-display text-5xl md:text-6xl font-bold text-foreground">
-              Insights & <span className="text-primary">Ideas</span>
+              Insights & <span className="text-[#E1B505]">Ideas</span>
             </h1>
 
             <p className="text-lg text-muted-foreground">
@@ -78,7 +78,7 @@ const Blog = () => {
                 onClick={() => setSelectedCategory(null)}
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
                   !selectedCategory
-                    ? "bg-primary text-primary-foreground"
+                    ? "bg-primary text-[#E1B505]-foreground"
                     : "bg-secondary text-muted-foreground hover:text-foreground"
                 }`}
               >
@@ -92,15 +92,13 @@ const Blog = () => {
                   onClick={() => setSelectedCategory(category)}
                   className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
                     selectedCategory === category
-                      ? "bg-primary text-primary-foreground"
+                      ? "bg-primary text-[#E1B505]-foreground"
                       : "bg-secondary text-muted-foreground hover:text-foreground"
                   }`}
                 >
                   {category}
                 </button>
               ))} */}
-
-              
             </div>
           </motion.div>
         </div>
@@ -138,12 +136,12 @@ const Blog = () => {
                       <div className="relative aspect-[16/10] overflow-hidden bg-secondary">
                         <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20" />
                         <div className="absolute inset-0 flex items-center justify-center">
-                          <span className="text-7xl font-display font-bold text-primary/20">
+                          <span className="text-7xl font-display font-bold text-[#E1B505]/20">
                             {post.title.charAt(0)}
                           </span>
                         </div>
                         {/* Category Badge */}
-                        <div className="absolute top-4 left-4 bg-primary text-primary-foreground text-xs font-medium px-3 py-1.5 rounded-full">
+                        <div className="absolute top-4 left-4 bg-primary text-[#E1B505]-foreground text-xs font-medium px-3 py-1.5 rounded-full">
                           {post.category}
                         </div>
                       </div>
@@ -172,7 +170,7 @@ const Blog = () => {
                         </div>
 
                         {/* Title */}
-                        <h2 className="font-display font-semibold text-xl text-foreground group-hover:text-primary transition-colors line-clamp-2">
+                        <h2 className="font-display font-semibold text-xl text-foreground group-hover:text-[#E1B505] transition-colors line-clamp-2">
                           {post.title}
                         </h2>
 
@@ -191,7 +189,7 @@ const Blog = () => {
                               {post.author.name}
                             </span>
                           </div>
-                          <div className="flex items-center gap-2 text-primary text-sm font-medium">
+                          <div className="flex items-center gap-2 text-[#E1B505] text-sm font-medium">
                             <span>Read</span>
                             <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                           </div>

@@ -27,12 +27,12 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <motion.a
-            href="#home"
+            href="/#home"
             className="flex items-center gap-2"
             whileHover={{ scale: 1.05 }}
           >
             <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
-              <span className="text-primary-foreground font-display font-bold text-lg">
+              <span className="text-[#E1B505]-foreground font-display font-bold text-lg">
                 P
               </span>
             </div>
@@ -46,7 +46,7 @@ const Navbar = () => {
             {navItems.map((item, index) => (
               <motion.a
                 key={item.label}
-                href={item.href}
+                href={`/${item.href}`}
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1, duration: 0.4 }}
@@ -65,7 +65,7 @@ const Navbar = () => {
             className="hidden md:flex items-center gap-3"
           >
             <ThemeToggle />
-            <Button className="bg-primary text-primary-foreground hover:bg-primary/90 font-medium px-6">
+            <Button className="bg-primary text-[#E1B505]-foreground hover:bg-primary/90 font-medium px-6">
               Hire Me
             </Button>
           </motion.div>
@@ -98,7 +98,7 @@ const Navbar = () => {
                   {item.label}
                 </a>
               ))}
-              <Button className="bg-primary text-primary-foreground hover:bg-primary/90 font-medium w-full">
+              <Button className="bg-primary text-[#E1B505]-foreground hover:bg-primary/90 font-medium w-full">
                 Hire Me
               </Button>
             </div>
