@@ -78,6 +78,7 @@ const ProjectDetail = ({ project, slug }: ProjectDetailProps) => {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero */}
+      <Navbar />
       <section className="pt-32 pb-16">
         <div className="section-container container mx-auto">
           {/* Back Button */}
@@ -95,7 +96,7 @@ const ProjectDetail = ({ project, slug }: ProjectDetailProps) => {
             </button>
           </motion.div> */}
 
-          <div className="grid lg:grid-cols-2 gap-12 items-start">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left - Info */}
             <div>
               {/* Category */}
@@ -105,7 +106,7 @@ const ProjectDetail = ({ project, slug }: ProjectDetailProps) => {
                 transition={{ duration: 0.6 }}
                 className="mb-6"
               >
-                <span className="inline-block bg-[#E1B505] text-[#E1B505]-foreground text-sm font-medium px-4 py-1.5 rounded-full">
+                <span className="inline-block bg-[#E1B505] text-black foreground text-sm font-medium px-4 py-1.5 rounded-full">
                   {project?.category}
                 </span>
               </motion.div>
@@ -189,7 +190,7 @@ const ProjectDetail = ({ project, slug }: ProjectDetailProps) => {
                 className="flex flex-wrap items-center gap-4"
               >
                 {project.liveUrl && (
-                  <Button asChild className="gap-2 bg-[#E1B505]">
+                  <Button asChild className="gap-2 bg-[#E1B505] text-black">
                     <a
                       href={project.liveUrl}
                       target="_blank"
@@ -211,13 +212,13 @@ const ProjectDetail = ({ project, slug }: ProjectDetailProps) => {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="relative"
             >
-              <div className="aspect-[4/3] rounded-2xl overflow-hidden bg-card border border-border">
+              <div className="aspect-[5/3] rounded-2xl overflow-hidden bg-card border border-border inset-0 bg-gradient-to-br from-[#E1B505]/30 via-[#E1B505]/10 to-accent/20">
                 <Image
                   src={project.gallery[0]}
                   width={500}
                   height={500}
                   alt={project.title}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-contain object-center"
                 />
               </div>
               {/* Decorative elements */}
@@ -268,14 +269,14 @@ const ProjectDetail = ({ project, slug }: ProjectDetailProps) => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
-                  className="aspect-[16/10] rounded-2xl overflow-hidden bg-card border border-border"
+                  className="aspect-[18/10] rounded-2xl overflow-hidden bg-card border border-border inset-0 bg-gradient-to-br from-[#E1B505]/30 via-[#E1B505]/10 to-accent/20"
                 >
                   <Image
                     src={image}
                     width={500}
                     height={500}
                     alt={`${project.title} gallery ${index + 1}`}
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                    className="w-full h-full object-contain hover:scale-105 transition-transform duration-500"
                   />
                 </motion.div>
               ))}

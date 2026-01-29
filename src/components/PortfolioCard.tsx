@@ -21,13 +21,13 @@ const PortfolioCard = ({ projects }: any) => {
               className="group relative bg-card rounded-2xl overflow-hidden border border-border hover:border-primary/50 transition-colors"
             >
               {/* Image */}
-              <div className="aspect-[16/10] overflow-hidden">
+              <div className="aspect-[16/10] overflow-hidden inset-0 bg-gradient-to-br from-[#E1B505]/30 via-[#E1B505]/10 to-accent/20">
                 <Image
                   src={project?.gallery[0]}
                   alt={project.title}
                   width={600}
                   height={100}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
                 />
               </div>
 
@@ -51,7 +51,7 @@ const PortfolioCard = ({ projects }: any) => {
                   <div className="w-[60px] px-4">
                     <motion.div
                       whileHover={{ scale: 1.1, rotate: 45 }}
-                      className="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-[#E1B505]-foreground opacity-0 group-hover:opacity-100 transition-opacity"
+                      className="w-12 h-12 rounded-full bg-[#E1B505]  flex items-center justify-center text-black foreground opacity-0 group-hover:opacity-100 transition-opacity"
                     >
                       <ArrowUpRight className="w-5 h-5" />
                     </motion.div>
@@ -61,7 +61,7 @@ const PortfolioCard = ({ projects }: any) => {
 
               {/* Featured Badge */}
               {project.featured && (
-                <div className="absolute top-4 left-4 bg-primary text-[#E1B505]-foreground text-xs font-medium px-3 py-1.5 rounded-full">
+                <div className="absolute top-4 left-4 bg-[#E1B505]  text-black foreground text-xs font-medium px-3 py-1.5 rounded-full">
                   Featured
                 </div>
               )}

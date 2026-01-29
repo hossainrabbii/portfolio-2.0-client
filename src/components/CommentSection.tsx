@@ -100,7 +100,7 @@ const CommentSection = ({
               className="min-h-[100px] bg-secondary/50 border-border focus:border-primary resize-none"
             />
             <div className="flex justify-end">
-              <Button type="submit" className="gap-2 bg-[#E1B505]">
+              <Button type="submit" className="gap-2 bg-[#E1B505] text-black">
                 <Send className="w-4 h-4" />
                 Post Comment
               </Button>

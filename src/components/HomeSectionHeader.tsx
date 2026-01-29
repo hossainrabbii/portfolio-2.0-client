@@ -42,7 +42,7 @@ const HomeSectionHeader = ({
       >
         <Link
           href={`/${link}`}
-          className="inline-flex items-center gap-2 bg-[#E1B505] text-[#E1B505]-foreground px-6 py-3 rounded-full font-medium hover:bg-primary/90 transition-colors"
+          className="inline-flex items-center gap-2 bg-[#E1B505] text-black foreground px-6 py-3 rounded-full font-medium hover:bg-primary/90 transition-colors"
         >
           {viewText}
           <ArrowUpRight className="w-4 h-4" />

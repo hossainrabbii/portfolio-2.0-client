@@ -83,7 +83,7 @@ const Blog = ({ allBlogs }: any) => {
                 onClick={() => setSelectedCategory(null)}
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
                   !selectedCategory
-                    ? "bg-primary text-[#E1B505]-foreground"
+                    ? "bg-primary text-[#E1B505] foreground"
                     : "bg-secondary text-muted-foreground hover:text-foreground"
                 }`}
               >
@@ -97,7 +97,7 @@ const Blog = ({ allBlogs }: any) => {
                   onClick={() => setSelectedCategory(category)}
                   className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
                     selectedCategory === category
-                      ? "bg-primary text-[#E1B505]-foreground"
+                      ? "bg-primary text-[#E1B505] foreground"
                       : "bg-secondary text-muted-foreground hover:text-foreground"
                   }`}
                 >
@@ -152,7 +152,7 @@ const Blog = ({ allBlogs }: any) => {
                           </span>
                         </div>
                         {/* Category Badge */}
-                        <div className="absolute top-4 left-4 bg-primary text-[#E1B505]-foreground text-xs font-medium px-3 py-1.5 rounded-full">
+                        <div className="absolute top-4 left-4 bg-[#E1B505]  text-black foreground text-xs font-medium px-3 py-1.5 rounded-full">
                           {post.category}
                         </div>
                       </div>

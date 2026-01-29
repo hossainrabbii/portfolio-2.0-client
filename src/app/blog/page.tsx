@@ -3,7 +3,6 @@ import { getAllBlogs } from "@/services/Blog";
 
 const BlogPage = async () => {
   const { data: allBlogs } = await getAllBlogs();
-
   return <Blog allBlogs={allBlogs} />;
 };
 

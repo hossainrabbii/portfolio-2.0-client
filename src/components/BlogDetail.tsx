@@ -9,6 +9,7 @@ import SocialShare from "@/components/SocialShare";
 import CommentSection from "@/components/CommentSection";
 import { getBlogBySlug, getRelatedPosts } from "@/data/blogData";
 import { useEffect } from "react";
+import Image from "next/image";
 
 type TBLogProps = {
   blogDetail: any;
@@ -18,8 +19,6 @@ type TBLogProps = {
 const BlogDetail = ({ blogDetail, slug }: TBLogProps) => {
   // const { slug } = useParams<{ slug: string }>();
   // const navigate = useNavigate();
-  console.log(slug);
-  console.log(blogDetail);
   // const post = slug ? getBlogBySlug(slug) : undefined;
   // const relatedPosts = slug ? getRelatedPosts(slug) : [];
   // console.log(blogDetail.blogDetail);
@@ -73,7 +72,7 @@ const BlogDetail = ({ blogDetail, slug }: TBLogProps) => {
             transition={{ duration: 0.6 }}
             className="mb-6"
           >
-            <span className="inline-block bg-[#E1B505] text-[#E1B505]-foreground text-sm font-medium px-4 py-1.5 rounded-full">
+            <span className="inline-block bg-[#E1B505] text-black foreground text-sm font-medium px-4 py-1.5 rounded-full">
               {blogDetail.category}
             </span>
           </motion.div>
@@ -136,12 +135,20 @@ const BlogDetail = ({ blogDetail, slug }: TBLogProps) => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="relative aspect-[21/9] rounded-2xl overflow-hidden bg-secondary mb-12"
+            className="relative aspect-[15/9] rounded-2xl overflow-hidden bg-secondary mb-12"
           >
             <div className="absolute inset-0 bg-gradient-to-br from-[#E1B505]/30 via-[#E1B505]/10 to-accent/20" />
             <div className="absolute inset-0 flex items-center justify-center">
               <span className="text-[12rem] font-display font-bold text-[#E1B505]/10">
-                {blogDetail.title.charAt(0)}
+                <Image
+                  src={blogDetail?.coverImage}
+                  width={1200}
+                  height={500}
+                  alt={blogDetail?.title}
+                  className="w-full h-full object-contain hover:scale-105 transition-transform duration-500"
+                />
+
+                {/* {blogDetail.title.charAt(0)} */}
               </span>
             </div>
           </motion.div>

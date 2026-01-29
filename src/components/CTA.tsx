@@ -45,7 +45,7 @@ const CTA = () => {
           >
             <Button
               size="lg"
-              className="bg-primary text-[#E1B505]-foreground hover:bg-primary/90 font-medium px-10 py-7 text-lg group"
+              className="bg-primary text-[#E1B505] foreground hover:bg-primary/90 font-medium px-10 py-7 text-lg group"
             >
               Let's Start a Project
               <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />

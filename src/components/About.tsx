@@ -107,7 +107,7 @@ const About = () => {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="flex flex-wrap gap-4 pt-4"
             >
-              <Button className="bg-primary text-[#E1B505]-foreground hover:bg-primary/90 font-medium group">
+              <Button className="bg-primary text-[#E1B505] foreground hover:bg-primary/90 font-medium group">
                 Read More
                 <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Button>

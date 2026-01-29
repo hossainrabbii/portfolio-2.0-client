@@ -41,7 +41,7 @@ const ProjectList = ({ projects }: ProjectListProps) => {
   console.log(projects);
   const { toast } = useToast();
   const handleDelete = (slug: string, title: string) => {
-    console.log("Delete project API call:", slug);
+    // console.log("Delete project API call:", slug);
     toast({
       title: "Project Deleted",
       description: `"${title}" has been deleted. Implement API call to persist.`,

@@ -135,11 +135,6 @@ const BlogForm = ({ editSlug, onClose }: BlogFormProps) => {
     try {
       const response = await createBlog(finalFormData);
       console.log("API response:", response);
-      // if (editSlug) {
-      //   toast.success("Blog created successfully.");
-      // } else {
-      //   toast.success("Blog updated successfully.");
-      // }
 
       if (response.success) {
         toast.success("Blog created successfully.");

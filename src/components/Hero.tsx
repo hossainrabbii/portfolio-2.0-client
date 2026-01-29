@@ -124,7 +124,7 @@ const Hero = () => {
               user experiences.
             </p>
 
-            <Button className="bg-primary text-[#E1B505]-foreground hover:bg-primary/90 font-medium px-8 py-6 text-base group rounded-full">
+            <Button className="bg-primary text-[#E1B505] foreground hover:bg-primary/90 font-medium px-8 py-6 text-base group rounded-full">
               Start a Project Now
               <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Button>

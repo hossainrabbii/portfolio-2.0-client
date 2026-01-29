@@ -194,7 +194,7 @@ const ProjectCard = ({
                   whileHover={{ scale: 1.05 }}
                   className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
                 >
-                  <div className="bg-primary text-[#E1B505]-foreground px-6 py-3 rounded-full font-medium flex items-center gap-2 text-sm shadow-lg">
+                  <div className="bg-primary text-[#E1B505] foreground px-6 py-3 rounded-full font-medium flex items-center gap-2 text-sm shadow-lg">
                     View Project
                     <ArrowUpRight className="w-4 h-4" />
                   </div>

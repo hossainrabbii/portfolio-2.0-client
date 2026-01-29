@@ -24,8 +24,8 @@ const BlogCard = ({ blog }: any) => {
               {/* Image */}
               <div className="relative aspect-[16/10] overflow-hidden bg-secondary">
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20" />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="text-6xl font-display font-bold text-[#E1B505]/20">
+                <div className="absolute inset-0 flex items-center justify-center inset-0 bg-gradient-to-br from-[#E1B505]/30 via-[#E1B505]/10 to-accent/20">
+                  <span className="text-6xl font-display font-bold text-[#E1B505]/20 ">
                     {/* {post.title.charAt(0)} */}
                     <Image
                       src={post?.coverImage}
@@ -37,7 +37,7 @@ const BlogCard = ({ blog }: any) => {
                   </span>
                 </div>
                 {/* Category Badge */}
-                <div className="absolute top-4 left-4 bg-primary text-[#E1B505]-foreground text-xs font-medium px-3 py-1.5 rounded-full">
+                <div className="absolute top-4 left-4 bg-[#E1B505]  text-black foreground text-xs font-medium px-3 py-1.5 rounded-full">
                   {post.category}
                 </div>
               </div>
