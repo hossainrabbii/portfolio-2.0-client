@@ -7,7 +7,7 @@ export const createProject = async (formData: any) => {
   console.log(formData);
   try {
     const response = await fetch(
-      "http://localhost:5000/api/v1/project/create-project",
+      " bg-[#E1B505]  https://portfolio-server-sand-one.vercel.app/api/v1/project/create-project",
       {
         method: "POST",
         body: formData,
