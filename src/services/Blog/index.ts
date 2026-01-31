@@ -7,7 +7,7 @@ export const createBlog = async (formData: any) => {
   console.log(formData);
   try {
     const response = await fetch(
-      "https://portfolio-server-sand-one.vercel.app//api/v1/blog/create-blog",
+      `${process.env.NEXT_PUBLIC_BASE_API}/blog/create-blog`,
       {
         method: "POST",
         body: formData,
