@@ -1,3 +1,4 @@
+"use client";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
@@ -10,13 +11,24 @@ import { ArrowLeft, Upload, X, Plus } from "lucide-react";
 import { getProjectBySlug } from "@/data/projectData";
 import { useToast } from "@/hooks/use-toast";
 import { createProject } from "@/services/Project";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "@radix-ui/react-select";
 
 interface ProjectFormProps {
-  editSlug: string | null;
-  onClose: () => void;
+  editSlug?: string | null;
+  categories?: any;
 }
 
-const ProjectForm = ({ editSlug, onClose }: ProjectFormProps) => {
+const ProjectForm = ({ editSlug, categories }: ProjectFormProps) => {
+  const [category, setCategory] = useState<string>("");
+  console.log(category);
   const { toast } = useToast();
   const [formData, setFormData] = useState({
     title: "",
@@ -175,7 +187,7 @@ const ProjectForm = ({ editSlug, onClose }: ProjectFormProps) => {
       // id: editSlug ? undefined : Date.now().toString(),
       slug: formData.slug,
       title: formData.title,
-      category: formData.category,
+      category: category,
       description: formData.description,
       fullDescription: formData.fullDescription,
       // image: formData.image,
@@ -219,7 +231,7 @@ const ProjectForm = ({ editSlug, onClose }: ProjectFormProps) => {
           editSlug ? "updated" : "created"
         } successfully. Check console for API payload.`,
       });
-      onClose();
+      // onClose();
     } else {
       toast({ title: "Something went wrong" });
     }
@@ -234,9 +246,9 @@ const ProjectForm = ({ editSlug, onClose }: ProjectFormProps) => {
       <Card className="glass-card">
         <CardHeader>
           <div className="flex items-center gap-4">
-            <Button variant="ghost" size="icon" onClick={onClose}>
+            {/* <Button variant="ghost" size="icon" onClick={onClose}>
               <ArrowLeft className="h-4 w-4" />
-            </Button>
+            </Button> */}
             <CardTitle>
               {editSlug ? "Edit Project" : "Create New Project"}
             </CardTitle>
@@ -286,7 +298,6 @@ const ProjectForm = ({ editSlug, onClose }: ProjectFormProps) => {
                 )}
               </div>
             </div> */}
-
             {/* Gallery Images */}
             <div className="space-y-2">
               <Label>Gallery Images</Label>
@@ -365,14 +376,28 @@ const ProjectForm = ({ editSlug, onClose }: ProjectFormProps) => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-2">
                 <Label htmlFor="category">Category *</Label>
-                <Input
+
+                <select
+                  value={category}
+                  onChange={(e) => setCategory(e.target.value)}
+                >
+                  <option value="">Select a category</option>
+
+                  {categories.map((cat: any) => (
+                    <option key={cat._id} value={cat._id}>
+                      {cat.name}
+                    </option>
+                  ))}
+                </select>
+
+                {/* <Input
                   id="category"
                   name="category"
                   value={formData.category}
                   onChange={handleInputChange}
                   placeholder="e.g., UI Design"
                   required
-                />
+                /> */}
               </div>
               <div className="space-y-2">
                 <Label htmlFor="client">Client *</Label>
@@ -682,9 +707,9 @@ const ProjectForm = ({ editSlug, onClose }: ProjectFormProps) => {
 
             {/* Submit */}
             <div className="flex gap-4 justify-end pt-4 border-t border-border">
-              <Button type="button" variant="outline" onClick={onClose}>
+              {/* <Button type="button" variant="outline" onClick={onClose}>
                 Cancel
-              </Button>
+              </Button> */}
               <Button type="submit">
                 {editSlug ? "Update Project" : "Create Project"}
               </Button>

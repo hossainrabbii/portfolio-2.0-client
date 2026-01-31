@@ -39,10 +39,10 @@ const PortfolioCard = ({ projects }: any) => {
                 <div className="flex items-end justify-between">
                   <div>
                     <p className="text-xs text-[#E1B505] uppercase tracking-wider mb-2">
-                      {project.category}
+                      {project.category?.title}
                     </p>
                     <h3 className="font-display font-semibold text-xl text-foreground mb-2">
-                      {project.title}
+                      {project?.title}
                     </h3>
                     <p className="text-muted-foreground text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       {project.description}

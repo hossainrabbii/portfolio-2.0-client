@@ -167,22 +167,17 @@ const Dashboard = () => {
 
             <TabsContent value="projects" className="space-y-4">
               {showProjectForm ? (
-                <ProjectForm
-                  editSlug={editingProject}
-                  onClose={() => {
-                    setShowProjectForm(false);
-                    setEditingProject(null);
-                  }}
-                />
+                <ProjectForm editSlug={editingProject} />
               ) : (
                 <>
-                  <div className="flex justify-end">
-                    <Button onClick={handleCreateProject} className="gap-2">
-                      <Plus className="h-4 w-4" />
-                      New Project
-                    </Button>
-                  </div>
-                  {/* <ProjectList /> */}
+                  <Link href="dashboard/create-project">
+                    <div className="flex justify-end">
+                      <Button>
+                        <Plus className="h-4 w-4" />
+                        New Project
+                      </Button>
+                    </div>
+                  </Link>
                 </>
               )}
             </TabsContent>

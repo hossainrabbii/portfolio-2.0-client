@@ -15,6 +15,7 @@ interface BlogFormProps {
 }
 
 const BlogForm = ({ editSlug, onClose }: BlogFormProps) => {
+  // console.log(editSlug, onClose);
   const [formData, setFormData] = useState({
     title: "",
     slug: "",

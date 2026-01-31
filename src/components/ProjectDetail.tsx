@@ -21,11 +21,14 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 type slugProps = {};
-
+type TCategory = {
+  _id: string;
+  title: string;
+};
 type Project = {
   title: string;
   description: string;
-  category: string;
+  category: TCategory;
   image: string;
   gallery: string[];
   client: string;
@@ -107,7 +110,7 @@ const ProjectDetail = ({ project, slug }: ProjectDetailProps) => {
                 className="mb-6"
               >
                 <span className="inline-block bg-[#E1B505] text-black foreground text-sm font-medium px-4 py-1.5 rounded-full">
-                  {project?.category}
+                  {project?.category?.title}
                 </span>
               </motion.div>
 
