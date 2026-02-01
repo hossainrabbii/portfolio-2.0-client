@@ -2,10 +2,11 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import heroImage from "@/assets/hero-profile.png";
+// import heroImage from "@/assets/hero-profile.png";
+import heroImage from "@/assets/hossain.png";
 import Image from "next/image";
 
-const tags = ["#BRANDING", "#UI/UX DESIGN", "#DEVELOPMENT", "#WEB DESIGN"];
+const tags = ["#FULL STACK DEVELOPER", "#MERN", "#NextJS", "#WordPress"];
 
 const Hero = () => {
   return (
@@ -36,7 +37,7 @@ const Hero = () => {
                 repeat: Infinity,
               }}
             >
-              Hossain
+              HOSSAIN
             </motion.span>
             <span className="mx-4 md:mx-8" />
             <motion.span
@@ -50,7 +51,7 @@ const Hero = () => {
                 repeat: Infinity,
               }}
             >
-              Rabbi
+              RABBI
             </motion.span>
           </h1>
         </motion.div>
@@ -68,7 +69,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
-              className="text-muted-foreground text-sm md:text-base font-medium tracking-wider"
+              className="text-muted-foreground text-lg md:text-base font-medium tracking-wider"
             >
               {tag}
             </motion.span>
@@ -76,13 +77,13 @@ const Hero = () => {
         </motion.div>
 
         {/* Content Grid */}
-        <div className="grid lg:grid-cols-2 gap-12 items-end">
+        <div className="grid lg:grid-cols-2 gap-6 items-end">
           {/* Left - Profile Image */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
-            className="relative flex justify-center lg:justify-start"
+            className="relative flex justify-center"
           >
             <div className="relative">
               {/* Dotted Pattern */}
@@ -101,7 +102,7 @@ const Hero = () => {
               <div className="w-64 h-80 md:w-72 md:h-96 overflow-hidden relative">
                 <Image
                   src={heroImage}
-                  alt="David Michel"
+                  alt="Hossain Rabbi"
                   className="w-full h-full object-cover grayscale"
                 />
                 {/* Gradient Overlay */}
@@ -118,7 +119,7 @@ const Hero = () => {
             className="space-y-6 pb-8"
           >
             <p className="text-muted-foreground text-lg leading-relaxed">
-              Welcome to my portfolio! I'm David Michel, a web designer &
+              Welcome to my portfolio! I'm Hossain Rabbi, a web designer &
               developer from the US with 16+ years of experience. I craft
               visually stunning, functional websites that deliver exceptional
               user experiences.

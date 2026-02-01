@@ -33,7 +33,7 @@ const FeaturedProjects = () => {
 
   return (
     <section ref={containerRef} className="py-24 relative overflow-hidden">
-      <div className="section-container">
+      <div className="section-container container mx-auto">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
