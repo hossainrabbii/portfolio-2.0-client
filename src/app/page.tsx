@@ -19,7 +19,7 @@ const HomePage = () => {
       <Navbar />
       <Hero />
       {/* <StackedProjects /> */}
-      <FeaturedProjects />
+      {/* <FeaturedProjects /> */}
       <About />
       <Experience />
       <Clients />

@@ -7,7 +7,7 @@ const PortfolioSection = async () => {
   // console.log(allProjects);
   return (
     <section id="blog" className="py-24">
-      <div className="section-container container mx-auto">
+      <div className="section-container container mx-auto px-4">
         {/* Section header */}
         <HomeSectionHeader
           latest="Selected Works"

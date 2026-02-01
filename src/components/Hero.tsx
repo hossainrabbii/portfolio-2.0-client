@@ -25,7 +25,7 @@ const Hero = () => {
           transition={{ duration: 0.8 }}
           className="text-center pt-12 pb-8"
         >
-          <h1 className="font-display text-[12vw] md:text-[10vw] lg:text-[8vw] font-bold tracking-tight leading-none">
+          <h1 className="font-display text-[10vw] md:text-[10vw] lg:text-[8vw] font-bold tracking-tight leading-none">
             <motion.span
               className="inline-block animated-gradient-text"
               animate={{
@@ -69,7 +69,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
-              className="text-muted-foreground text-lg md:text-base font-medium tracking-wider"
+              className="text-muted-foreground text-md md:text-xl font-bold tracking-wider"
             >
               {tag}
             </motion.span>
