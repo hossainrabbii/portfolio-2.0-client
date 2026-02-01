@@ -36,7 +36,7 @@ const Hero = () => {
                 repeat: Infinity,
               }}
             >
-              DAVID
+              Hossain
             </motion.span>
             <span className="mx-4 md:mx-8" />
             <motion.span
@@ -50,7 +50,7 @@ const Hero = () => {
                 repeat: Infinity,
               }}
             >
-              MICHEL
+              Rabbi
             </motion.span>
           </h1>
         </motion.div>

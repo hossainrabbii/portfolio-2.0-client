@@ -45,21 +45,21 @@ export const getSingleBlog = async (slug: string) => {
 
 // delete brand
 
-export const deleteBrand = async (brandId: string) => {
-  try {
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_BASE_API}/brand/${brandId}`,
-      {
-        method: "DELETE",
-        headers: {
-          Authorization: (await cookies()).get("accessToken")!.value,
-        },
-      },
-    );
-    revalidateTag("brand", "");
+// export const deleteBrand = async (brandId: string) => {
+//   try {
+//     const response = await fetch(
+//       `${process.env.NEXT_PUBLIC_BASE_API}/brand/${brandId}`,
+//       {
+//         method: "DELETE",
+//         headers: {
+//           Authorization: (await cookies()).get("accessToken")!.value,
+//         },
+//       },
+//     );
+//     revalidateTag("brand", "");
 
-    return response.json();
-  } catch (error) {
-    console.error(error);
-  }
-};
+//     return response.json();
+//   } catch (error) {
+//     console.error(error);
+//   }
+// };
