@@ -13,26 +13,13 @@ export const createBlog = async (formData: any) => {
     };
   }
   try {
-    const response = await safeFetch(`${baseUrl}/blog/create-blog`, {
+    const response = await fetch(`${baseUrl}/blog/create-blog`, {
       method: "POST",
       body: formData,
     });
 
-    // revalidateTag("category", "");
-    // return response.json();
-
-    if (!response?.success) {
-      return {
-        data: null,
-        error: response?.error,
-      };
-    }
-
-    return {
-      data: response?.data,
-      error: null,
-    };
-    // console.log(response);
+    // if(response?.success)
+    return response.json();
   } catch (error: any) {
     return new Error(error);
   }
