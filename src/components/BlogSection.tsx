@@ -5,7 +5,7 @@ import HomeSectionHeader from "./HomeSectionHeader";
 const BlogSection = async () => {
   const { data, error } = await getAllBlogs();
 
-  if (error || !data?.data?.length) {
+  if (error || data?.data?.length == 0) {
     return (
       <section className="py-24">
         <p className="text-center text-gray-500">
