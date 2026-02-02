@@ -1,65 +1,42 @@
 "use server";
-import { safeFetch } from "@/lib/safeFetch";
 import { revalidateTag } from "next/cache";
 import { cookies } from "next/headers";
 
-let baseUrl = process.env.NEXT_PUBLIC_BASE_API;
 // create blog
 export const createBlog = async (formData: any) => {
-  if (!baseUrl) {
-    return {
-      data: null,
-      error: "API not configured.",
-    };
-  }
+  console.log(formData);
   try {
-    const response = await fetch(`${baseUrl}/blog/create-blog`, {
-      method: "POST",
-      body: formData,
-    });
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_BASE_API}/blog/create-blog`,
+      {
+        method: "POST",
+        body: formData,
+      },
+    );
 
-    // if(response?.success)
+    // revalidateTag("category", "");
     return response.json();
   } catch (error: any) {
     return new Error(error);
   }
 };
 
-// get blogs
-type ApiResult<T> = {
-  data: T | null;
-  error: string | null;
-};
-
-export const getAllBlogs = async (): Promise<ApiResult<any>> => {
-  if (!baseUrl) {
-    return {
-      data: null,
-      error: "API not configured.",
-    };
+// get brands
+export const getAllBlogs = async () => {
+  try {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/blog`);
+    return response.json();
+  } catch (error) {
+    console.error(error);
   }
-
-  const response = await safeFetch(`${baseUrl}/blog`, {
-    cache: "no-store",
-  });
-
-  if (!response.success) {
-    return {
-      data: null,
-      error: response.error,
-    };
-  }
-
-  return {
-    data: response.data,
-    error: null,
-  };
 };
 
 // get single projects
 export const getSingleBlog = async (slug: string) => {
   try {
-    const response = await fetch(`${baseUrl}/blog/${slug}`);
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_BASE_API}/blog/${slug}`,
+    );
     return response.json();
   } catch (error) {
     console.error(error);
@@ -71,7 +48,7 @@ export const getSingleBlog = async (slug: string) => {
 // export const deleteBrand = async (brandId: string) => {
 //   try {
 //     const response = await fetch(
-//       `${baseUrl}/brand/${brandId}`,
+//       `${process.env.NEXT_PUBLIC_BASE_API}/brand/${brandId}`,
 //       {
 //         method: "DELETE",
 //         headers: {

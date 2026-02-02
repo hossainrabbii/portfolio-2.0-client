@@ -2,9 +2,8 @@ import Blog from "@/components/Blog";
 import { getAllBlogs } from "@/services/Blog";
 
 const BlogPage = async () => {
-  const result = await getAllBlogs();
-  console.log(result);
-  return <Blog allBlogs={result?.data?.data} />;
+  const { data: allBlogs } = await getAllBlogs();
+  return <Blog allBlogs={allBlogs} />;
 };
 
 export default BlogPage;

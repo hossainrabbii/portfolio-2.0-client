@@ -3,21 +3,12 @@ import BlogCard from "./BlogCard";
 import HomeSectionHeader from "./HomeSectionHeader";
 
 const BlogSection = async () => {
-  const { data, error } = await getAllBlogs();
-
-  if (error || data?.data?.length == 0) {
-    return (
-      <section className="py-24">
-        <p className="text-center text-gray-500">
-          ⚠️ Blogs are unavailable right now
-        </p>
-      </section>
-    );
-  }
-
+  const blogPosts = await getAllBlogs();
   return (
     <section id="blog" className="py-24">
-      <div className="container mx-auto px-4">
+      <div className="section-container container mx-auto px-4">
+        {/* Section Header */}
+
         <HomeSectionHeader
           latest="Latest Insights"
           boldFontTop="Thoughts, Ideas &"
@@ -26,7 +17,8 @@ const BlogSection = async () => {
           link="blog"
         />
 
-        <BlogCard blog={data.data} />
+        {/* Section Card */}
+        <BlogCard blog={blogPosts?.data} />
       </div>
     </section>
   );
