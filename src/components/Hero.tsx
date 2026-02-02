@@ -77,7 +77,7 @@ const Hero = () => {
         </motion.div>
 
         {/* Content Grid */}
-        <div className="grid lg:grid-cols-2 gap-6 items-end">
+        <div className="grid lg:grid-cols-2 gap-6">
           {/* Left - Profile Image */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -119,10 +119,18 @@ const Hero = () => {
             className="space-y-6 pb-8"
           >
             <p className="text-muted-foreground text-lg leading-relaxed">
-              Welcome to my portfolio! I'm Hossain Rabbi, a web designer &
-              developer from the US with 16+ years of experience. I craft
-              visually stunning, functional websites that deliver exceptional
-              user experiences.
+              I’m a passionate Web Developer who loves turning ideas into
+              functional, dynamic websites. Since 2017, I’ve been helping
+              clients worldwide bring their visions to life — delivering clean,
+              responsive, and high-performing web applications through Fiverr
+              and Upwork.
+            </p>
+
+            <p className="text-muted-foreground text-lg leading-relaxed">
+              Over the years, I’ve successfully completed 100+ freelance
+              projects, earning tons of 5-star reviews and long-term client
+              relationships by staying committed to quality, clarity, and
+              deadlines.
             </p>
 
             <Button className="bg-primary text-[#E1B505] foreground hover:bg-primary/90 font-medium px-8 py-6 text-base group rounded-full">
