@@ -7,7 +7,7 @@ import Image from "next/image";
 const BlogCard = ({ blog = [] }: { blog?: any[] }) => {
   let content;
   if (!blog.length) {
-    content = null;
+    content = "Something went wrong";
   } else {
     content = (
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
