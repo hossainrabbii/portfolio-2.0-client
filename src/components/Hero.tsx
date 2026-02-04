@@ -114,7 +114,7 @@ const Hero = () => {
           </motion.div>
 
           {/* Right - Text Content */}
-          <div className="bgdiv">
+          <div className="">
             <div className="mb-2">
               {/* Floating Stats */}
               <motion.div
