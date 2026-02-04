@@ -1,31 +1,12 @@
 "use client";
 import { motion } from "framer-motion";
 import { ArrowUpRight, Calendar, Clock, Search } from "lucide-react";
-
-import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { Input } from "@/components/ui/input";
-import { blogPosts } from "@/data/blogData";
 import Link from "next/link";
 import Image from "next/image";
 
 const Blog = ({ allBlogs }: any) => {
-  console.log(allBlogs);
-  //   const [searchQuery, setSearchQuery] = useState("");
-  //   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
-
-  //   const categories = [...new Set(blogPosts.map((post) => post.category))];
-
-  //   const filteredPosts = blogPosts.filter((post) => {
-  //     const matchesSearch =
-  //       post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-  //       post.excerpt.toLowerCase().includes(searchQuery.toLowerCase());
-  //     const matchesCategory =
-  //       !selectedCategory || post.category === selectedCategory;
-  //     return matchesSearch && matchesCategory;
-  //   });
-
   return (
     <div className="min-h-screen bg-background">
       <Navbar />

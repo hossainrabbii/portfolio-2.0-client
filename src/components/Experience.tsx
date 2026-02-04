@@ -1,25 +1,25 @@
 "use client";
 import { motion } from "framer-motion";
-import { ExternalLink } from "lucide-react";
+import { ChevronRight, ExternalLink } from "lucide-react";
 
 const experiences = [
   {
-    title: "UI/UX Designer",
-    company: "Acme Corp",
+    title: "Frontend Developer",
+    company: "GroupValet",
     period: "2022 - Present",
     description: "Leading design initiatives for enterprise SaaS products.",
-    current: true,
+    current: false,
   },
   {
-    title: "Product Designer",
-    company: "TechFlow Inc",
+    title: "Frontend Developer",
+    company: "Belto World",
     period: "2020 - 2022",
     description: "Designed and shipped 15+ features for mobile applications.",
     current: false,
   },
   {
-    title: "Senior UI Designer",
-    company: "DesignHub",
+    title: "Web Developer",
+    company: "DesignHUnitokub",
     period: "2019 - 2020",
     description: "Created design systems for multiple client projects.",
     current: false,
@@ -29,22 +29,29 @@ const experiences = [
 const education = [
   {
     title: "BSC in CSE",
-    institution: "MIT University",
-    period: "2015 - 2019",
+    institution: "Dhaka City College",
+    period: "2018 - 2023",
   },
   {
-    title: "Diploma in Web Design",
-    institution: "Design Academy",
-    period: "2018 - 2019",
+    title:
+      "Freelance Focus: Upskilling for a Better Future (Government Training Program)",
+    institution: "BACCO",
+    period: "2025 - 2026",
+  },
+
+  {
+    title: "Think in a Redux way",
+    institution: "Learn With Sumit",
+    period: "2022",
   },
   {
-    title: "UI/UX Certification",
-    institution: "Google",
-    period: "2019",
+    title: "Complete Web Development",
+    institution: "Programming Hero",
+    period: "2021",
   },
   {
-    title: "Branding Course",
-    institution: "Coursera",
+    title: "Responsive Web Design",
+    institution: "Creative IT",
     period: "2020",
   },
 ];
@@ -55,19 +62,27 @@ const Experience = () => {
       <div className="section-container container mx-auto px-4">
         {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, x: -30 }}
+          whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="flex items-center gap-3 mb-12"
+          className="space-y-6"
         >
-          <div className="w-2 h-2 rounded-full bg-primary" />
-          <span className="text-sm text-muted-foreground uppercase tracking-wider">
-            Experience
-          </span>
+          <div className="flex items-center gap-3">
+            <div className="w-2 h-2 rounded-full bg-primary" />
+            <span className="text-sm text-muted-foreground uppercase tracking-wider">
+              Experience
+            </span>
+          </div>
+
+          <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground">
+            Real-World Experience
+            <br />
+            <span className="text-[#E1B505]">Working With Clients</span>
+          </h2>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-16">
+        <div className="grid lg:grid-cols-2 gap-16 mt-8">
           {/* Work Experience */}
           <div className="space-y-6">
             {experiences.map((exp, index) => (

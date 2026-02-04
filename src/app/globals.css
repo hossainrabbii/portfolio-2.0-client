@@ -123,3 +123,7 @@
     @apply bg-background text-foreground;
   }
 }
+
+.bgdiv{
+  background-image: url('../assets/18653.jpg');
+}

@@ -11,6 +11,7 @@ import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
 import PortfolioSection from "@/components/PortfolioSection";
 import BlogSection from "@/components/BlogSection";
+import SkillsShowcase from "@/components/SkillsShowcase";
 
 const HomePage = () => {
   return (
@@ -19,7 +20,8 @@ const HomePage = () => {
       <Hero />
       {/* <StackedProjects /> */}
       {/* <FeaturedProjects /> */}
-      <About />
+      {/* <About /> */}
+      <SkillsShowcase />
       <Experience />
       <Clients />
       <Services />
