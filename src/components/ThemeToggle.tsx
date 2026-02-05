@@ -6,7 +6,8 @@ const ThemeToggle = () => {
   const { theme, toggleTheme } = useTheme();
 
   return (
-    <motion.button
+    <div className="w-[40px]">
+      <motion.button
       onClick={toggleTheme}
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
@@ -25,6 +26,7 @@ const ThemeToggle = () => {
         )}
       </motion.div>
     </motion.button>
+    </div>
   );
 };
 

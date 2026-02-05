@@ -8,6 +8,8 @@ import {
   ArrowUpRight,
 } from "lucide-react";
 
+import heroImage from "@/assets/hossain.png";
+import Image from "next/image";
 const footerLinks = {
   navigation: [
     { label: "Home", href: "#home" },
@@ -38,13 +40,19 @@ const Footer = () => {
             className="space-y-4"
           >
             <div className="flex items-center gap-2">
-              <div className="w-10 h-10 rounded-full bg-[#E1B505]  flex items-center justify-center">
+              <div className="w-10 h-10 rounded-md  flex items-center justify-center">
                 <span className="text-[#E1B505] foreground font-display font-bold text-lg">
-                  P
+                  <Image
+                    src={heroImage}
+                    alt="Hossain"
+                    width={35}
+                    height={35}
+                    className="oveject-cover rounded-md border border-[#e1b505]"
+                  ></Image>
                 </span>
               </div>
               <span className="font-display font-semibold text-lg text-foreground">
-                Portfolio
+                Hossain 
               </span>
             </div>
             <p className="text-muted-foreground text-sm max-w-xs">

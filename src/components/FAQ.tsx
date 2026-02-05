@@ -39,7 +39,7 @@ const faqs = [
       "Yes. I follow SEO-friendly practices and optimize for speed, Core Web Vitals, and overall performance.",
   },
   {
-    question: "Do you provide support after project completion??",
+    question: "Do you provide support after project completion?",
     answer:
       "Yes. I offer post-delivery support and can assist with updates, fixes, or future improvements..",
   },
