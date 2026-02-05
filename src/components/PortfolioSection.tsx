@@ -6,7 +6,7 @@ const PortfolioSection = async () => {
   const allProjects = await getAllProjects();
   // console.log(allProjects);
   return (
-    <section id="blog" className="py-24">
+    <section id="portfolio" className="py-24">
       <div className="section-container container mx-auto px-4">
         {/* Section header */}
         <HomeSectionHeader

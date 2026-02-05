@@ -2,11 +2,11 @@
 import { motion } from "framer-motion";
 import {
   ChevronRight,
-  Palette,
   Code,
   Layers,
   PenTool,
   Smartphone,
+  Database,
 } from "lucide-react";
 import {
   Accordion,
@@ -14,71 +14,72 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import Link from "next/link";
 
 const services = [
   {
-    id: "uiux",
+    id: "1",
     icon: Layers,
-    title: "UI/UX Design",
+    title: "Full Stack Development",
     description:
-      "Creating intuitive and visually stunning interfaces that enhance user experience and drive engagement.",
+      "End-to-end web application development, handling everything from frontend interfaces to secure, scalable backend systems.",
     features: [
-      "User Research",
-      "Wireframing",
-      "Prototyping",
-      "Usability Testing",
+      "Frontend & Backend Architecture",
+      "REST & API Development",
+      "Database Design & Management",
+      "Deployment & Maintenance",
     ],
   },
   {
-    id: "webdev",
+    id: "2",
     icon: Code,
-    title: "Web Development",
+    title: "Frontend Development",
     description:
-      "Building responsive, performant websites and web applications using modern technologies.",
+      "Building fast, responsive, and user-friendly interfaces using modern frontend technologies and best practices.",
     features: [
-      "React/Next.js",
-      "TypeScript",
-      "Tailwind CSS",
-      "API Integration",
+      "React & Next.js",
+      "TypeScript & JavaScript",
+      "Tailwind CSS & UI Styling",
+      "Performance Optimization",
     ],
   },
   {
-    id: "branding",
-    icon: Palette,
-    title: "Branding",
+    id: "3",
+    icon: Database,
+    title: "Backend Development",
     description:
-      "Developing cohesive brand identities that communicate your values and resonate with your audience.",
+      "Creating robust backend systems that power your applications with security, scalability, and efficiency.",
     features: [
-      "Logo Design",
-      "Brand Guidelines",
-      "Visual Identity",
-      "Brand Strategy",
+      "Node.js & Express",
+      "Database Design (SQL & NoSQL)",
+      "Authentication & Authorization",
+      "API & Server Optimization",
     ],
   },
   {
-    id: "animation",
+    id: "4",
     icon: PenTool,
-    title: "Animation Design",
+    title: "WordPress CMS",
     description:
-      "Bringing interfaces to life with meaningful motion design that guides and delights users.",
+      "Custom WordPress solutions tailored to your business, from landing pages to full-featured dynamic websites.",
     features: [
-      "Micro-interactions",
-      "Motion Graphics",
-      "Loading States",
-      "Transitions",
+      "Theme Customization",
+      "Elementor & Custom Blocks",
+      "Speed & SEO Optimization",
+      "Bug Fixes & Maintenance",
     ],
   },
   {
-    id: "product",
+    id: "5",
     icon: Smartphone,
-    title: "Product Design",
+    title: "AI Code Evaluation",
     description:
-      "End-to-end product design from concept to launch, ensuring a seamless user journey.",
+      "Reviewing, improving, and optimizing AI-generated or existing code to ensure quality, performance, and scalability.",
     features: [
-      "Product Strategy",
-      "Design Systems",
-      "MVP Development",
-      "Iteration",
+      "AI Code Review & Refactoring",
+      "Performance & Security Checks",
+      "Best Practices Enforcement",
+      "Scalability Improvements",
     ],
   },
 ];
@@ -111,15 +112,17 @@ const Services = () => {
 
             <p className="text-muted-foreground leading-relaxed max-w-md">
               I offer comprehensive design services tailored to your unique
-              needs, helping businesses create exceptional digital products.
+              needs, helping businesses create exceptional web apps.
             </p>
 
             <motion.a
-              href="#contact"
+              href=""
               whileHover={{ x: 5 }}
               className="inline-flex items-center gap-2 text-[#E1B505] font-medium"
             >
-              Get a Free Consultation
+              <Link href="mailto:mdhosen21018@gmail.com">
+                Get a Free Consultation
+              </Link>
               <ChevronRight className="w-4 h-4" />
             </motion.a>
           </motion.div>

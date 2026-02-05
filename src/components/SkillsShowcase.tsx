@@ -265,7 +265,7 @@ const itemVariants = {
 
 const SkillsShowcase = () => {
   return (
-    <section className="py-24 bg-gradient-to-b from-background via-card/30 to-background overflow-hidden">
+    <section className="py-24 bg-gradient-to-b from-background via-card/30 to-background overflow-hidden" id="skills">
       <div className="section-container container mx-auto px-4">
         {/* Header */}
         <motion.div

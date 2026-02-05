@@ -55,9 +55,16 @@ const Hero = () => {
             </motion.span>
           </h1>
         </motion.div>
-        <div className="text-[#E1B505] font-semibold my-2 text-2xl">
-          Helping startups & businesses create high-performance websites
-        </div>
+        
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+        >
+          <div className="text-[#E1B505] font-semibold my-2 text-2xl">
+            Helping startups & businesses create high-performance websites
+          </div>
+        </motion.div>
         {/* Tags */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}

@@ -19,7 +19,7 @@ const experiences = [
   },
   {
     title: "Web Developer",
-    company: "DesignHUnitokub",
+    company: "UniTok",
     period: "2019 - 2020",
     description: "Created design systems for multiple client projects.",
     current: false,
@@ -58,7 +58,7 @@ const education = [
 
 const Experience = () => {
   return (
-    <section className="py-24">
+    <section className="py-24" id="experience">
       <div className="section-container container mx-auto px-4">
         {/* Section Header */}
         <motion.div
@@ -87,7 +87,7 @@ const Experience = () => {
           <div className="space-y-6">
             {experiences.map((exp, index) => (
               <motion.div
-                key={exp.title}
+                key={index}
                 initial={{ opacity: 0, x: -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
@@ -146,7 +146,7 @@ const Experience = () => {
             <div className="grid gap-4">
               {education.map((edu, index) => (
                 <motion.div
-                  key={edu.title}
+                  key={index}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}

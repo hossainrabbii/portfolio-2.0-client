@@ -7,9 +7,12 @@ import ThemeToggle from "./ThemeToggle";
 
 const navItems = [
   { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
+  { label: "About", href: "#home" },
+  { label: "Skills", href: "#skills" },
+  { label: "Experience", href: "#experience" },
   { label: "Services", href: "#services" },
   { label: "Portfolio", href: "#portfolio" },
+  { label: "Blog", href: "#blog" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -27,7 +30,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <motion.a
-            href="/#home"
+            href="#home"
             className="flex items-center gap-2"
             whileHover={{ scale: 1.05 }}
           >

@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { motion } from "framer-motion";
 import {
   Accordion,
@@ -9,29 +9,39 @@ import {
 
 const faqs = [
   {
-    question: "What is your design process?",
+    question: "What information do you need to start a project?",
     answer:
-      "My design process involves research, ideation, wireframing, prototyping, testing, and iteration. I collaborate closely with clients at each stage to ensure the final product meets their goals and user needs.",
+      "I need a clear project brief, goals, reference websites (if any), content, and access credentials once the project is confirmed.",
+  },
+  {
+    question: "Do you provide responsive and mobile-friendly designs?",
+    answer:
+      "Yes. Every website I build is fully responsive and optimized for mobile, tablet, and desktop devices.",
+  },
+  {
+    question: "Can you work with existing websites or code?",
+    answer:
+      "Absolutely. I can redesign, fix bugs, improve performance, or extend features in existing websites or applications.",
   },
   {
     question: "How long does a typical project take?",
     answer:
-      "Project timelines vary based on scope and complexity. A simple website redesign might take 2-4 weeks, while a comprehensive product design project could take 2-3 months. I provide detailed timelines during our initial consultation.",
+      "Project timelines depend on scope and complexity, but most small to medium projects are completed within a few days to a couple of weeks.",
   },
   {
-    question: "Do you work with startups or established companies?",
+    question: "Do you offer revisions after delivery?",
     answer:
-      "I work with both! I've helped early-stage startups establish their visual identity and also assisted established companies in refreshing their digital presence. Each engagement is tailored to the specific needs and budget of the client.",
+      "Yes. I include revisions to ensure the final result matches your expectations and requirements.",
   },
   {
-    question: "What tools do you use for design?",
+    question: "Will my website be SEO and performance optimized?",
     answer:
-      "I primarily use Figma for UI/UX design, along with Adobe Creative Suite for branding work. For prototyping and animation, I use tools like Principle and Framer. I stay current with the latest design tools to deliver the best results.",
+      "Yes. I follow SEO-friendly practices and optimize for speed, Core Web Vitals, and overall performance.",
   },
   {
-    question: "Do you offer ongoing support after project completion?",
+    question: "Do you provide support after project completion??",
     answer:
-      "Yes! I offer maintenance packages and ongoing support for clients who need it. This includes design iterations, new feature designs, and consultation as your product evolves.",
+      "Yes. I offer post-delivery support and can assist with updates, fixes, or future improvements..",
   },
 ];
 
@@ -60,7 +70,7 @@ const FAQ = () => {
             </h2>
 
             <p className="text-muted-foreground max-w-md mx-auto">
-              Answers to common questions about my design services and process.
+              Answers to common questions about my development and process.
             </p>
           </motion.div>
 
