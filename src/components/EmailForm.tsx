@@ -154,7 +154,7 @@ const EmailForm = ({ onSuccess, className = "" }: EmailFormProps) => {
           placeholder="Tell me about your project..."
           value={formData.body}
           onChange={handleChange}
-          rows={5}
+          rows={10}
           className="bg-background/50 border-border/50 focus:border-primary transition-colors resize-none"
           required
         />

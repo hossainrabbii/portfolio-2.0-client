@@ -1,30 +1,38 @@
 "use client";
 import { motion } from "framer-motion";
-import {
-  Github,
-  Linkedin,
-  Twitter,
-  Dribbble,
-  ArrowUpRight,
-} from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 
 import heroImage from "@/assets/hossain.png";
+import github from "@/assets/github.png";
+import linkedin from "@/assets/linkedin.png";
+import fiverr from "@/assets/fiverr.png";
+import upwork from "@/assets/upwork.png";
 import Image from "next/image";
+
 const footerLinks = {
   navigation: [
     { label: "Home", href: "#home" },
-    { label: "About", href: "#about" },
+    { label: "About", href: "#home" },
+    { label: "Skills", href: "#skills" },
+    { label: "Experience", href: "#experience" },
     { label: "Services", href: "#services" },
     { label: "Portfolio", href: "#portfolio" },
+    { label: "Blog", href: "#blog" },
     { label: "Contact", href: "#contact" },
   ],
   social: [
-    { icon: Github, href: "#", label: "GitHub" },
-    { icon: Linkedin, href: "#", label: "LinkedIn" },
-    { icon: Twitter, href: "#", label: "Twitter" },
-    { icon: Dribbble, href: "#", label: "Dribbble" },
+    { icon: github, href: "https://github.com/hossainrabbii", label: "GitHub" },
+    {
+      icon: linkedin,
+      href: "https://linkedin.com/in/hossainrabbii/",
+      label: "LinkedIn",
+    },
+    { icon: fiverr, href: "https://www.fiverr.com/iibbar", label: "Fiverr" },
+    { icon: upwork, href: "https://upwork.com/freelancers/hossainrabbi", label: "UpWork" },
   ],
 };
+const date = new Date();
+const currentYear = date.getFullYear();
 
 const Footer = () => {
   return (
@@ -52,12 +60,12 @@ const Footer = () => {
                 </span>
               </div>
               <span className="font-display font-semibold text-lg text-foreground">
-                Hossain 
+                Hossain
               </span>
             </div>
             <p className="text-muted-foreground text-sm max-w-xs">
-              Creating exceptional digital experiences through innovative design
-              and strategic thinking.
+              Creating exceptional digital experiences through innovative web
+              application
             </p>
           </motion.div>
 
@@ -98,9 +106,9 @@ const Footer = () => {
             </h4>
             <div className="space-y-3">
               <p className="text-muted-foreground text-sm">
-                hello@davidmichel.com
+                mdhosen21018@gmail.com
               </p>
-              <p className="text-muted-foreground text-sm">+1 (555) 123-4567</p>
+              <p className="text-muted-foreground text-sm">016419949627</p>
               <div className="flex items-center gap-3 pt-2">
                 {footerLinks.social.map((social, index) => (
                   <motion.a
@@ -110,7 +118,15 @@ const Footer = () => {
                     className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-primary/20 transition-colors"
                     aria-label={social.label}
                   >
-                    <social.icon className="w-4 h-4" />
+                    {/* <social.icon className="w-4 h-4" /> */}
+
+                    <Image
+                      src={social?.icon}
+                      alt={social?.label}
+                      height={10}
+                      width={15}
+                      className="w-[20px]"
+                    />
                   </motion.a>
                 ))}
               </div>
@@ -127,7 +143,7 @@ const Footer = () => {
           className="pt-8 border-t border-border flex flex-col md:flex-row items-center justify-between gap-4"
         >
           <p className="text-muted-foreground text-sm">
-            © 2024 David Michel. All rights reserved.
+            © {currentYear} Hossain Rabbi. All rights reserved.
           </p>
           <div className="flex items-center gap-6">
             <a

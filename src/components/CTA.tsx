@@ -29,8 +29,8 @@ const CTA = () => {
 
             <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground leading-tight">
               Let's work
-              <br />
-              <span className="text-primary">together</span>
+              {/* <br /> */}
+              <span className="text-[#E1B505]"> together</span>
             </h2>
 
             <p className="text-muted-foreground text-lg max-w-md">
@@ -43,7 +43,7 @@ const CTA = () => {
                 <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
                   <span className="text-primary text-lg">📧</span>
                 </div>
-                <span>hello@portfolio.com</span>
+                <span>mdhosen21018@gmail.com</span>
               </div>
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">

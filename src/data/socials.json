@@ -1,0 +1,22 @@
+[
+  {
+    "icon": "github",
+    "href": "https://github.com/username",
+    "label": "GitHub"
+  },
+  {
+    "icon": "linkedin",
+    "href": "https://linkedin.com/in/username",
+    "label": "LinkedIn"
+  },
+  {
+    "icon": "twitter",
+    "href": "https://twitter.com/username",
+    "label": "Twitter"
+  },
+  {
+    "icon": "dribbble",
+    "href": "https://dribbble.com/username",
+    "label": "Dribbble"
+  }
+]

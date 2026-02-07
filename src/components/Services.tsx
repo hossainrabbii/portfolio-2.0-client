@@ -120,17 +120,7 @@ const Services = () => {
               whileHover={{ x: 5 }}
               className="inline-flex items-center gap-2 text-[#E1B505] font-medium"
             >
-              {/* <Link href="mailto:mdhosen21018@gmail.com" legacyBehavior>
-                Get a Free Consultation
-              </Link> */}
-              <button
-                onClick={() =>
-                  (window.location.href = "mailto:mdhosen21018@gmail.com")
-                }
-                className="bg-green-500 text-white px-6 py-3 rounded-lg hover:bg-green-600"
-              >
-                Get a Free Consultation
-              </button>
+              {/* <Link href="/#contact">Get a Free Consultation</Link> */}
 
               <ChevronRight className="w-4 h-4" />
             </motion.a>

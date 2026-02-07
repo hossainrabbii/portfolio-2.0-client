@@ -55,7 +55,7 @@ const Hero = () => {
             </motion.span>
           </h1>
         </motion.div>
-        
+
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -151,14 +151,14 @@ const Hero = () => {
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
-              className="space-y-6 pb-8"
+              className="space-y-6 pb-6"
             >
               <p className="text-muted-foreground text-lg leading-relaxed">
-                I’m a passionate Web Developer who loves turning ideas into
-                functional, dynamic websites. Since 2017, I’ve been helping
+                I’m a passionate Full Stack Developer who loves turning ideas
+                into functional, dynamic websites. Since 2017, I’ve been helping
                 clients worldwide bring their visions to life — delivering
                 clean, responsive, and high-performing web applications through
-                Fiverr and Upwork.
+                Fiverr, Upwork and with agencies.
               </p>
 
               <p className="text-muted-foreground text-lg leading-relaxed">
@@ -179,19 +179,25 @@ const Hero = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="flex flex-wrap gap-4 pt-4"
+              className="flex flex-wrap gap-4"
             >
-              <Button className="bg-primary text-[#E1B505] foreground hover:bg-primary/90 font-medium group">
+              {/* <Button className="bg-primary text-[#E1B505] foreground hover:bg-primary/90 font-medium group">
                 Read More
                 <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </Button>
-              <Button
-                variant="outline"
-                className="border-border hover:bg-secondary"
+              </Button> */}
+              <a
+                href="https://drive.google.com/file/d/1VOX69N9nTKgvxxfuU32AiisehCP4vu8-/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                <Download className="mr-2 w-4 h-4" />
-                Download CV
-              </Button>
+                <Button
+                  variant="outline"
+                  className="border-border hover:bg-secondary"
+                >
+                  <Download className="mr-2 w-4 h-4" />
+                  Download CV
+                </Button>
+              </a>
             </motion.div>
           </div>
         </div>
