@@ -35,7 +35,7 @@ export default function RootLayout({
         {/* <QueryClientProvider client={queryClient}> */}
         <ThemeProvider>{children}</ThemeProvider>
         {/* </QueryClientProvider> */}
-        <Toaster />
+        <Toaster richColors />
       </body>
     </html>
   );

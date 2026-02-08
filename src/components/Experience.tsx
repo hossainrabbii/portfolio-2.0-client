@@ -1,31 +1,48 @@
 "use client";
 import { motion } from "framer-motion";
-import { ChevronRight, ExternalLink } from "lucide-react";
 
 const experiences = [
   {
     title: "Frontend Developer",
     company: "GroupValet",
     period: "2022 - Present",
-    description: "Leading design initiatives for enterprise SaaS products.",
+    description:
+      "Initially joined to fix responsive and layout issues across the entire website. After successfully improving UI consistency and cross-device experience, I was invited to join their remote team. Worked closely with designers and developers to enhance overall frontend quality. It was a great learning and collaboration experience.",
     current: false,
   },
   {
     title: "Frontend Developer",
     company: "Belto World",
     period: "2020 - 2022",
-    description: "Designed and shipped 15+ features for mobile applications.",
+    description:
+      "Worked on a contractual basis to design and develop a modern landing page for an AI-powered service provider company. Focused on clean UI, performance optimization, and clear product communication aligned with their AI-driven offerings.",
     current: false,
   },
   {
     title: "Web Developer",
     company: "UniTok",
     period: "2019 - 2020",
-    description: "Created design systems for multiple client projects.",
+    description:
+      "Built the complete landing page and dashboard for a professional service provider platform. One of the key challenges was working with Angular, which I learned and implemented during the project, delivering a functional and scalable frontend solution.",
+    current: false,
+  },
+  {
+    title: "Web Developer",
+    company: "PrestigeVideo",
+    period: "2019 - 2020",
+    description:
+      "Developed a WordPress website from scratch for a video service provider company. Handled layout structure, theme customization, and responsive design to deliver a professional and user-friendly web presence.",
+    current: false,
+  },
+  {
+    title: "Frontend Developer",
+    company: "SellnChill",
+    period: "2019 - 2020",
+    description:
+      "Worked on a contractual project to build the homepage for a hosting-focused company using Angular. The project provided strong hands-on experience with Angular and helped improve my understanding of component-based architecture and performance-focused UI development.",
     current: false,
   },
 ];
-
 const education = [
   {
     title: "BSC in CSE",
@@ -82,7 +99,7 @@ const Experience = () => {
           </h2>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-16 mt-8">
+        <div className="grid lg:grid-cols-2 gap-16 mt-8 items-center">
           {/* Work Experience */}
           <div className="space-y-6">
             {experiences.map((exp, index) => (
@@ -115,7 +132,7 @@ const Experience = () => {
                       {exp.description}
                     </p>
                   </div>
-                  <div className="flex items-center gap-2">
+                  {/* <div className="flex items-center gap-2">
                     <span className="text-xs text-muted-foreground whitespace-nowrap">
                       {exp.period}
                     </span>
@@ -126,7 +143,7 @@ const Experience = () => {
                     >
                       <ExternalLink className="w-4 h-4" />
                     </motion.a>
-                  </div>
+                  </div> */}
                 </div>
               </motion.div>
             ))}

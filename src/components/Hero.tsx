@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import bg from "@/assets/18653.jpg";
 import heroImage from "@/assets/hossain.png";
 import Image from "next/image";
+import SocialMedia from "./SocialMedia";
 
 const tags = ["#FULL STACK DEVELOPER", "#MERN", "#NextJS", "#WordPress"];
 
@@ -154,18 +155,20 @@ const Hero = () => {
               className="space-y-6 pb-6"
             >
               <p className="text-muted-foreground text-lg leading-relaxed">
-                I’m a passionate Full Stack Developer who loves turning ideas
-                into functional, dynamic websites. Since 2017, I’ve been helping
-                clients worldwide bring their visions to life — delivering
-                clean, responsive, and high-performing web applications through
-                Fiverr, Upwork and with agencies.
+                Solving real-world problems by understanding client pain points
+                and turning them into practical, scalable web solutions.
               </p>
 
               <p className="text-muted-foreground text-lg leading-relaxed">
-                Over the years, I’ve successfully completed 100+ freelance
-                projects, earning tons of 5-star reviews and long-term client
-                relationships by staying committed to quality, clarity, and
-                deadlines.
+                It’s not just about creating a web app — it’s about building
+                solutions that create long-term business impact. I focus on
+                clean architecture, industry-standard practices, and modern,
+                trendy technologies.
+              </p>
+              <p className="text-muted-foreground text-lg leading-relaxed">
+                Every product is built with performance, scalability, and future
+                growth in mind, often powered with AI to make applications
+                smarter, more efficient, and truly robust in real-world usage.
               </p>
               {/* 
               <Button className="bg-primary text-[#E1B505] foreground hover:bg-primary/90 font-medium px-8 py-6 text-base group rounded-full">
@@ -173,14 +176,25 @@ const Hero = () => {
                 <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Button> */}
             </motion.div>
-
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+              className=""
+            >
+              <h2 className="text-xl font-semibold text-[#E1B505] mb-2">
+                Let’s connect and build something meaningful.
+              </h2>
+            </motion.div>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="flex flex-wrap gap-4"
+              className=""
             >
+              <SocialMedia />
               {/* <Button className="bg-primary text-[#E1B505] foreground hover:bg-primary/90 font-medium group">
                 Read More
                 <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -192,7 +206,7 @@ const Hero = () => {
               >
                 <Button
                   variant="outline"
-                  className="border-border hover:bg-secondary"
+                  className="border-border hover:bg-secondary mt-4 cursor-pointer"
                 >
                   <Download className="mr-2 w-4 h-4" />
                   Download CV

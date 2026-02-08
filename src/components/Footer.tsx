@@ -8,6 +8,7 @@ import linkedin from "@/assets/linkedin.png";
 import fiverr from "@/assets/fiverr.png";
 import upwork from "@/assets/upwork.png";
 import Image from "next/image";
+import SocialMedia from "./SocialMedia";
 
 const footerLinks = {
   navigation: [
@@ -28,7 +29,11 @@ const footerLinks = {
       label: "LinkedIn",
     },
     { icon: fiverr, href: "https://www.fiverr.com/iibbar", label: "Fiverr" },
-    { icon: upwork, href: "https://upwork.com/freelancers/hossainrabbi", label: "UpWork" },
+    {
+      icon: upwork,
+      href: "https://upwork.com/freelancers/hossainrabbi",
+      label: "UpWork",
+    },
   ],
 };
 const date = new Date();
@@ -109,27 +114,7 @@ const Footer = () => {
                 mdhosen21018@gmail.com
               </p>
               <p className="text-muted-foreground text-sm">016419949627</p>
-              <div className="flex items-center gap-3 pt-2">
-                {footerLinks.social.map((social, index) => (
-                  <motion.a
-                    key={social.label}
-                    href={social.href}
-                    whileHover={{ scale: 1.1, y: -2 }}
-                    className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-primary/20 transition-colors"
-                    aria-label={social.label}
-                  >
-                    {/* <social.icon className="w-4 h-4" /> */}
-
-                    <Image
-                      src={social?.icon}
-                      alt={social?.label}
-                      height={10}
-                      width={15}
-                      className="w-[20px]"
-                    />
-                  </motion.a>
-                ))}
-              </div>
+              <SocialMedia />
             </div>
           </motion.div>
         </div>

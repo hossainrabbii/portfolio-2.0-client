@@ -25,6 +25,7 @@ import {
   DialogDescription,
 } from "@/components/ui/dialog";
 import EmailForm from "./EmailForm";
+import SocialMedia from "./SocialMedia";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isHireModalOpen, setIsHireModalOpen] = useState(false);
@@ -37,7 +38,7 @@ const Navbar = () => {
         className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border/50"
       >
         <div className="container mx-auto section-container px-4">
-          <div className="flex items-center justify-between h-20">
+          <div className="flex items-center justify-between h-12 md:h-20">
             {/* Logo */}
             <motion.a
               href="/#home"
@@ -150,6 +151,10 @@ const Navbar = () => {
             <DialogTitle className="font-display text-2xl">
               Let's Work Together
             </DialogTitle>
+            <h4>Connect with me on social platforms.</h4>
+            <div className="my-4">
+              <SocialMedia />
+            </div>
             <DialogDescription>
               Fill out the form below and I'll get back to you as soon as
               possible.

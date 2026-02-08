@@ -11,6 +11,7 @@ import ProjectForm from "@/components/dashboard/ProjectForm";
 import BlogList from "@/components/dashboard/BlogList";
 import ProjectList from "@/components/dashboard/ProjectList";
 import Link from "next/link";
+import { LogoutButton } from "@/components/Logout";
 
 const Dashboard = () => {
   const [showBlogForm, setShowBlogForm] = useState(false);
@@ -41,6 +42,7 @@ const Dashboard = () => {
   return (
     <div className="container mx-auto min-h-screen bg-background">
       {/* Header */}
+      <LogoutButton />
       <header className="sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur-xl">
         <div className="section-container">
           <div className="flex h-16 items-center justify-between">

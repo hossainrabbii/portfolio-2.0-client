@@ -88,7 +88,7 @@ const Services = () => {
   return (
     <section id="services" className="py-24 bg-secondary/30">
       <div className="section-container container mx-auto px-4">
-        <div className="grid lg:grid-cols-2 gap-16">
+        <div className="mx-auto items-center max-w-4xl">
           {/* Left - Header */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -110,7 +110,7 @@ const Services = () => {
               <span className="text-[#E1B505]">User-Centered Design</span>
             </h2>
 
-            <p className="text-muted-foreground leading-relaxed max-w-md">
+            <p className="text-muted-foreground leading-relaxed ">
               I offer comprehensive design services tailored to your unique
               needs, helping businesses create exceptional web apps.
             </p>
@@ -122,7 +122,7 @@ const Services = () => {
             >
               {/* <Link href="/#contact">Get a Free Consultation</Link> */}
 
-              <ChevronRight className="w-4 h-4" />
+              {/* <ChevronRight className="w-4 h-4" /> */}
             </motion.a>
           </motion.div>
 
@@ -151,7 +151,7 @@ const Services = () => {
                         <div className="w-12 h-12 rounded-xl bg-secondary flex items-center justify-center">
                           <service.icon className="w-5 h-5 text-[#E1B505]" />
                         </div>
-                        <span className="font-display font-semibold text-foreground text-left">
+                        <span className="font-display font-semibold text-foreground text-left text-[18px]">
                           {service.title}
                         </span>
                       </div>

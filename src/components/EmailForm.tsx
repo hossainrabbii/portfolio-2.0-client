@@ -59,7 +59,7 @@ const EmailForm = ({ onSuccess, className = "" }: EmailFormProps) => {
     // console.log(formData);
     const response = await sendMail(formData);
     if (!response?.success) {
-      toast.success("Something went wrong.");
+      toast.error("Something went wrong.");
     } else {
       toast.success(response?.message || "Message sent successfully.");
     }
