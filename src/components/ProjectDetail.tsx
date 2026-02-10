@@ -20,37 +20,11 @@ import { useEffect } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { IProject } from "@/types/IProject";
 type slugProps = {};
-type TCategory = {
-  _id: string;
-  title: string;
-};
-type Project = {
-  title: string;
-  description: string;
-  category: TCategory;
-  image: string;
-  gallery: string[];
-  client: string;
-  year: string;
-  duration: string;
-  role: string;
-  tools: string[];
-  challenges: string[];
-  solutions: string[];
-  results: string[];
-  testimonial?: {
-    quote: string;
-    author: string;
-    role: string;
-  };
-  comments: any[];
-  likes: number;
-  liveUrl?: string;
-};
 
 type ProjectDetailProps = {
-  project: Project;
+  project: IProject;
   slug: string;
 };
 const ProjectDetail = ({ project, slug }: ProjectDetailProps) => {
