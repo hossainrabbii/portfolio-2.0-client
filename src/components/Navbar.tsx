@@ -5,6 +5,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import ThemeToggle from "./ThemeToggle";
 import heroImage from "@/assets/hossain.png";
+import logoImage from "@/assets/hossainlogo.png";
 import Image from "next/image";
 const navItems = [
   { label: "Home", href: "#home" },
@@ -46,19 +47,19 @@ const Navbar = () => {
               whileHover={{ scale: 1.05 }}
             >
               <div className="flex items-center gap-2">
-                <div className="w-10 h-10 rounded-md  flex items-center justify-center">
+                <div className="w-10 h-10 rounded-md flex items-center justify-center">
                   <span className="text-[#E1B505] foreground font-display font-bold text-lg">
                     <Image
-                      src={heroImage}
+                      src={logoImage}
                       alt="Hossain"
                       width={35}
                       height={35}
-                      className="oveject-cover rounded-md border border-[#e1b505]"
+                      className="oveject-cover rounded-full border border-[#e1b505]"
                     ></Image>
                   </span>
                 </div>
                 <span className="font-display font-semibold text-md text-foreground">
-                  Hossain <br />
+                  {/* Hossain <br /> */}
                 </span>
               </div>
             </motion.a>
