@@ -37,7 +37,7 @@ const ProjectDetail = ({ project, slug }: ProjectDetailProps) => {
   }, [slug]);
   if (!project) {
     return (
-      <div className="min-h-screen bg-background flex items-center justify-center">
+      <div className="min-h-screen bg-background flex items-center justify-center container mx-auto px-4">
         <div className="text-center">
           <h1 className="font-display text-4xl font-bold text-foreground mb-4">
             Project Not Found
@@ -57,7 +57,7 @@ const ProjectDetail = ({ project, slug }: ProjectDetailProps) => {
       {/* Hero */}
       <Navbar />
       <section className="pt-32 pb-16">
-        <div className="section-container container mx-auto">
+        <div className="section-container container mx-auto px-4">
           {/* Back Button */}
           {/* <motion.div
             initial={{ opacity: 0, x: -20 }}

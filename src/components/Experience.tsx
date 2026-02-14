@@ -179,7 +179,7 @@ const Experience = () => {
                         {edu.institution}
                       </p>
                     </div>
-                    <span className="text-xs text-center text-muted-foreground bg-secondary px-3 py-1 rounded-full w-[95px]">
+                    <span className="text-xs text-center text-muted-foreground bg-secondary px-3 py-1 rounded-full w-[105px]">
                       {edu.period}
                     </span>
                   </div>

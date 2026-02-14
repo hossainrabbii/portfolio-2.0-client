@@ -2,7 +2,6 @@
 
 import { login } from "@/services/Auth";
 import { useRouter } from "next/navigation";
-import { NextRequest } from "next/server";
 import { useState } from "react";
 
 export default function LoginPage() {
@@ -26,11 +25,11 @@ export default function LoginPage() {
 
     if (!res?.success) {
       setError("Invalid email or password");
-
       return;
     }
-
-    router.push("/dashboard");
+    if (res.success) {
+      router.push("/dashboard");
+    }
   }
 
   return (
