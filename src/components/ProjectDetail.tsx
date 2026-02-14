@@ -207,7 +207,7 @@ const ProjectDetail = ({ project, slug }: ProjectDetailProps) => {
 
       {/* Share Bar */}
       <section className="py-8">
-        <div className="section-container container mx-auto">
+        <div className="section-container container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -229,7 +229,7 @@ const ProjectDetail = ({ project, slug }: ProjectDetailProps) => {
       {/* Gallery */}
       {project.gallery.length > 1 && (
         <section className="py-16">
-          <div className="section-container container mx-auto">
+          <div className="section-container container mx-auto px-4">
             <motion.h2
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -264,7 +264,7 @@ const ProjectDetail = ({ project, slug }: ProjectDetailProps) => {
 
       {/* Project Details */}
       <section className="py-16 bg-secondary/20">
-        <div className="section-container container mx-auto">
+        <div className="section-container container mx-auto px-4">
           <div className="grid md:grid-cols-3 gap-12">
             {/* Challenges */}
             <motion.div
@@ -335,7 +335,7 @@ const ProjectDetail = ({ project, slug }: ProjectDetailProps) => {
       {/* Testimonial */}
       {project.testimonial && (
         <section className="py-24">
-          <div className="section-container max-w-4xl container mx-auto">
+          <div className="section-container max-w-4xl container mx-auto px-4">
             <motion.div
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -371,7 +371,7 @@ const ProjectDetail = ({ project, slug }: ProjectDetailProps) => {
 
       {/* Comments */}
       <section className="py-16 bg-secondary/20">
-        <div className="section-container max-w-4xl container mx-auto">
+        <div className="section-container max-w-4xl container mx-auto px-4">
           <CommentSection comments={project.comments} />
         </div>
       </section>

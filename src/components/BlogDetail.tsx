@@ -95,7 +95,7 @@ const BlogDetail = ({ blogDetail, slug }: TBLogProps) => {
             className="flex flex-wrap items-center gap-6 mb-8"
           >
             {/* Author */}
-            <div className="flex items-center gap-3">
+            {/* <div className="flex items-center gap-3">
               <div className="w-12 h-12 rounded-full bg-[#E1B505]/20 flex items-center justify-center">
                 <span className="font-medium text-[#E1B505]">DM</span>
               </div>
@@ -107,7 +107,7 @@ const BlogDetail = ({ blogDetail, slug }: TBLogProps) => {
                   {blogDetail.author.role}
                 </p>
               </div>
-            </div>
+            </div> */}
 
             <div className="flex items-center gap-4 text-sm text-muted-foreground">
               <div className="flex items-center gap-1.5">
@@ -172,7 +172,7 @@ const BlogDetail = ({ blogDetail, slug }: TBLogProps) => {
 
       {/* Content */}
       <section className="pb-16">
-        <div className="section-container max-w-4xl container mx-auto">
+        <div className="section-container max-w-4xl container mx-auto px-4">
           <motion.article
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -215,7 +215,7 @@ const BlogDetail = ({ blogDetail, slug }: TBLogProps) => {
 
       {/* Comments */}
       <section className="py-16 bg-secondary/20">
-        <div className="section-container max-w-4xl container mx-auto">
+        <div className="section-container max-w-4xl container mx-auto px-4">
           <CommentSection comments={blogDetail.comments} />
         </div>
       </section>

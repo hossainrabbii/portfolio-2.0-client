@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 
 import heroImage from "@/assets/hossain.png";
+import logoImage from "@/assets/hossainlogo.png";
 import github from "@/assets/github.png";
 import linkedin from "@/assets/linkedin.png";
 import fiverr from "@/assets/fiverr.png";
@@ -56,7 +57,7 @@ const Footer = () => {
               <div className="w-10 h-10 rounded-md  flex items-center justify-center">
                 <span className="text-[#E1B505] foreground font-display font-bold text-lg">
                   <Image
-                    src={heroImage}
+                    src={logoImage}
                     alt="Hossain"
                     width={35}
                     height={35}
@@ -65,7 +66,7 @@ const Footer = () => {
                 </span>
               </div>
               <span className="font-display font-semibold text-lg text-foreground">
-                Hossain
+                Hossain Rabbi
               </span>
             </div>
             <p className="text-muted-foreground text-sm max-w-xs">

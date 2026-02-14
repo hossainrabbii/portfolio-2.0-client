@@ -265,7 +265,10 @@ const itemVariants = {
 
 const SkillsShowcase = () => {
   return (
-    <section className="py-24 bg-gradient-to-b from-background via-card/30 to-background overflow-hidden" id="skills">
+    <section
+      className="py-24 bg-gradient-to-b from-background via-card/30 to-background overflow-hidden"
+      id="skills"
+    >
       <div className="section-container container mx-auto px-4">
         {/* Header */}
         <motion.div
@@ -294,7 +297,15 @@ const SkillsShowcase = () => {
         </motion.div>
 
         <div className="my-8">
-          <h3 className="text-xl font-semibold mb-4">Front end</h3>
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className=""
+          >
+            <h3 className="text-xl font-semibold mb-4">Front end</h3>
+          </motion.div>
           <motion.div
             variants={containerVariants}
             initial="hidden"
@@ -344,7 +355,15 @@ const SkillsShowcase = () => {
           </motion.div>
         </div>
         <div className="my-8">
-          <h3 className="text-xl font-semibold mb-4">Back end</h3>
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className=""
+          >
+            <h3 className="text-xl font-semibold mb-4">Back end</h3>
+          </motion.div>
           <motion.div
             variants={containerVariants}
             initial="hidden"
@@ -394,7 +413,15 @@ const SkillsShowcase = () => {
           </motion.div>
         </div>
         <div className="my-8">
-          <h3 className="text-xl font-semibold mb-4">Tools</h3>
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className=""
+          >
+            <h3 className="text-xl font-semibold mb-4">Tools</h3>
+          </motion.div>
           <motion.div
             variants={containerVariants}
             initial="hidden"
