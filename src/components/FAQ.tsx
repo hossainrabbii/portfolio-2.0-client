@@ -65,7 +65,7 @@ const FAQ = () => {
               </span>
             </div>
 
-            <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground">
+            <h2 className="font-display text-3xl md:text-5xl font-bold text-foreground">
               FAQs
             </h2>
 

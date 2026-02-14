@@ -284,7 +284,7 @@ const SkillsShowcase = () => {
             Tech Stack
           </motion.span>
 
-          <h2 className="font-display text-4xl md:text-6xl font-bold text-foreground">
+          <h2 className="font-display text-3xl md:text-6xl font-bold text-foreground">
             Skills & Technologies
           </h2>
 

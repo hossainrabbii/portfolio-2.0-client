@@ -27,7 +27,7 @@ const CTA = () => {
               </span>
             </div>
 
-            <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground leading-tight">
+            <h2 className="font-display text-3xl md:text-5xl font-bold text-foreground leading-tight">
               Let's work
               {/* <br /> */}
               <span className="text-[#E1B505]"> together</span>
