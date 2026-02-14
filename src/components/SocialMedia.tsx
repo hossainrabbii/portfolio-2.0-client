@@ -24,9 +24,10 @@ const SocialMedia = () => {
         icon: upwork,
         href: "https://upwork.com/freelancers/hossainrabbi",
         label: "UpWork",
-      },{
+      },
+      {
         icon: wa,
-        href: "call:01641994962",
+        href: "https://wa.me/8801641994962",
         label: "WhatsApp",
       },
     ],

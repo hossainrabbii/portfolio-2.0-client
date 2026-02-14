@@ -63,7 +63,7 @@ const EmailForm = ({ onSuccess, className = "" }: EmailFormProps) => {
     } else {
       toast.success(response?.message || "Message sent successfully.");
     }
-    console.log(response);
+    // console.log(response);
     // const result = emailSchema.safeParse(formData);
     //  if (!result.success) {
     //    const fieldErrors: Record<string, string> = {};
