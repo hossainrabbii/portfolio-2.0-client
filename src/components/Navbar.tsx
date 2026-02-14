@@ -121,15 +121,17 @@ const Navbar = () => {
               className="lg:hidden pb-4"
             >
               <div className="flex flex-col gap-4">
-                {navItems.map((item) => (
-                  <a
+                {navItems.map((item, index) => (
+                  <motion.a
                     key={item.label}
-                    href={item.href}
-                    className="text-muted-foreground hover:text-foreground transition-colors duration-300 text-sm font-medium"
-                    onClick={() => setIsOpen(false)}
+                    href={`/${item.href}`}
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.1, duration: 0.4 }}
+                    className="text-muted-foreground hover:text-foreground transition-colors duration-300 text-sm font-medium accent-underline"
                   >
                     {item.label}
-                  </a>
+                  </motion.a>
                 ))}
                 <Button
                   onClick={() => {
