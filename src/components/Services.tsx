@@ -15,6 +15,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import Link from "next/link";
+import React from "react";
 
 const services = [
   {
@@ -85,6 +86,7 @@ const services = [
 ];
 
 const Services = () => {
+  const [openItem, setOpenItem] = React.useState<string | undefined>(undefined);
   return (
     <section id="services" className="py-24 bg-secondary/30">
       <div className="section-container container mx-auto px-4">
@@ -104,7 +106,7 @@ const Services = () => {
               </span>
             </div>
 
-            <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground">
+            <h2 className="font-display text-3xl md:text-5xl font-bold text-foreground">
               Experience the Impact of
               <br />
               <span className="text-[#E1B505]">User-Centered Design</span>
@@ -127,6 +129,8 @@ const Services = () => {
           </motion.div>
 
           {/* Right - Accordion */}
+          {/* 
+
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -174,6 +178,120 @@ const Services = () => {
                   </AccordionItem>
                 </motion.div>
               ))}
+            </Accordion>
+          </motion.div>
+
+           */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <Accordion
+              type="single"
+              collapsible
+              className="space-y-5"
+              value={openItem}
+              onValueChange={setOpenItem}
+            >
+              {services.map((service, index) => {
+                const isOpen = openItem === service.id;
+                return (
+                  <motion.div
+                    key={service.id}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: index * 0.1 }}
+                  >
+                    <AccordionItem
+                      value={service.id}
+                      className="glass-card rounded-2xl px-8 overflow-hidden transition-all duration-300"
+                      style={{
+                        borderColor: isOpen
+                          ? "rgba(225, 181, 5, 0.4)"
+                          : undefined,
+                        boxShadow: isOpen
+                          ? "0 0 30px rgba(225, 181, 5, 0.1)"
+                          : undefined,
+                      }}
+                    >
+                      <AccordionTrigger className="hover:no-underline py-8">
+                        <div className="flex items-center gap-5">
+                          <motion.div
+                            className="w-16 h-16 rounded-2xl flex items-center justify-center shrink-0"
+                            style={{
+                              backgroundColor: "rgba(225, 181, 5, 0.1)",
+                              border: "1px solid rgba(225, 181, 5, 0.2)",
+                            }}
+                            whileHover={{ scale: 1.1, rotate: 5 }}
+                            transition={{
+                              type: "spring",
+                              stiffness: 300,
+                              damping: 10,
+                            }}
+                          >
+                            <motion.div
+                              animate={{ y: [0, -6, 0] }}
+                              transition={{
+                                duration: 2,
+                                repeat: Infinity,
+                                ease: "easeInOut",
+                              }}
+                            >
+                              <service.icon
+                                className="w-7 h-7"
+                                style={{ color: "#E1B505" }}
+                              />
+                            </motion.div>
+                          </motion.div>
+                          <div className="text-left">
+                            <span className="font-display font-bold text-lg text-foreground block">
+                              {service.title}
+                            </span>
+                            <motion.span
+                              className="text-sm mt-1 block overflow-hidden"
+                              style={{ color: "#9CA3AF" }}
+                              initial={false}
+                              animate={{
+                                height: isOpen ? 0 : "auto",
+                                opacity: isOpen ? 0 : 1,
+                              }}
+                              transition={{ duration: 0.3, ease: "easeInOut" }}
+                            >
+                              {service.description.slice(0, 60)}...
+                            </motion.span>
+                          </div>
+                        </div>
+                      </AccordionTrigger>
+                      <AccordionContent className="pb-8">
+                        <p
+                          className="leading-relaxed mb-5 pl-[84px]"
+                          style={{ color: "#9CA3AF" }}
+                        >
+                          {service.description}
+                        </p>
+                        <div className="flex flex-wrap gap-3 pl-[84px]">
+                          {service.features.map((feature) => (
+                            <span
+                              key={feature}
+                              className="text-sm font-medium px-4 py-2 rounded-xl"
+                              style={{
+                                backgroundColor: "rgba(225, 181, 5, 0.1)",
+                                color: "#E1B505",
+                                border: "1px solid rgba(225, 181, 5, 0.2)",
+                              }}
+                            >
+                              {feature}
+                            </span>
+                          ))}
+                        </div>
+                      </AccordionContent>
+                    </AccordionItem>
+                  </motion.div>
+                );
+              })}
             </Accordion>
           </motion.div>
         </div>
