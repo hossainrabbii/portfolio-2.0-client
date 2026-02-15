@@ -64,7 +64,7 @@ const Dashboard = () => {
         </div>
       </header>
 
-      <main className="section-container py-8">
+      <main className="section-container py-8 px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -79,6 +79,7 @@ const Dashboard = () => {
           </div>
 
           {/* Stats Cards */}
+          
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
             <motion.div
               initial={{ opacity: 0, y: 20 }}

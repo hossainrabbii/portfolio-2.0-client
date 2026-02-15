@@ -9,7 +9,7 @@ const ProjectPage = async () => {
   const allProjects = await getAllProjects();
 
   return (
-    <div className="container mx-auto my-12">
+    <div className="container mx-auto my-12 px-4">
       <AllProjects projects={allProjects.data} />
     </div>
   );

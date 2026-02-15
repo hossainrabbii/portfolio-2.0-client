@@ -20,15 +20,13 @@ export default function LoginPage() {
 
     const res = await login({ email, password });
 
-    setLoading(false);
-    console.log(res);
-
+    if (res.success) {
+      setLoading(false);
+      router.push("/dashboard");
+    }
     if (!res?.success) {
       setError("Invalid email or password");
       return;
-    }
-    if (res.success) {
-      router.push("/dashboard");
     }
   }
 
