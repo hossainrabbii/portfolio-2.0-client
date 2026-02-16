@@ -40,18 +40,20 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="container mx-auto min-h-screen bg-background">
+    <div className="container mx-auto min-h-screen bg-background px-4">
       {/* Header */}
-      <LogoutButton />
+
       <header className="sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur-xl">
         <div className="section-container">
           <div className="flex h-16 items-center justify-between">
             <div className="flex items-center gap-4">
               <Link href="/" className="flex items-center gap-2">
-                <div className="h-8 w-8 rounded-lg bg-[#E1B505]  flex items-center justify-center">
+                {/* <div className="h-8 w-8 rounded-lg bg-[#E1B505]  flex items-center justify-center">
                   <LayoutDashboard className="h-4 w-4 text-[#E1B505] foreground" />
-                </div>
-                <span className="font-bold text-lg">Dashboard</span>
+                </div> */}
+                <Button>
+                  <LogoutButton />
+                </Button>
               </Link>
             </div>
             <div className="flex items-center gap-4">
@@ -64,7 +66,7 @@ const Dashboard = () => {
         </div>
       </header>
 
-      <main className="section-container py-8 px-4">
+      <main className="section-container py-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -72,14 +74,17 @@ const Dashboard = () => {
         >
           {/* Dashboard Header */}
           <div className="mb-8">
-            <h1 className="text-3xl font-bold mb-2">Content Management</h1>
+            <h1 className="text-2xl font-bold mb-2">Dashboard Management</h1>
             <p className="text-muted-foreground">
               Manage your blog posts and projects from one place
             </p>
           </div>
 
+          <Button>
+            <Link href="/dashboard/project">Project</Link>
+          </Button>
           {/* Stats Cards */}
-          
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -160,7 +165,7 @@ const Dashboard = () => {
                   <div className="flex justify-end">
                     <Button onClick={handleCreateBlog} className="gap-2">
                       <Plus className="h-4 w-4" />
-                      New Blog Post
+                      New Blog
                     </Button>
                   </div>
                   <BlogList onEdit={handleEditBlog} />

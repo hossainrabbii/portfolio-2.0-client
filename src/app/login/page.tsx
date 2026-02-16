@@ -2,36 +2,45 @@
 
 import { login } from "@/services/Auth";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function LoginPage() {
   const router = useRouter();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [year, setYear] = useState<number | null>(null);
+
+  useEffect(() => {
+    setYear(new Date().getFullYear());
+  }, []);
 
   async function handleLogin(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setError("");
     setLoading(true);
 
-    const form = e.currentTarget;
-    const email = (form.email as HTMLInputElement).value;
-    const password = (form.password as HTMLInputElement).value;
+    const formData = new FormData(e.currentTarget);
+    const email = formData.get("email") as string;
+    const password = formData.get("password") as string;
 
-    const res = await login({ email, password });
+    try {
+      const res = await login({ email, password });
 
-    if (res.success) {
-      setLoading(false);
+      if (!res?.success) {
+        setError("Invalid email or password");
+        return;
+      }
+
       router.push("/dashboard");
-    }
-    if (!res?.success) {
-      setError("Invalid email or password");
-      return;
+    } catch (error) {
+      setError("Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
     }
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#121212] px-4">
+    <div className="min-h-screen flex items-center justify-center bg-[#121212] px-4 border border-[#f1f1f1]">
       <div className="w-full max-w-sm">
         {/* Header */}
         <h1 className="text-3xl font-semibold text-[#FFC857] text-center mb-6">
@@ -77,7 +86,7 @@ export default function LoginPage() {
 
         {/* Footer */}
         <p className="mt-6 text-center text-sm text-gray-400">
-          © {new Date().getFullYear()} Your App
+          © {year} Hossain Rabbi Portfolio
         </p>
       </div>
     </div>

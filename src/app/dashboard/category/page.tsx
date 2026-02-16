@@ -2,7 +2,7 @@ import { CategoryForm } from "@/components/CategoryForm";
 
 const CategoryPage = () => {
   return (
-    <div className="container mx-auto my-6">
+    <div className="container mx-auto my-6 px-4">
       <CategoryForm />
     </div>
   );
