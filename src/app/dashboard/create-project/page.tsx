@@ -1,4 +1,4 @@
-import ProjectForm from "@/components/dashboard/ProjectForm";
+import NewProjectForm from "@/components/dashboard/NewProjectForm";
 import { getAllCategory } from "@/services/Category";
 
 const CreateCategoryPage = async () => {
@@ -6,7 +6,8 @@ const CreateCategoryPage = async () => {
   console.log("Categories:", data);
   return (
     <div className="container mx-auto my-12 px-4">
-      <ProjectForm editSlug="" categories={data} />
+      <NewProjectForm editSlug="" categories={data} />
+      {/* <ProjectForm editSlug="" categories={data} /> */}
     </div>
   );
 };

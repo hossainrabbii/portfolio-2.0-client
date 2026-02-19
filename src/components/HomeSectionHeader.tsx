@@ -34,20 +34,23 @@ const HomeSectionHeader = ({
         </h2>
       </motion.div>
 
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6, delay: 0.2 }}
-      >
-        <Link
-          href={`/${link}`}
-          className="inline-flex items-center gap-2 bg-[#E1B505] text-black foreground px-6 py-3 rounded-full font-medium hover:bg-primary/90 transition-colors"
+      <div className="hidden md:block">
+        {" "}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
         >
-          {viewText}
-          <ArrowUpRight className="w-4 h-4" />
-        </Link>
-      </motion.div>
+          <Link
+            href={`/${link}`}
+            className="inline-flex items-center gap-2 bg-[#E1B505] text-black foreground px-6 py-3 rounded-full font-medium hover:bg-primary/90 transition-colors"
+          >
+            {viewText}
+            <ArrowUpRight className="w-4 h-4" />
+          </Link>
+        </motion.div>
+      </div>
     </div>
   );
 };

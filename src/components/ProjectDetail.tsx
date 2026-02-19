@@ -6,6 +6,7 @@ import {
   Calendar,
   Clock,
   ExternalLink,
+  GitBranchPlus,
   Quote,
 } from "lucide-react";
 import { useParams } from "react-router-dom";
@@ -15,7 +16,6 @@ import LikeButton from "@/components/LikeButton";
 import SocialShare from "@/components/SocialShare";
 import CommentSection from "@/components/CommentSection";
 import { Button } from "@/components/ui/button";
-import { getProjectBySlug, getRelatedProjects } from "@/data/projectData";
 import { useEffect } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -31,7 +31,6 @@ const ProjectDetail = ({ project, slug }: ProjectDetailProps) => {
   const navigate = useRouter();
   // const projectContent = slug ? getProjectBySlug(slug) : undefined;
   // const relatedProjects = slug ? getRelatedProjects(slug) : [];
-
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [slug]);
@@ -98,14 +97,14 @@ const ProjectDetail = ({ project, slug }: ProjectDetailProps) => {
                 {project.title}
               </motion.h1>
 
-              {/* Description */}
+              {/* FUll Description */}
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
                 className="text-lg text-muted-foreground mb-8"
               >
-                {project.description}
+                {project?.fullDescription}
               </motion.p>
 
               {/* Project Meta */}
@@ -173,6 +172,18 @@ const ProjectDetail = ({ project, slug }: ProjectDetailProps) => {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
+                      <GitBranchPlus className="w-4 h-4" />
+                      View Github
+                    </a>
+                  </Button>
+                )}
+                {project.liveUrl && (
+                  <Button asChild className="gap-2 bg-[#E1B505] text-black">
+                    <a
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       <ExternalLink className="w-4 h-4" />
                       View Live Project
                     </a>
@@ -195,7 +206,7 @@ const ProjectDetail = ({ project, slug }: ProjectDetailProps) => {
                   width={500}
                   height={500}
                   alt={project.title}
-                  className="w-full h-full object-contain object-center"
+                  className="w-full h-full object-cover object-center"
                 />
               </div>
               {/* Decorative elements */}
@@ -253,7 +264,7 @@ const ProjectDetail = ({ project, slug }: ProjectDetailProps) => {
                     width={500}
                     height={500}
                     alt={`${project.title} gallery ${index + 1}`}
-                    className="w-full h-full object-contain hover:scale-105 transition-transform duration-500"
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                   />
                 </motion.div>
               ))}

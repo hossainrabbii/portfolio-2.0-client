@@ -1,6 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import { Button } from "./ui/button";
 
 export function LogoutButton() {
   const router = useRouter();
@@ -14,5 +15,5 @@ export function LogoutButton() {
     router.push("/login");
   }
 
-  return <button onClick={logout}>Logout</button>;
+  return <Button onClick={logout}>Logout</Button>;
 }

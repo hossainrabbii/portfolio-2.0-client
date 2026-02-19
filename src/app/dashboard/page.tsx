@@ -80,9 +80,10 @@ const Dashboard = () => {
             </p>
           </div>
 
-          <Button>
-            <Link href="/dashboard/project">Project</Link>
-          </Button>
+          <Link href="/dashboard/project">
+            <Button>Project</Button>
+          </Link>
+
           {/* Stats Cards */}
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">

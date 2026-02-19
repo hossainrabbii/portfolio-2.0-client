@@ -3,6 +3,7 @@ import { ICategory } from "./ICategory";
 export interface IProject {
   title: string;
   description: string;
+  fullDescription: string;
   category: ICategory;
   image: string;
   gallery: string[];

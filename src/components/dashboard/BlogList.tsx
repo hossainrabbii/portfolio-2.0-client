@@ -29,7 +29,6 @@ const BlogList = ({ onEdit }: BlogListProps) => {
   const { toast } = useToast();
 
   const handleDelete = (slug: string, title: string) => {
-    console.log("Delete blog API call:", slug);
     toast({
       title: "Blog Deleted",
       description: `"${title}" has been deleted. Implement API call to persist.`,
