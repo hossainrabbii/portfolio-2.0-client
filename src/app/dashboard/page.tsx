@@ -7,11 +7,11 @@ import { Plus, FileText, FolderKanban, LayoutDashboard } from "lucide-react";
 
 import ThemeToggle from "@/components/ThemeToggle";
 import BlogForm from "@/components/dashboard/BlogForm";
-import ProjectForm from "@/components/dashboard/ProjectForm";
 import BlogList from "@/components/dashboard/BlogList";
 import ProjectList from "@/components/dashboard/ProjectList";
 import Link from "next/link";
 import { LogoutButton } from "@/components/Logout";
+import NewProjectForm from "@/components/dashboard/NewProjectForm";
 
 const Dashboard = () => {
   const [showBlogForm, setShowBlogForm] = useState(false);
@@ -173,10 +173,27 @@ const Dashboard = () => {
                 </>
               )}
             </TabsContent>
-
+            {/* 
             <TabsContent value="projects" className="space-y-4">
               {showProjectForm ? (
                 <ProjectForm editSlug={editingProject} />
+              ) : (
+                <>
+                  <Link href="dashboard/create-project">
+                    <div className="flex justify-end">
+                      <Button>
+                        <Plus className="h-4 w-4" />
+                        New Project
+                      </Button>
+                    </div>
+                  </Link>
+                </>
+              )}
+            </TabsContent> */}
+
+            <TabsContent value="projects" className="space-y-4">
+              {showProjectForm ? (
+                <NewProjectForm editSlug={editingProject} />
               ) : (
                 <>
                   <Link href="dashboard/create-project">
