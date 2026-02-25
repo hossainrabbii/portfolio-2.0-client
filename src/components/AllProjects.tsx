@@ -39,7 +39,7 @@ const AllProjects = ({ projects }: any) => {
             <div className="flex items-center gap-3 mb-6">
               <div className="w-2 h-2 rounded-full bg-primary" />
               <span className="text-sm text-muted-foreground uppercase tracking-wider">
-                Portfolio
+                Projects
               </span>
             </div>
             <h1 className="font-display text-5xl md:text-6xl font-bold text-foreground mb-4">
