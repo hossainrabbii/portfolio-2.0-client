@@ -23,4 +23,5 @@ export interface IProject {
   comments: any[];
   likes: number;
   liveUrl?: string;
+  github?: string;
 }

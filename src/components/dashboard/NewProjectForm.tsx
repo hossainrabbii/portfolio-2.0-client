@@ -9,8 +9,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Switch } from "@/components/ui/switch";
 import { ArrowLeft, Upload, X, Plus } from "lucide-react";
 import { getProjectBySlug } from "@/data/projectData";
-import { useToast } from "@/hooks/use-toast";
 import { createProject } from "@/services/Project";
+import { toast } from "sonner";
 
 // Local interface for TypeScript
 interface ProjectType {
@@ -48,7 +48,8 @@ interface ProjectFormProps {
 const NewProjectForm = ({ editSlug, categories }: ProjectFormProps) => {
   const [category, setCategory] = useState<string>("");
 
-  const { toast } = useToast();
+  // const router = useNavi
+  // const { toast } = useToast();
   const [formData, setFormData] = useState({
     title: "",
     slug: "",
@@ -229,30 +230,27 @@ const NewProjectForm = ({ editSlug, categories }: ProjectFormProps) => {
       likes: 0,
       comments: [],
       liveUrl: formData.liveUrl || undefined,
+      github: formData.github || undefined,
       featured: formData.featured,
       live: formData.live,
     };
 
     console.log("Project data to send to API:", projectData);
 
-    const finalFormData = new FormData();
-    finalFormData.append("data", JSON.stringify(projectData));
+    // const finalFormData = new FormData();
+    // finalFormData.append("data", JSON.stringify(projectData));
 
-    galleryImages.forEach((file) => {
-      finalFormData.append("gallery", file);
-    });
+    // galleryImages.forEach((file) => {
+    //   finalFormData.append("gallery", file);
+    // });
 
-    const response = await createProject(finalFormData);
-    if (response.success) {
-      toast({
-        title: editSlug ? "Project Updated" : "Project Created",
-        description: `"${formData.title}" has been ${
-          editSlug ? "updated" : "created"
-        } successfully. Check console for API payload.`,
-      });
-    } else {
-      toast({ title: "Something went wrong" });
-    }
+    // const response = await createProject(finalFormData);
+    // if (response.success) {
+    //   toast.success("New project successfully uploaded.");
+
+    // } else {
+    //   toast.warning("SOmething went wrong.");
+    // }
   };
 
   return (
@@ -704,7 +702,7 @@ const NewProjectForm = ({ editSlug, categories }: ProjectFormProps) => {
                   name="github"
                   value={formData.github}
                   onChange={handleInputChange}
-                  placeholder="https://example.com"
+                  placeholder="https://github.com"
                 />
               </div>
               <div className="space-y-2">

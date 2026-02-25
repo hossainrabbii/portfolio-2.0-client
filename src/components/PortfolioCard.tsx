@@ -14,7 +14,7 @@ const PortfolioCard = ({ projects }: any) => {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: index * 0.1 }}
         >
-          <Link href={`/projects/${project.slug}`}>
+          <Link href={`/project/${project.slug}`}>
             <motion.div
               whileHover={{ y: -8 }}
               transition={{ duration: 0.3 }}

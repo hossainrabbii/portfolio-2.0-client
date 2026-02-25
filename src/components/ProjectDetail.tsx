@@ -49,6 +49,7 @@ const ProjectDetail = ({ project, slug }: ProjectDetailProps) => {
     );
   }
 
+  console.log(project);
   const currentUrl = typeof window !== "undefined" ? window.location.href : "";
 
   return (
@@ -168,7 +169,7 @@ const ProjectDetail = ({ project, slug }: ProjectDetailProps) => {
                 {project.liveUrl && (
                   <Button asChild className="gap-2 bg-[#E1B505] text-black">
                     <a
-                      href={project.liveUrl}
+                      href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
                     >

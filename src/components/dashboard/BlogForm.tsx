@@ -19,13 +19,11 @@ const BlogForm = ({ editSlug, onClose }: BlogFormProps) => {
   const [formData, setFormData] = useState({
     title: "",
     slug: "",
-    excerpt: "",
     content: "",
     category: "",
     readTime: "",
     authorName: "",
     authorRole: "",
-    authorAvatar: "",
     tags: [] as string[],
   });
 
@@ -44,13 +42,11 @@ const BlogForm = ({ editSlug, onClose }: BlogFormProps) => {
         setFormData({
           title: blog.title,
           slug: blog.slug,
-          excerpt: blog.excerpt,
           content: blog.content,
           category: blog.category,
           readTime: blog.readTime,
           authorName: blog.author.name,
           authorRole: blog.author.role,
-          authorAvatar: blog.author.avatar,
           tags: blog.tags,
         });
         setCoverPreview(blog.coverImage);
@@ -110,12 +106,10 @@ const BlogForm = ({ editSlug, onClose }: BlogFormProps) => {
     const blogData = {
       slug: formData.slug,
       title: formData.title,
-      excerpt: formData.excerpt,
       content: formData.content,
       category: formData.category,
       author: {
         name: formData.authorName,
-        avatar: formData.authorAvatar,
         role: formData.authorRole,
       },
       publishedAt: new Date().toISOString().split("T")[0],
@@ -262,7 +256,7 @@ const BlogForm = ({ editSlug, onClose }: BlogFormProps) => {
             </div>
 
             {/* Excerpt */}
-            <div className="space-y-2">
+            {/* <div className="space-y-2">
               <Label htmlFor="excerpt">Excerpt *</Label>
               <Textarea
                 id="excerpt"
@@ -273,7 +267,7 @@ const BlogForm = ({ editSlug, onClose }: BlogFormProps) => {
                 rows={2}
                 required
               />
-            </div>
+            </div> */}
 
             {/* Content */}
             <div className="space-y-2">
@@ -306,17 +300,17 @@ const BlogForm = ({ editSlug, onClose }: BlogFormProps) => {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="authorRole">Author Role *</Label>
+                  <Label htmlFor="authorRole">Author Role</Label>
                   <Input
                     id="authorRole"
                     name="authorRole"
                     value={formData.authorRole}
                     onChange={handleInputChange}
                     placeholder="Product Designer"
-                    required
+                    
                   />
                 </div>
-                <div className="space-y-2">
+                {/* <div className="space-y-2">
                   <Label htmlFor="authorAvatar">Author Avatar URL</Label>
                   <Input
                     id="authorAvatar"
@@ -325,7 +319,7 @@ const BlogForm = ({ editSlug, onClose }: BlogFormProps) => {
                     onChange={handleInputChange}
                     placeholder="/placeholder.svg"
                   />
-                </div>
+                </div> */}
               </div>
             </div>
 

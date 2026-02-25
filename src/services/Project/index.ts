@@ -25,7 +25,7 @@ export const createProject = async (formData: any) => {
 export const getAllProjects = async () => {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/project`);
-    console.log(response);
+    // console.log(response);
     return response.json();
   } catch (error) {
     console.error(error);

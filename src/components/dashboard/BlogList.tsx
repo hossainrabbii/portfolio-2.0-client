@@ -16,24 +16,39 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Edit, Trash2, MoreHorizontal, Eye, MessageSquare, Heart } from "lucide-react";
+import {
+  Edit,
+  Trash2,
+  MoreHorizontal,
+  Eye,
+  MessageSquare,
+  Heart,
+} from "lucide-react";
 import { blogPosts } from "@/data/blogData";
 import { Link } from "react-router-dom";
-import { useToast } from "@/hooks/use-toast";
+import Image from "next/image";
+import { deleteBlog } from "@/services/Blog";
+import { toast } from "sonner";
 
 interface BlogListProps {
   onEdit: (slug: string) => void;
+  blogs: any;
 }
 
-const BlogList = ({ onEdit }: BlogListProps) => {
-  const { toast } = useToast();
+const BlogList = ({ onEdit, blogs }: BlogListProps) => {
+  // const { toast } = useToast();
+  // console.log(blogs);
+  const handleDelete = async (id: string) => {
+    const response = await deleteBlog(id);
+    if (response.success) {
+      toast.success(response?.message || "Blog Deleted Successfully.");
+    }
 
-  const handleDelete = (slug: string, title: string) => {
-    toast({
-      title: "Blog Deleted",
-      description: `"${title}" has been deleted. Implement API call to persist.`,
-      variant: "destructive",
-    });
+    // toast({
+    //   title: "Blog Deleted",
+    //   description: `"${title}" has been deleted. Implement API call to persist.`,
+    //   variant: "destructive",
+    // });
   };
 
   return (
@@ -56,9 +71,9 @@ const BlogList = ({ onEdit }: BlogListProps) => {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {blogPosts.map((post, index) => (
+              {blogs.map((post: any, index: number) => (
                 <motion.tr
-                  key={post.id}
+                  key={index}
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.05 }}
@@ -66,10 +81,12 @@ const BlogList = ({ onEdit }: BlogListProps) => {
                 >
                   <TableCell>
                     <div className="flex items-center gap-3">
-                      <img
+                      <Image
                         src={post.coverImage}
-                        alt={post.title}
-                        className="h-10 w-14 object-cover rounded-md bg-muted"
+                        alt={post.author.name}
+                        width={500}
+                        height={500}
+                        className="h-7 w-10 rounded bg-muted"
                       />
                       <div>
                         <p className="font-medium line-clamp-1">{post.title}</p>
@@ -84,9 +101,11 @@ const BlogList = ({ onEdit }: BlogListProps) => {
                   </TableCell>
                   <TableCell>
                     <div className="flex items-center gap-2">
-                      <img
-                        src={post.author.avatar}
+                      <Image
+                        src={post.coverImage}
                         alt={post.author.name}
+                        width={500}
+                        height={500}
                         className="h-6 w-6 rounded-full bg-muted"
                       />
                       <span className="text-sm">{post.author.name}</span>
@@ -116,13 +135,13 @@ const BlogList = ({ onEdit }: BlogListProps) => {
                       </DropdownMenuTrigger>
                       <DropdownMenuContent align="end" className="bg-popover">
                         <DropdownMenuItem asChild>
-                          <Link
+                          {/* <Link
                             to={`/blog/${post.slug}`}
                             className="flex items-center gap-2"
                           >
                             <Eye className="h-4 w-4" />
                             View
-                          </Link>
+                          </Link> */}
                         </DropdownMenuItem>
                         <DropdownMenuItem
                           onClick={() => onEdit(post.slug)}
@@ -132,7 +151,7 @@ const BlogList = ({ onEdit }: BlogListProps) => {
                           Edit
                         </DropdownMenuItem>
                         <DropdownMenuItem
-                          onClick={() => handleDelete(post.slug, post.title)}
+                          onClick={() => handleDelete(post._id)}
                           className="flex items-center gap-2 text-destructive focus:text-destructive"
                         >
                           <Trash2 className="h-4 w-4" />

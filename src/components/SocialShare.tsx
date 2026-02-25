@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Twitter, Facebook, Linkedin, Link2, Check } from "lucide-react";
+import { Twitter, Facebook, Linkedin, Link2, Check, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { toast } from "sonner";
@@ -15,8 +15,8 @@ const SocialShare = ({ url, title, description }: SocialShareProps) => {
 
   const shareLinks = [
     {
-      name: "Twitter",
-      icon: Twitter,
+      name: "X",
+      icon: X,
       url: `https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(url)}`,
       color: "hover:bg-[#1DA1F2]/10 hover:text-[#1DA1F2]",
     },
@@ -37,6 +37,7 @@ const SocialShare = ({ url, title, description }: SocialShareProps) => {
   const copyLink = async () => {
     try {
       await navigator.clipboard.writeText(url);
+
       setCopied(true);
       toast.success("Link copied to clipboard!");
       setTimeout(() => setCopied(false), 2000);

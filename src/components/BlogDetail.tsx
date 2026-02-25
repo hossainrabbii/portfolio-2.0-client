@@ -7,7 +7,6 @@ import Footer from "@/components/Footer";
 import LikeButton from "@/components/LikeButton";
 import SocialShare from "@/components/SocialShare";
 import CommentSection from "@/components/CommentSection";
-import { getBlogBySlug, getRelatedPosts } from "@/data/blogData";
 import { useEffect } from "react";
 import Image from "next/image";
 
@@ -42,7 +41,7 @@ const BlogDetail = ({ blogDetail, slug }: TBLogProps) => {
   }
 
   const currentUrl = typeof window !== "undefined" ? window.location.href : "";
-
+  console.log(currentUrl);
   return (
     <div className="min-h-screen bg-background">
       <Navbar />

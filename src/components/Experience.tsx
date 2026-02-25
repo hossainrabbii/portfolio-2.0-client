@@ -76,7 +76,7 @@ const education = [
 const Experience = () => {
   return (
     <section className="py-24" id="experience">
-      <div className="section-container container mx-auto px-4">
+      <div className="section-container container mx-auto px-2 md:px-4">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, x: -30 }}

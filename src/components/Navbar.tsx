@@ -9,12 +9,11 @@ import logoImage from "@/assets/hossainlogo.png";
 import Image from "next/image";
 const navItems = [
   { label: "Home", href: "#home" },
-  { label: "About", href: "#home" },
   { label: "Skills", href: "#skills" },
   { label: "Experience", href: "#experience" },
   { label: "Services", href: "#services" },
   { label: "Portfolio", href: "#portfolio" },
-  { label: "Blog", href: "#blog" },
+  // { label: "Blog", href: "#blog" },
   { label: "Contact", href: "#contact" },
 ];
 
