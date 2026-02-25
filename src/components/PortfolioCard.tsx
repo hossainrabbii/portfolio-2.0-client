@@ -6,7 +6,7 @@ import Image from "next/image";
 const PortfolioCard = ({ projects }: any) => {
   return (
     <div className="grid md:grid-cols-2 gap-6">
-      {projects.map((project: any, index: number) => (
+      {projects?.slice(0, 6).map((project: any, index: number) => (
         <motion.div
           key={project.slug}
           initial={{ opacity: 0, y: 40 }}

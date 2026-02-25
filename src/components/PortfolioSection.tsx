@@ -9,7 +9,7 @@ const PortfolioSection = async () => {
   const allProjects = await getAllProjects();
   // console.log(allProjects);
   return (
-    <section id="portfolio" className="py-24">
+    <section id="projects" className="py-24">
       <div className="section-container container mx-auto px-4">
         {/* Section header */}
         <HomeSectionHeader
@@ -23,7 +23,7 @@ const PortfolioSection = async () => {
         <PortfolioCard projects={allProjects.data} />
         <div className="block md:hidden mt-4 mx-auto">
           <Link
-            href="/projects"
+            href="/project"
             className="inline-flex items-center gap-2 bg-[#E1B505] text-black foreground px-6 py-3 rounded-full font-medium hover:bg-primary/90 transition-colors"
           >
             View All Projects
