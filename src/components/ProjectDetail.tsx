@@ -49,7 +49,6 @@ const ProjectDetail = ({ project, slug }: ProjectDetailProps) => {
     );
   }
 
-  console.log(project);
   const currentUrl = typeof window !== "undefined" ? window.location.href : "";
 
   return (
@@ -166,7 +165,7 @@ const ProjectDetail = ({ project, slug }: ProjectDetailProps) => {
                 transition={{ duration: 0.6, delay: 0.5 }}
                 className="flex flex-wrap items-center gap-4"
               >
-                {project.liveUrl && (
+                {project.github && (
                   <Button asChild className="gap-2 bg-[#E1B505] text-black">
                     <a
                       href={project.github}
