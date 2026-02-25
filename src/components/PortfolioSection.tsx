@@ -17,7 +17,7 @@ const PortfolioSection = async () => {
           boldFontTop="Showcasing My Work for"
           boldFontBottom="Your Inspiration"
           viewText="View All Projects"
-          link="projects"
+          link="project"
         />
         {/* Section project */}
         <PortfolioCard projects={allProjects.data} />
