@@ -26,7 +26,7 @@ export default function LoginPage() {
 
     // try {
     const res = await login({ email, password });
-    console.log('suceess: ',res.success);
+    console.log("suceess: ", res.success);
     if (!res?.success) {
       setError("Invalid email or password");
       return;
@@ -34,6 +34,7 @@ export default function LoginPage() {
     setLoading(false);
     toast.success("Login successful");
     router.push("/dashboard");
+    window.location.replace("/dashboard");
     router.refresh();
     // } catch (error) {
     //   setError("Something went wrong. Please try again.");
