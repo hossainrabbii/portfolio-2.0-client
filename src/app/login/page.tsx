@@ -3,6 +3,7 @@
 import { login } from "@/services/Auth";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { toast } from "sonner";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -27,6 +28,7 @@ export default function LoginPage() {
       const res = await login({ email, password });
       console.log(res.success);
       if (res?.success) {
+        toast.info("Inside True")
         router.push("/dashboard");
       }
       if (!res?.success) {
