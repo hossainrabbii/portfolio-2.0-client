@@ -24,22 +24,22 @@ export default function LoginPage() {
     const email = formData.get("email") as string;
     const password = formData.get("password") as string;
 
-    try {
-      const res = await login({ email, password });
-      console.log(res.success);
-      if (res?.success) {
-        toast.info("Inside True")
-        router.push("/dashboard");
-      }
-      if (!res?.success) {
-        setError("Invalid email or password");
-        return;
-      }
-    } catch (error) {
-      setError("Something went wrong. Please try again.");
-    } finally {
-      setLoading(false);
+    // try {
+    const res = await login({ email, password });
+    console.log(res.success);
+    if (!res?.success) {
+      setError("Invalid email or password");
+      return;
     }
+
+    toast.success("Login successful");
+    router.push("/dashboard");
+    router.refresh();
+    // } catch (error) {
+    //   setError("Something went wrong. Please try again.");
+    // } finally {
+    //   setLoading(false);
+    // }
   }
 
   return (
