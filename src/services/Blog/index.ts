@@ -15,7 +15,7 @@ export const createBlog = async (formData: any) => {
     );
 
     // revalidateTag("category", "");
-    return response.json();
+    return await response.json();
   } catch (error: any) {
     return new Error(error);
   }
