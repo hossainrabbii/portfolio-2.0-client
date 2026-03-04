@@ -381,11 +381,11 @@ const ProjectDetail = ({ project, slug }: ProjectDetailProps) => {
       )}
 
       {/* Comments */}
-      <section className="py-16 bg-secondary/20">
+      {/* <section className="py-16 bg-secondary/20">
         <div className="section-container max-w-4xl container mx-auto px-4">
           <CommentSection comments={project.comments} />
         </div>
-      </section>
+      </section> */}
 
       {/* Related Projects */}
       {/* {relatedProjects.length > 0 && (

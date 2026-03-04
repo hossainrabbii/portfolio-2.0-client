@@ -37,8 +37,8 @@ const footerLinks = {
     },
   ],
 };
-const date = new Date();
-const currentYear = date.getFullYear();
+// const date = new Date();
+// const currentYear = date.getFullYear();
 
 const Footer = () => {
   return (
@@ -128,8 +128,11 @@ const Footer = () => {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="pt-8 border-t border-border flex flex-col md:flex-row items-center justify-between gap-4"
         >
-          <p className="text-muted-foreground text-sm">
+          {/* <p className="text-muted-foreground text-sm">
             © {currentYear} Hossain Rabbi. All rights reserved.
+          </p> */}
+          <p className="text-muted-foreground text-sm">
+            © Hossain Rabbi. All rights reserved.
           </p>
           <div className="flex items-center gap-6">
             <a

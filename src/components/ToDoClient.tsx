@@ -28,10 +28,8 @@ export default function TodoClient({ initialTodos }: Props) {
   const toggleComplete = async (id: string) => {
     setTodos((prev) =>
       prev.map((todo) =>
-        todo._id === id
-          ? { ...todo, completed: !todo.completed }
-          : todo
-      )
+        todo._id === id ? { ...todo, completed: !todo.completed } : todo,
+      ),
     );
 
     await fetch(`${baseUrl}/todo/${id}`, {
@@ -55,9 +53,7 @@ export default function TodoClient({ initialTodos }: Props) {
   return (
     <div className="space-y-4">
       {todos.length === 0 && (
-        <p className="text-center text-muted-foreground">
-          No todos found.
-        </p>
+        <p className="text-center text-muted-foreground">No todos found.</p>
       )}
 
       {todos.map((todo) => (
@@ -67,8 +63,8 @@ export default function TodoClient({ initialTodos }: Props) {
             todo.completed ? "bg-green-50 border-green-300" : ""
           }`}
         >
-          <CardContent className="flex justify-between items-start p-4">
-            <div className="flex gap-3 items-start">
+          <CardContent className="flex justify-between items-start">
+            <div className="flex gap-3 items-start justify-center items-center">
               <Checkbox
                 checked={todo.completed}
                 onCheckedChange={() => toggleComplete(todo._id)}
@@ -84,12 +80,21 @@ export default function TodoClient({ initialTodos }: Props) {
                 </h3>
 
                 {todo.description && (
-                  <p className="text-sm text-gray-600">
-                    {todo.description}
-                  </p>
+                  <p className="text-sm text-gray-600">{todo.description}</p>
                 )}
 
-                <div className="flex gap-2 mt-2 text-xs text-gray-500">
+                <div className="flex gap-2 mt-1 justify-center align-center text-xs text-gray-500">
+                  <Badge
+                    className={`text-black ${
+                      todo.priority === "high"
+                        ? "bg-red-500"
+                        : todo.priority === "medium"
+                          ? "bg-yellow-500"
+                          : "bg-blue-500"
+                    }`}
+                  >
+                    {todo.priority}
+                  </Badge>
                   {todo.time && <span>⏰ {todo.time}</span>}
                   {todo.dueDate && (
                     <span>
@@ -97,18 +102,6 @@ export default function TodoClient({ initialTodos }: Props) {
                     </span>
                   )}
                 </div>
-
-                <Badge
-                  className={`mt-2 ${
-                    todo.priority === "high"
-                      ? "bg-red-500"
-                      : todo.priority === "medium"
-                      ? "bg-yellow-500"
-                      : "bg-blue-500"
-                  }`}
-                >
-                  {todo.priority}
-                </Badge>
               </div>
             </div>
 
