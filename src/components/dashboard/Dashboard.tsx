@@ -205,14 +205,14 @@ const Dashboard = ({ blog }: any) => {
                 <NewProjectForm editSlug={editingProject} />
               ) : (
                 <>
-                  <Link href="dashboard/create-project">
+                  {/* <Link href="dashboard/create-project">
                     <div className="flex justify-end">
                       <Button>
                         <Plus className="h-4 w-4" />
                         New Project
                       </Button>
                     </div>
-                  </Link>
+                  </Link> */}
                 </>
               )}
             </TabsContent>

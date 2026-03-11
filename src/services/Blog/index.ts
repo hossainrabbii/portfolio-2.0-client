@@ -24,10 +24,19 @@ export const createBlog = async (formData: any) => {
 // get brands
 export const getAllBlogs = async () => {
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/blog`);
-    return response.json();
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/blog`, {
+      cache: "no-store", // important for SSR
+    });
+
+    if (!res.ok) {
+      console.error("Blog fetch failed:", await res.text());
+      return { data: [] }; // prevent build crash
+    }
+
+    return res.json();
   } catch (error) {
-    console.error(error);
+    console.error("Blog fetch error:", error);
+    return { data: [] }; // prevent build crash
   }
 };
 
