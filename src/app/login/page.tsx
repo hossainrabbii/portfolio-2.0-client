@@ -34,7 +34,7 @@ export default function LoginPage() {
     setLoading(false);
     toast.success("Login successful");
     router.push("/dashboard");
-    window.location.replace("/dashboard");
+    // window.location.replace("/dashboard");
     router.refresh();
     // } catch (error) {
     //   setError("Something went wrong. Please try again.");

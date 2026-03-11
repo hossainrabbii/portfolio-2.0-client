@@ -55,14 +55,17 @@ const EmailForm = ({ onSuccess, className = "" }: EmailFormProps) => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setErrors({});
-
+    setIsSubmitting(true);
     // console.log(formData);
     const response = await sendMail(formData);
     if (!response?.success) {
       toast.error("Something went wrong.");
     } else {
-      toast.success(response?.message || "Message sent successfully.");
+      setTimeout(() => {
+        toast.success(response?.message || "Message sent successfully.");
+      }, 2500);
     }
+
     // console.log(response);
     // const result = emailSchema.safeParse(formData);
     //  if (!result.success) {
@@ -80,10 +83,11 @@ const EmailForm = ({ onSuccess, className = "" }: EmailFormProps) => {
 
     // Simulate email sending
     // await new Promise((resolve) => setTimeout(resolve, 1500));
-
-    setFormData({ subject: "", mailId: "", body: "" });
-    setIsSubmitting(false);
-    onSuccess?.();
+    setTimeout(() => {
+      setFormData({ subject: "", mailId: "", body: "" });
+      setIsSubmitting(false);
+      onSuccess?.();
+    }, 2000);
   };
 
   return (
