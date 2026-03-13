@@ -1,5 +1,11 @@
+import NewProjectForm from "@/components/dashboard/NewProjectForm";
+
 const projectPage = () => {
-  return <div className="container mx-auto px-4">Project Page</div>;
+  return (
+    <div className="container mx-auto px-4">
+      <NewProjectForm />
+    </div>
+  );
 };
 
 export default projectPage;
