@@ -182,10 +182,10 @@ const Dashboard = ({ blog }: any) => {
                 </>
               )}
             </TabsContent>
-            {/* 
+
             <TabsContent value="projects" className="space-y-4">
               {showProjectForm ? (
-                <ProjectForm editSlug={editingProject} />
+                <NewProjectForm editSlug={editingProject} />
               ) : (
                 <>
                   <Link href="dashboard/create-project">
@@ -198,7 +198,7 @@ const Dashboard = ({ blog }: any) => {
                   </Link>
                 </>
               )}
-            </TabsContent> */}
+            </TabsContent>
 
             <TabsContent value="projects" className="space-y-4">
               {showProjectForm ? (
