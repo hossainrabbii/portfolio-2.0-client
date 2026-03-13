@@ -12,6 +12,7 @@ const DashboardPage = async () => {
     if (Array.isArray(res?.data)) {
       blogPosts = res.data;
     }
+    console.log(blogPosts);
   } catch (err) {
     console.error("Failed to fetch blogs:", err);
   }

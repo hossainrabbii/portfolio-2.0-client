@@ -11,7 +11,7 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   const { slug } = await params;
   const product = await getSingleProject(slug);
-  console.log(product);
+
   return {
     title: product.data.title,
   };
