@@ -61,6 +61,11 @@ const EmailForm = ({ onSuccess, className = "" }: EmailFormProps) => {
     if (!response?.success) {
       toast.error("Something went wrong.");
     } else {
+      if (response?.betrayer) {
+        setTimeout(() => {
+          toast.success(response?.message || "Message sent successfully.");
+        }, 2500);
+      }
       setTimeout(() => {
         toast.success(response?.message || "Message sent successfully.");
       }, 2500);

@@ -9,7 +9,6 @@ type Mail = {
 };
 const mailPage = async () => {
   const getmails = await getAllMails();
-  console.log(getmails);
   let content;
   if (getmails?.success) {
     if (getmails?.data.length === 0) {
@@ -19,7 +18,7 @@ const mailPage = async () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {getmails?.data?.map((mail: Mail, index: number) => (
             <div
-              className="border border-gray-200 rounded-2xl shadow-md p-6 mb-6 bg-white hover:shadow-2xl transition-shadow duration-300 group"
+              className="border border-gray-200 rounded-2xl shadow-md p-3 mb-2 hover:shadow-2xl transition-shadow duration-300 group"
               key={index}
             >
               <div className="flex justify-between items-center mb-4">
