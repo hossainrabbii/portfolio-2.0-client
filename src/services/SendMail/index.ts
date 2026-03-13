@@ -19,13 +19,19 @@ export const sendMail = async (data: any) => {
   }
 };
 
+
 // get
 export const getAllMails = async () => {
   try {
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_BASE_API}/sendmail`,
+      {
+        cache: "no-store", // 🔥 THIS IS THE KEY
+      },
     );
-    const mail = await response.json();
-    return mail;
-  } catch (error) {}
+
+    return await response.json();
+  } catch (error) {
+    console.error(error);
+  }
 };
