@@ -61,18 +61,16 @@ const EmailForm = ({ onSuccess, className = "" }: EmailFormProps) => {
     if (!response?.success) {
       toast.error("Something went wrong.");
     } else {
-      if (response?.betrayer) {
-        setTimeout(() => {
+      setTimeout(() => {
+        if (response?.betrayer) {
           toast.warning(
             response?.message ||
               "How dare you message me, Vondo! You deceitful, characterless woman!",
           );
-        }, 2500);
-      } else {
-        setTimeout(() => {
+        } else {
           toast.success(response?.message || "Message sent successfully.");
-        }, 2500);
-      }
+        }
+      }, 2500);
     }
 
     // console.log(response);
