@@ -87,6 +87,9 @@ const Dashboard = ({ blog }: any) => {
           <Link href="/dashboard/project">
             <Button>Project</Button>
           </Link>
+          <Link href="/dashboard/mail" className="px-2">
+            <Button>Mail</Button>
+          </Link>
           <Link href="/dashboard/todo">
             <Button>To Do</Button>
           </Link>
