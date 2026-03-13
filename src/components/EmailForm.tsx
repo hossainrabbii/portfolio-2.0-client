@@ -63,7 +63,10 @@ const EmailForm = ({ onSuccess, className = "" }: EmailFormProps) => {
     } else {
       if (response?.betrayer) {
         setTimeout(() => {
-          toast.success(response?.message || "Message sent successfully.");
+          toast.error(
+            response?.message ||
+              "How dare you message me, Vondo! You deceitful, characterless woman!",
+          );
         }, 2500);
       }
       setTimeout(() => {
