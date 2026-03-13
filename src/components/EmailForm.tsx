@@ -68,10 +68,11 @@ const EmailForm = ({ onSuccess, className = "" }: EmailFormProps) => {
               "How dare you message me, Vondo! You deceitful, characterless woman!",
           );
         }, 2500);
+      } else {
+        setTimeout(() => {
+          toast.success(response?.message || "Message sent successfully.");
+        }, 2500);
       }
-      setTimeout(() => {
-        toast.success(response?.message || "Message sent successfully.");
-      }, 2500);
     }
 
     // console.log(response);
