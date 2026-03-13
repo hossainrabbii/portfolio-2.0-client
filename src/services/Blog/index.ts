@@ -25,7 +25,6 @@ export const createBlog = async (formData: any) => {
 export const getAllBlogs = async () => {
   try {
     const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/blog`, {
-      cache: "no-store", // important for SSR
       next: { revalidate: 60 },
     });
 
