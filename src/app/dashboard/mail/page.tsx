@@ -12,7 +12,7 @@ const mailPage = async () => {
   console.log(getmails);
   return (
     <div className="container mx-auto p-4">
-      All mails
+      All mails 2
       {getmails?.data?.map((mail: Mail, index: number) => {
         <div className="border shadow-md" key={index}>
           <p>Subject: {mail?.subject}</p>
