@@ -1,5 +1,4 @@
 export const sendMail = async (data: any) => {
-  console.log(data);
   try {
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_BASE_API}/sendmail`,
@@ -18,4 +17,15 @@ export const sendMail = async (data: any) => {
   } catch (error) {
     return error;
   }
+};
+
+// get
+export const getAllMails = async () => {
+  try {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_BASE_API}/sendmail`,
+    );
+    const mail = await response.json();
+    return mail;
+  } catch (error) {}
 };
