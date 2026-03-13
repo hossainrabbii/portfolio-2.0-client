@@ -19,18 +19,35 @@ const mailPage = async () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {getmails?.data?.map((mail: Mail, index: number) => (
             <div
-              className="border border-gray-200 rounded-xl shadow-lg p-6 mb-4 hover:shadow-xl transition-shadow duration-300 bg-white"
+              className="border border-gray-200 rounded-2xl shadow-md p-6 mb-6 bg-white hover:shadow-2xl transition-shadow duration-300 group"
               key={index}
             >
-              <h3 className="text-lg font-semibold text-gray-800 mb-2">
-                Subject: {mail.subject}
-              </h3>
-              <p className="text-gray-600 mb-1">
-                <span className="font-medium">Mail:</span> {mail.mailId}
-              </p>
-              <p className="text-gray-700">
-                <span className="font-medium">Body:</span> {mail.body}
-              </p>
+              <div className="flex justify-between items-center mb-4">
+                <h3 className="text-xl font-semibold text-gray-900 group-hover:text-indigo-600 transition-colors duration-300">
+                  {mail.subject}
+                </h3>
+                <span className="text-sm text-gray-400">
+                  {new Date(mail.createdAt).toLocaleDateString()}
+                </span>
+              </div>
+
+              <div className="mb-3">
+                <p className="text-gray-600 text-sm">
+                  <span className="font-medium text-gray-800">From:</span>{" "}
+                  {mail.mailId}
+                </p>
+              </div>
+
+              <div className="text-gray-700 text-base leading-relaxed">
+                <span className="font-medium text-gray-800">Message:</span>{" "}
+                {mail.body}
+              </div>
+
+              <div className="mt-4 border-t border-gray-100 pt-3">
+                <button className="text-indigo-600 font-medium hover:text-indigo-800 transition-colors text-sm">
+                  Reply
+                </button>
+              </div>
             </div>
           ))}
         </div>
