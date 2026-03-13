@@ -21,7 +21,7 @@ export const createBlog = async (formData: any) => {
   }
 };
 
-// get brands
+// get blogs
 export const getAllBlogs = async () => {
   try {
     const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/blog`, {

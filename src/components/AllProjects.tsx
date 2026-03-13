@@ -98,7 +98,7 @@ const AllProjects = ({ projects }: any) => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.08 }}
                 >
-                  <Link href={`/projects/${project.slug}`}>
+                  <Link href={`/project/${project.slug}`}>
                     <motion.div
                       whileHover={{ y: -6 }}
                       transition={{ duration: 0.3 }}
@@ -175,7 +175,7 @@ const AllProjects = ({ projects }: any) => {
           {filteredProjects.length === 0 && (
             <div className="text-center py-20">
               <p className="text-muted-foreground text-lg">
-                No projects found in this category.
+                No projects found.
               </p>
             </div>
           )}

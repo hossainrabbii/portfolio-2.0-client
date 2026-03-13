@@ -20,7 +20,7 @@ const PortfolioSection = async () => {
           link="project"
         />
         {/* Section project */}
-        <PortfolioCard projects={allProjects.data} />
+        <PortfolioCard projects={allProjects?.data} />
         <div className="block md:hidden mt-4 mx-auto">
           <Link
             href="/project"

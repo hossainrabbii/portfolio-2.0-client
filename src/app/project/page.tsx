@@ -15,6 +15,7 @@ const ProjectPage = async () => {
 
   try {
     const res = await getAllProjects();
+    console.log(res);
     if (Array.isArray(res?.data)) {
       allProjects = res.data;
     }

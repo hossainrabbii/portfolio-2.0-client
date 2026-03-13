@@ -26,14 +26,16 @@ export default function LoginPage() {
 
     // try {
     const res = await login({ email, password });
-    console.log("suceess: ", res.success);
-    if (!res?.success) {
-      setError("Invalid email or password");
-      return;
+
+    if (res.success) {
+      localStorage.setItem("auth", "true");
+      localStorage.setItem("user", JSON.stringify(res.user));
+      toast.success(res.message || "Login successful.");
+      router.push("/dashboard");
+    } else {
+      toast.error(res.message);
     }
-    setLoading(false);
-    toast.success("Login successful");
-    router.push("/dashboard");
+
     // window.location.replace("/dashboard");
     router.refresh();
     // } catch (error) {

@@ -4,7 +4,7 @@ import { revalidateTag } from "next/cache";
 import { cookies } from "next/headers";
 
 const API_BASE = process.env.NEXT_PUBLIC_BASE_API;
-
+console.log(API_BASE);
 // create project
 export const createProject = async (formData: any) => {
   try {
@@ -19,22 +19,44 @@ export const createProject = async (formData: any) => {
   }
 };
 
+// export const getAllProjects = async () => {
+//   try {
+//     const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/project`);
+//     console.log(await res.json());
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
+
+// export const getAllProjects = async () => {
+//   try {
+//     console.log(process.env.NEXT_PUBLIC_BASE_API);
+
+//     const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/project`);
+//     const projects = await response.json();
+
+//     console.log(projects);
+//     return projects;
+//   } catch (error) {}
+// };
+
 // get all projects (safe for build)
 export const getAllProjects = async () => {
   try {
     const res = await fetch(`${API_BASE}/project`, {
-      cache: "no-store", // ensures fresh fetch every request
+      cache: "no-store",
     });
 
+    const data = await res.json();
     if (!res.ok) {
       console.error("Project fetch failed:", await res.text());
-      return { data: [] }; // fallback for build
+      return { data: [] };
     }
 
-    return res.json();
+    return data;
   } catch (error) {
     console.error("Project fetch error:", error);
-    return { data: [] }; // fallback for build
+    return { data: [] };
   }
 };
 

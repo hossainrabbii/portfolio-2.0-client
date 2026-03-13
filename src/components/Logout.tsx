@@ -7,16 +7,13 @@ import { logout as logoutService } from "@/services/Auth";
 export function LogoutButton() {
   const router = useRouter();
 
-  async function handleLogout() {
-    const res = await logoutService();
-    console.log(res?.success);
-    if (res?.success) {
-      router.push("/login");
-      window.location.href = "/login";
-      router.refresh(); // force re-check middleware
-    }
-    router.refresh(); // force re-check middleware
-  }
+  const handleLogout = async () => {
+    await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/user/logout`);
 
+    localStorage.removeItem("auth");
+    localStorage.removeItem("user");
+
+    router.push("/login");
+  };
   return <Button onClick={handleLogout}>Logout</Button>;
 }
