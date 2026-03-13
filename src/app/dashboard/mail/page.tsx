@@ -16,12 +16,21 @@ const mailPage = async () => {
       content = <p>No datas</p>;
     } else {
       content = (
-        <div className="grid grid-cols-1 md:grid-cols-3">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {getmails?.data?.map((mail: Mail, index: number) => (
-            <div className="border shadow-md p-4 mb-2" key={index}>
-              <p>Subject: {mail.subject}</p>
-              <p>Mail: {mail.mailId}</p>
-              <p>Body: {mail.body}</p>
+            <div
+              className="border border-gray-200 rounded-xl shadow-lg p-6 mb-4 hover:shadow-xl transition-shadow duration-300 bg-white"
+              key={index}
+            >
+              <h3 className="text-lg font-semibold text-gray-800 mb-2">
+                Subject: {mail.subject}
+              </h3>
+              <p className="text-gray-600 mb-1">
+                <span className="font-medium">Mail:</span> {mail.mailId}
+              </p>
+              <p className="text-gray-700">
+                <span className="font-medium">Body:</span> {mail.body}
+              </p>
             </div>
           ))}
         </div>
