@@ -29,6 +29,9 @@ export const getAllCategory = async () => {
   try {
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_BASE_API}/category`,
+      {
+        cache: "no-store", // 🔥 THIS IS THE KEY
+      },
     );
     const categories = await response.json();
     return categories;

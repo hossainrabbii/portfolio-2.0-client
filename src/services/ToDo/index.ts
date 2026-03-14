@@ -19,10 +19,14 @@ export const createToDo = async (formData: any) => {
 
 export const getTodo = async () => {
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/todo`);
-    return response.json();
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/todo`, {
+      cache: "no-store",
+    });
 
-    return await response.json();
+    const data = await response.json();
+    return data;
+
+    // return await response.json();
   } catch (error: any) {
     return new Error(error);
   }
