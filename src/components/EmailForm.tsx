@@ -72,24 +72,6 @@ const EmailForm = ({ onSuccess, className = "" }: EmailFormProps) => {
         }
       }, 2500);
     }
-
-    // console.log(response);
-    // const result = emailSchema.safeParse(formData);
-    //  if (!result.success) {
-    //    const fieldErrors: Record<string, string> = {};
-    //    result.error.errors.forEach((err) => {
-    //      if (err.path[0]) {
-    //        fieldErrors[err.path[0] as string] = err.message;
-    //      }
-    //    });
-    //    setErrors(fieldErrors);
-    //    return;
-    //  }
-
-    // setIsSubmitting(true);
-
-    // Simulate email sending
-    // await new Promise((resolve) => setTimeout(resolve, 1500));
     setTimeout(() => {
       setFormData({ subject: "", mailId: "", body: "" });
       setIsSubmitting(false);
