@@ -76,9 +76,9 @@ export const deleteBrand = async (brandId: string) => {
   try {
     const res = await fetch(`${API_BASE}/brand/${brandId}`, {
       method: "DELETE",
-      headers: {
-        Authorization: (await cookies()).get("accessToken")!.value,
-      },
+      // headers: {
+      //   Authorization: (await cookies()).get("accessToken")!.value,
+      // },
     });
 
     revalidateTag("brand", "");

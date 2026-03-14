@@ -57,6 +57,7 @@ export default function CreateTodoForm() {
         return;
       }
       toast.success(response?.message || "Todo added.");
+      window.location.reload();
     } catch (error) {
       console.error(error);
       alert("Failed to create todo");

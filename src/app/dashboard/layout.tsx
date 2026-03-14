@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { Loader2Icon } from "lucide-react";
+import LoadingSpinner from "@/components/ui/LoadingSpinner";
 
 export default function DashboardLayout({
   children,
@@ -22,7 +24,11 @@ export default function DashboardLayout({
   }, [router]);
 
   if (!authChecked) {
-    return <div>Loading...</div>; // or spinner
+    return (
+      <div className="w-screen h-screen flex justify-center items-center">
+        <LoadingSpinner />
+      </div>
+    ); // or spinner
   }
 
   return <>{children}</>;

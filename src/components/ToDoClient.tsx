@@ -6,6 +6,8 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Checkbox } from "./ui/checkbox";
 import { Edit, Minus } from "lucide-react";
+import { deleteTodoService } from "@/services/ToDo";
+import { toast } from "sonner";
 
 interface ITodo {
   _id: string;
@@ -59,11 +61,14 @@ export default function TodoClient({ initialTodos }: Props) {
      DELETE TODO
   ========================== */
   const deleteTodo = async (id: string) => {
-    setTodos((prev) => prev.filter((todo) => todo._id !== id));
+    const response = await deleteTodoService(id);
+    if (!response?.success) {
+      toast.error(response?.message || "Something went wrong.");
+      return;
+    }
+    toast.success(response?.message || "Deleted todo.");
 
-    await fetch(`${baseUrl}/todo/${id}`, {
-      method: "DELETE",
-    });
+    setTodos((prev) => prev.filter((todo) => todo._id !== id));
   };
 
   /* =========================
@@ -104,14 +109,14 @@ export default function TodoClient({ initialTodos }: Props) {
             todo.completed ? "bg-green-50 border-green-200" : ""
           }`}
         >
-          <CardContent className="flex justify-between items-start">
-            <div className="flex gap-3 items-center">
-              <Checkbox
-                checked={todo.completed}
-                onCheckedChange={() => toggleComplete(todo._id)}
-              />
-
-              <div>
+          <CardContent>
+            {/* <div className=" gap-3 items-center"> */}
+            <div className="flex items-center justify-between">
+              <div className="flex gap-2 items-center">
+                <Checkbox
+                  checked={todo.completed}
+                  onCheckedChange={() => toggleComplete(todo._id)}
+                />
                 <h3
                   className={`font-semibold ${
                     todo.completed ? "line-through text-gray-500" : ""
@@ -119,46 +124,71 @@ export default function TodoClient({ initialTodos }: Props) {
                 >
                   {todo.title}
                 </h3>
+              </div>
+              <div className="flex gap-2">
+                <Button size="sm" variant="outline">
+                  <Edit />
+                </Button>
 
-                {todo.description && (
-                  <p className="text-sm text-gray-600">{todo.description}</p>
-                )}
+                <Button
+                  size="sm"
+                  variant="destructive"
+                  onClick={() => deleteTodo(todo._id)}
+                >
+                  <Minus />
+                </Button>
+              </div>
+            </div>
 
-                <div className="flex gap-2 mt-1 text-xs text-gray-500">
-                  <Badge
-                    className={`text-white ${
-                      todo.priority === "high"
-                        ? "bg-red-500"
-                        : todo.priority === "medium"
-                          ? "bg-yellow-500"
-                          : "bg-gray-500"
-                    }`}
-                  >
-                    {todo.priority}
-                  </Badge>
+            {todo.description && (
+              <p className="text-sm text-gray-600 py-2">{todo.description}</p>
+            )}
 
-                  {todo.time && <span>⏰ {todo.time}</span>}
+            <div className="w-full flex gap-2 mt-1 text-xs justify-between">
+              <Badge
+                className={`text-white px-3 rounded-md ${
+                  todo.priority === "high"
+                    ? "bg-orange-500/50"
+                    : todo.priority === "medium"
+                      ? "bg-purple-500/50"
+                      : "bg-gray-500/50"
+                }`}
+              >
+                {todo.priority}
+              </Badge>
+              <div className="inline-flex items-center gap-2 rounded-md bg-slate-100 px-3 py-1 text-sm">
+                {/* Time */}
+                <div className="inline-flex items-center gap-2 rounded-md bg-slate-100 text-sm">
+                  {/* Time with AM/PM */}
+                  {todo.time && (
+                    <div className="font-medium text-slate-700">
+                      {(() => {
+                        const [hourStr, minute] = todo.time.split(":");
+                        let hour = parseInt(hourStr, 10);
+                        const period = hour >= 12 ? "PM" : "AM";
+                        const hour12 = hour % 12 === 0 ? 12 : hour % 12;
+                        return `${hour12.toString().padStart(2, "0")}:${minute} ${period}`;
+                      })()}
+                    </div>
+                  )}
+
+                  {/* Separator */}
+                  {todo.time && todo.dueDate && (
+                    <span className="text-slate-400">|</span>
+                  )}
+
+                  {/* Date */}
                   {todo.dueDate && (
-                    <span>
-                      📅 {new Date(todo.dueDate).toLocaleDateString()}
+                    <span className="text-slate-600">
+                      {new Date(todo.dueDate).toLocaleDateString("en-US", {
+                        month: "short",
+                        day: "2-digit",
+                        year: "numeric",
+                      })}
                     </span>
                   )}
                 </div>
               </div>
-            </div>
-
-            <div className="flex gap-2">
-              <Button size="sm" variant="outline">
-                <Edit />
-              </Button>
-
-              <Button
-                size="sm"
-                variant="destructive"
-                onClick={() => deleteTodo(todo._id)}
-              >
-                <Minus />
-              </Button>
             </div>
           </CardContent>
         </Card>

@@ -31,3 +31,20 @@ export const getTodo = async () => {
     return new Error(error);
   }
 };
+
+// delete todo
+
+export const deleteTodoService = async (id: string) => {
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/todo/${id}`, {
+      method: "DELETE",
+    });
+
+    const data = await res.json();
+    return data;
+
+    // return await response.json();
+  } catch (error: any) {
+    return new Error(error);
+  }
+};
