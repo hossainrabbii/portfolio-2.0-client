@@ -27,7 +27,7 @@ type FilterType = "all" | "active" | "done";
 
 export default function TodoClient({ initialTodos }: Props) {
   const [todos, setTodos] = useState<ITodo[]>(initialTodos);
-  const [filter, setFilter] = useState<FilterType>("all");
+  const [filter, setFilter] = useState<FilterType>("active");
   const baseUrl = process.env.NEXT_PUBLIC_BASE_API;
 
   /* =========================
@@ -75,7 +75,7 @@ export default function TodoClient({ initialTodos }: Props) {
      FILTER LOGIC
   ========================== */
   const filteredTodos = todos.filter((todo) => {
-    if (filter === "active") return !todo.completed;
+    if (filter === "all") return !todo.completed;
     if (filter === "done") return todo.completed;
     return true;
   });
@@ -84,7 +84,7 @@ export default function TodoClient({ initialTodos }: Props) {
     <div className="space-y-2">
       {/* ===== FILTER BUTTONS ===== */}
       <div className="flex gap-2 justify-start border-b pb-2">
-        {["all", "active", "done"].map((f) => (
+        {["active", "done", "all"].map((f) => (
           <Button
             key={f}
             size="sm"
