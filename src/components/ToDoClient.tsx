@@ -75,7 +75,7 @@ export default function TodoClient({ initialTodos }: Props) {
      FILTER LOGIC
   ========================== */
   const filteredTodos = todos.filter((todo) => {
-    if (filter === "all") return !todo.completed;
+    if (filter === "active") return !todo.completed;
     if (filter === "done") return todo.completed;
     return true;
   });

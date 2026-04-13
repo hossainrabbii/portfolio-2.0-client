@@ -136,11 +136,18 @@ const Footer = () => {
           </p>
           <div className="flex items-center gap-6">
             <a
+              href="dashboard"
+              className="text-muted-foreground hover:text-foreground transition-colors text-sm"
+            >
+              Dashboard
+            </a>
+            <a
               href="#"
               className="text-muted-foreground hover:text-foreground transition-colors text-sm"
             >
               Privacy Policy
             </a>
+
             <a
               href="#"
               className="text-muted-foreground hover:text-foreground transition-colors text-sm"
