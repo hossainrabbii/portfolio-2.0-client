@@ -237,20 +237,20 @@ const NewProjectForm = ({ editSlug, categories }: ProjectFormProps) => {
 
     console.log("Project data to send to API:", projectData);
 
-    // const finalFormData = new FormData();
-    // finalFormData.append("data", JSON.stringify(projectData));
+    const finalFormData = new FormData();
+    finalFormData.append("data", JSON.stringify(projectData));
 
-    // galleryImages.forEach((file) => {
-    //   finalFormData.append("gallery", file);
-    // });
+    galleryImages.forEach((file) => {
+      finalFormData.append("gallery", file);
+    });
 
-    // const response = await createProject(finalFormData);
-    // if (response.success) {
-    //   toast.success("New project successfully uploaded.");
+    const response = await createProject(finalFormData);
+    if (response.success) {
+      toast.success("New project successfully uploaded.");
 
-    // } else {
-    //   toast.warning("SOmething went wrong.");
-    // }
+    } else {
+      toast.warning("SOmething went wrong.");
+    }
   };
 
   return (
